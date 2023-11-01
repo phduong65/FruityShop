@@ -1,0 +1,118 @@
+$color-light: #fff;
+$color-dark: #000;
+$color-main: #a4191c;
+
+body {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+// HEADER_HOME
+.navbar_link {
+    .logo_page {
+        img {
+            width: 100%;
+        }
+    }
+
+    .cate_list {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        a {
+            color: $color-dark;
+            font-weight: 600;
+            position: relative;
+
+            &::after {
+                content: "";
+                display: block;
+                height: 3px;
+                position: absolute;
+                background-color: $color-main;
+                transition: width 0.3s ease 0s, left 0.3s ease 0s;
+                width: 0;
+            }
+
+            &:hover {
+                color: $color-main;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .icon_link {
+        a {
+            color: $color-dark;
+        }
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+// END_HEADER_HOME
+// FOOTER_HOME
+.col_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    .logo_item{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+        line-height: 1.5em;
+    }
+    .list_social{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .social_link{
+            svg{
+                fill: $color-dark;
+            }
+        }
+    }
+    .title_item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: start;
+        font-weight: bold;
+        a{
+            font-weight: normal;
+            color: $color-dark;
+            position: relative;
+            &::after {
+                content: "";
+                display: block;
+                height: 1px;
+                position: absolute;
+                background-color: $color-main;
+                transition: width 0.4s ease 0s, left 0.4s ease 0s;
+                width: 0%;
+            }
+            &:hover{
+                color: $color-main;
+                transition: all .2s ease-in-out;
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+        .line{
+            width: 50%;
+            height: 1px;
+            background-color: $color-main;
+        }
+    }
+}
+
+// END_FOOTER_HOME
