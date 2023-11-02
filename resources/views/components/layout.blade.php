@@ -76,6 +76,8 @@
             </div>
         </div>
     </header>
+    @yield('content')
+
     <footer class="footer_layout">
         <div class="container">
             <div class="footer_layout_item row">
@@ -187,7 +189,6 @@
             </div>
         </div>
     </footer>
-    @yield('content')
 </body>
 
 </html>

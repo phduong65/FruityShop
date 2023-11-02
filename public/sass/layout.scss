@@ -1,9 +1,13 @@
 $color-light: #fff;
 $color-dark: #000;
-$color-main: #a4191c;
-
+$color-main: #0a8837;
+$color-sub-3: #84b71c;
+$color-sub-1:#D3680D;
+$color-sub-2:#E2AC00;
+$color-red:#B81F24;
 body {
     font-family: 'Open Sans', sans-serif !important;
+    line-height: 1.5;
 }
 
 // HEADER_HOME
@@ -57,6 +61,9 @@ body {
 
 // END_HEADER_HOME
 // FOOTER_HOME
+.footer_layout{
+    padding: 40px 0;
+}
 .col_item {
     display: flex;
     flex-direction: column;
@@ -95,12 +102,12 @@ body {
                 display: block;
                 height: 1px;
                 position: absolute;
-                background-color: $color-main;
+                background-color: $color-sub-2;
                 transition: width 0.4s ease 0s, left 0.4s ease 0s;
                 width: 0%;
             }
             &:hover{
-                color: $color-main;
+                color: $color-sub-2;
                 transition: all .2s ease-in-out;
                 &::after {
                     width: 100%;
