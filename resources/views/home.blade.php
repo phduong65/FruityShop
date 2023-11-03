@@ -8,13 +8,13 @@
         <div class="container">
             <div class="banner_1_content">
                 <h4 class="content_top">
-                    Quality always comes first
+                    Dẫn đầu về chất lượng sản phẩm
                 </h4>
                 <h1 class="content_mid">
                     fresh fruit
                 </h1>
                 <h4 class="content_bottom">
-                    Fruit is a good choice every day for us
+                    Trái cây là lựa chọn tốt cho mỗi người
                 </h4>
                 <div class="btn_link">
                     <a href="">Mua ngay</a>
@@ -222,11 +222,16 @@
                             Health & Nutrition
                         </div>
                         <div class="sub_heading">
-                            Implement other healthy habits: in addition to applying a balanced diet, you can combine them with
-                            regular exercise, limit alcohol and tobacco to effectively improve your condition. health and keep
-                            the body flexible and supple. Living a balanced lifestyle and following the right nutrition is not
-                            easy. However, each person should start practicing the habit of protecting the body by maintaining a
-                            scientific diet, paying attention to eating a variety of foods; Store and process food properly so
+                            Implement other healthy habits: in addition to applying a balanced diet, you can combine them
+                            with
+                            regular exercise, limit alcohol and tobacco to effectively improve your condition. health and
+                            keep
+                            the body flexible and supple. Living a balanced lifestyle and following the right nutrition is
+                            not
+                            easy. However, each person should start practicing the habit of protecting the body by
+                            maintaining a
+                            scientific diet, paying attention to eating a variety of foods; Store and process food properly
+                            so
                             as not to lose nutrients.
                         </div>
                         <div class="btn_shop_now">
@@ -237,7 +242,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 images_content">
-                    <img src="{{URL::asset('images')}}/banner_2.jpg" alt="">
+                    <img src="{{ URL::asset('images') }}/banner_2.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -409,7 +414,131 @@
                 disappointment.</div>
         </div>
         <div class="overlay">
-            
+
         </div>
     </div>
+    <section class="news">
+        <div class="news_heading">
+            <h1>Bài Viết</h1>
+        </div>
+        <div class="container">
+            <div class="list_news row">
+                <div class="news_item col-md-4">
+                    <div class="news_img">
+                        <a href="">
+                            <img src="{{URL::asset('images')}}/news_1.jpg" alt="" srcset="">
+                            <div class="date_news">
+                                <div class="date_day">11</div>
+                                <span></span>
+                                <div class="date_month">June</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news_content">
+                        <div class="tag_news">NEWS</div>
+                        <div class="title_news_heading">
+                            <a href="">
+                                <h2>Fruit gives us energy</h2>
+                            </a>
+                        </div>
+                        <span></span>
+                        <div class="sub_news_heading">
+                            <p class="sub_text">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+                                ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+                                consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+                                pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
+                                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
+                                enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+                                Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
+                                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
+                                Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
+                                adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id,
+                                lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis
+                                faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
+                                fringilla mauris sit amet nibh.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="news_item col-md-4">
+                    <div class="news_img">
+                        <img src="{{URL::asset('images')}}/news_1.jpg" alt="" srcset="">
+                        <div class="date_news">
+                            <div class="date_day">11</div>
+                            <span></span>
+                            <div class="date_month">June</div>
+                        </div>
+                    </div>
+                    <div class="news_content">
+                        <div class="tag_news">NEWS</div>
+                        <div class="title_news_heading">
+                            <h2>Fruit gives us energy</h2>
+                        </div>
+                        <span></span>
+                        <div class="sub_news_heading">
+                            <p class="sub_text">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+                                ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+                                consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+                                pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
+                                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
+                                enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+                                Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
+                                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
+                                Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
+                                adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id,
+                                lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis
+                                faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
+                                fringilla mauris sit amet nibh.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="news_item col-md-4">
+                    <div class="news_img">
+                        <img src="{{URL::asset('images')}}/news_1.jpg" alt="" srcset="">
+                        <div class="date_news">
+                            <div class="date_day">11</div>
+                            <span></span>
+                            <div class="date_month">June</div>
+                        </div>
+                    </div>
+                    <div class="news_content">
+                        <div class="tag_news">NEWS</div>
+                        <div class="title_news_heading">
+                            <h2>Fruit gives us energy</h2>
+                        </div>
+                        <span></span>
+                        <div class="sub_news_heading">
+                            <p class="sub_text">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+                                ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+                                consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
+                                pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
+                                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
+                                enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+                                Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
+                                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
+                                Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
+                                adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id,
+                                lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis
+                                faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
+                                fringilla mauris sit amet nibh.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
+@push('js')
+    <script src="{{ URL::asset('js') }}/search_home.js"></script>
+@endpush

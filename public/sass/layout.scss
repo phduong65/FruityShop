@@ -6,7 +6,7 @@ $color-sub-1:#D3680D;
 $color-sub-2:#E2AC00;
 $color-red:#B81F24;
 body {
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Noto Sans', sans-serif !important;
     line-height: 1.5;
 }
 
@@ -52,10 +52,12 @@ body {
         a {
             color: $color-dark;
         }
-
         display: flex;
         justify-content: space-around;
         align-items: center;
+        svg{
+            cursor: pointer;
+        }
     }
 }
 
