@@ -7,7 +7,7 @@
     <title>@yield('pageTitle')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ URL::asset('css') }}/layout.css">
@@ -16,6 +16,316 @@
 </head>
 
 <body>
+    <div class="search_bar">
+        <div class="search_bar_top">
+            Tìm Kiếm
+        </div>
+        <div class="search_hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+              </svg>
+        </div>
+        <form action="" method="post" class="frm_search">
+            <input type="text" placeholder="Tìm kiếm tên sản phẩm..." class="search-input">
+            <button type="submit" class="ic_search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+            </button>
+        </form>
+        <div class="result">
+            <div class="result_search row">
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="search_item">
+                        <div class="img_item">
+                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
+                        </div>
+                        <div class="title_item">
+                            <div class="name">
+                                <a href="">Guava</a>
+                            </div>
+                            <div class="price">
+                                <div class="after_price">$25.00 USD </div>
+                                <div class="before_price">$30.00 USD</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <header class="header_page">
         <div class="header_page_top">
             <div class="container">
@@ -34,7 +344,6 @@
                         <a href="" class="cate_item">Liên hệ</a>
                     </div>
                     <div class="icon_link col-md-2">
-                        <a href="">
                             <div class="search_ic">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -42,7 +351,6 @@
                                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                 </svg>
                             </div>
-                        </a>
                         <div class="user_ic">
                             <a href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -76,6 +384,7 @@
             </div>
         </div>
     </header>
+    @yield('content')
     <footer class="footer_layout">
         <div class="container">
             <div class="footer_layout_item row">
@@ -187,7 +496,7 @@
             </div>
         </div>
     </footer>
-    @yield('content')
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    @stack('js')
 </html>
