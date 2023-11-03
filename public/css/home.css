@@ -1,3 +1,11 @@
+body {
+  font-family: "Open Sans", sans-serif !important;
+}
 
+.navbar_link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 /*# sourceMappingURL=home.css.map */
