@@ -2,19 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-// use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
+
+
 class ProductController extends Controller
 {
+
+
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('test')->with('products',$products);
+        
+        $products = Product::orderBy('created_at', 'desc')->paginate(8);
+        if ($request->ajax()) {
+            $view = view('data', compact('products'))->render();
+            return response()->json(['html' => $view]);
+        }
+        return view('allproduct', compact('products'));
+
+        
     }
 
     /**
@@ -38,6 +48,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
+        //
     }
 
     /**
@@ -63,22 +74,43 @@ class ProductController extends Controller
     {
         //
     }
-    // Format VNĐ
-    public static function asVND($value) {
-        return number_format($value, 0, ".") ."₫";;
-      }
-    public function search(Request $request)
-    {
-        $query = Product::query();
-        if ($request->ajax()) {
-            $extras = $query
-            ->where('name', 'like', '%' . $request->keyword . '%')
-            ->get();
-            // var_dump($extras);
-            return response()->json(['list_search' => $extras]);
-        } else {
-            $extras = $query->get();
-            return view('home', ['list_search' => $extras]);
+
+    public function sort(Request $request, $order) {
+        if ($order === 'asc') {
+            $products = Product::orderBy('price', 'asc')->paginate(8);
+            if($request->ajax()){
+                $view = view('data',compact('products'))->render();
+                return response()->json(['html' => $view]);
+            }
+            return view('allproduct', compact('products'));
         }
+        else if ($order === 'desc') {
+            $products = Product::orderBy('price', 'desc')->paginate(8);
+            if($request->ajax()){
+                $view = view('data',compact('products'))->render();
+                return response()->json(['html' => $view]);
+            }     
+            return view('allproduct', compact('products'));
+            
+        }
+        else
+        {
+            return;
+        }
+        
     }
+    // public function getSort(Request $request)
+    // {
+    //     $sortBy = $request->input('sort_by');
+
+    //     if ($sortBy === 'old') {
+    //         $extras = Product::orderBy('price', 'asc')->get();
+    //     } else if ($sortBy === 'new') {
+    //         $extras = Product::orderBy('price', 'desc')->get();
+    //     } else {
+    //         $extras = Product::all();
+    //     }
+    //     return response()->json(['products' => $extras]);
+    // }
+
 }

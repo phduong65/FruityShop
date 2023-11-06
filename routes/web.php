@@ -31,3 +31,21 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/dat',function(){
+    return view('allproduct');
+});
+
+
+
+//Dat
+Route::get('allproduct',[ProductController::class,'index'])->name('products.index');
+Route::get('/products/sort/{order}', [ProductController::class,'sort'])->name('products.sort');
+
+
+route::post('/create',[CategoryController::class,'create']);
+route::get('/view_category',[CategoryController::class,'index']);
+route::get('/delete/{id}',[CategoryController::class,'delete']);
+
+
+route::put('/editcategory/{id}',[CategoryController::class,'update'])->name('category.update');
