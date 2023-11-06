@@ -310,5 +310,6 @@
         });
     });
 </script>
+<script src="{{ URL::asset('js') }}/search_home.js"></script>
 
 </html>
