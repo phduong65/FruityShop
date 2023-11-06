@@ -1,0 +1,440 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.profile-container {
+    padding: 20px 13%;
+    background-color: #f0f2f5;
+}
+
+.cover-img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 14px;
+}
+
+.profile-details {
+    background-color: initial;
+    padding: 20px 20px 0px 20px;
+}
+
+.profile-detail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pd-row {
+    display: flex;
+}
+
+.pd-images {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+    border-radius: 100%;
+    border: 4px solid #fff;
+    box-sizing: border-box;
+}
+
+.pd-row div h3 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 240px;
+}
+
+.pd-right button:hover {
+    filter: brightness(0.9);
+}
+
+.pd-right button i {
+    height: 15px;
+    margin-right: 10px;
+}
+
+.pd-right button {
+    background-color: #e4e6eb;
+    color: #333;
+    border: 0;
+    outline: 0;
+    padding: 10px 10px;
+    border-radius: 7px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 550;
+}
+
+.pd-right {
+    text-align: right;
+    margin-bottom: 50px
+}
+
+.profile-cate {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+}
+
+.cate-col {
+    flex-basis: 33%;
+}
+
+.post-col {
+    flex-basis: 65%;
+}
+
+.cate-content {
+    background-color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 550;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.profile-cover-fix {
+    position: relative;
+}
+.profile-cover-fix .thumnail{
+    position: relative;
+    padding-bottom: 40%;
+    overflow: hidden;
+    border-radius: 6px;
+}
+.profile-cover-fix .thumnail img{
+    position: absolute;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+.fix-cover {
+    position: absolute;
+    bottom: 35px;
+    right: 30px;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #fff;
+    border-radius: 7px;
+    border: #fff;
+    cursor: pointer;
+}
+
+.fix-cover i {
+    margin-right: 5px;
+}
+
+.content-top {
+    background-color: red;
+}
+
+.top {
+    background-image: linear-gradient(to top, #fff, #aab5c1);
+    padding: 20px 13% 100px 13%;
+}
+
+.image-cover {
+    position: relative;
+    margin-left: 20px;
+}
+
+.image-cover i {
+    position: absolute;
+    bottom: 12px;
+    right: 34px;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 100%;
+    background-color: #dddfe4;
+    cursor: pointer;
+}
+
+.image-cover {
+    position: absolute;
+    bottom: -120px;
+    left: 20px;
+}
+
+.pd-bottom .ul {
+    border-top: 1px solid #bcbfc3;
+    display: flex;
+    padding: 20px;
+    margin-top: 90px;
+    align-items: center;
+}
+
+.pd-bottom .ul li {
+    list-style-type: none;
+    font-size: 15px;
+    font-weight: 550;
+    padding: 0 20px;
+}
+
+.pd-bottom .ul li a {
+    text-decoration: none;
+    color: #696468;
+}
+
+#active-link {
+    color: #0866ff;
+}
+
+.pd-images-small {
+    max-width: 50px;
+    border-radius: 100%;
+}
+
+.post-col .cate-content-first {
+    display: flex;
+    justify-content: space-between;
+}
+
+.writting {
+    width: 100%;
+    margin-left: 10px;
+    border-radius: 40px;
+    border: #fff;
+    font-size: 16px;
+    background-color: #f0f2f5;
+    color: #696468;
+    text-align: left;
+}
+
+.post-col button span {
+    padding-left: 20px;
+}
+
+.profile-cate .cate-col .cate-content i {
+    margin-right: 10px;
+}
+
+.cate-col .cate-content:hover {
+    filter: brightness(.9);
+    cursor: pointer;
+}
+
+.account-info__field {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 1.5rem;
+}
+
+.account-info__label {
+    max-width: 50%;
+    font-size: 18px;
+    color: black;
+}
+
+.account-info__value {
+    color: #696468;
+    font-weight: 500;
+}
+
+.account-page-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1876f2;
+    margin-bottom: 20px;
+}
+
+.account-info__btn {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    background: #0866ff;
+    color: #fff;
+    border: #fff;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 100;
+    align-items: center;
+    display: none;
+    justify-content: center;
+}
+
+/* Modal */
+.modal-container {
+    background-color: #fff;
+    animation: flash .3s ease-out;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+    width: 700px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+@keyframes flash {
+    from {
+        transform: translateY(-500px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.modal-info-user.open {
+    display: flex;
+}
+
+.modal-login-user.open {
+    display: flex;
+}
+.modal-pw-user.open {
+    display: flex;
+}
+
+.modal-container ul li {
+    list-style-type: none;
+}
+
+.modal-container .modal-header h3 {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #d9dde0;
+
+}
+
+.modal-container ul {
+    padding: 20px;
+}
+
+.form-list {
+    list-style: none;
+    padding: 0;
+}
+
+.form-list li {
+    margin-bottom: 20px;
+}
+
+.form-list label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.form-control:focus {
+    outline: none;
+    border: 1px solid #0866ff;
+    transition: border 0.2s ease;
+    box-shadow: 0 0 5px rgba(0, 116, 217, 0.5);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    border-top: 1px solid #d9dde0;
+}
+
+.modal-footer button {
+    margin-left: 10px;
+}
+
+.button-leave {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: #fff;
+    background-color: #e4e6eb;
+    cursor: pointer;
+}
+
+.button-save {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 40px;
+    border: #fff;
+    border-radius: 8px;
+    background-color: #0866ff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.modal-headers {
+    position: relative;
+}
+
+#X {
+    position: absolute;
+    right: 16px;
+    bottom: 7px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #606770;
+    background-color: #e4e6eb;
+    padding: 4px 7.75px;
+    border-radius: 100%;
+}
+
+.change-pw {
+    background-color: #fff;
+    border: none;
+    font-size: 20px;
+    color: #0866ff;
+    cursor: pointer;
+    padding: 10px;
+    
+}
+.change-pw:hover {
+    border-bottom: #0866ff 3px solid;
+}
+#input-email.leave {
+    display: none;
+}
+.change-pw i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+
+/* Trên PC */
+
+@media (min-width: 768px) {
+    .account-info__label {
+        width: 300px;
+        max-width: 50%;
+        font-size: 18px;
+        color: black;
+    }
+}

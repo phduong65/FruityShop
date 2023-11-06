@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Models\UserProfile;
+
 
 class RegisteredUserController extends Controller
 {
@@ -40,6 +42,17 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+        ]);
+        $userId = $user->id;
+        $userProfile = UserProfile::create([
+            'user_id' => $userId,
+            'name' => null, 
+            'avatar' => null, 
+            'cover' => null, 
+            'address' => null, 
+            'birth' => null, 
+            'phone' => null, 
+            'introduce' => null, 
         ]);
 
         event(new Registered($user));
