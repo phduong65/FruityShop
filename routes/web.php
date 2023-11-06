@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Product;
@@ -18,7 +19,6 @@ use function Laravel\Prompts\search;
 |
 */
 
-Route::get('/',[ProductController::class,'index']);
 Route::get('/search',[ProductController::class,'search'])->name('search');
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,19 +32,20 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/dat',function(){
-    return view('allproduct');
+
+Route::get('/manager', function () {
+    return view('manager.doashboard');
 });
-
-
-
 //Dat
+Route::resource('products', ProductController::class);
+Route::resource('categories',CategoryController::class);
+
 Route::get('allproduct',[ProductController::class,'index'])->name('products.index');
 Route::get('/products/sort/{order}', [ProductController::class,'sort'])->name('products.sort');
 
 
 route::post('/create',[CategoryController::class,'create']);
-route::get('/view_category',[CategoryController::class,'index']);
+// route::get('/view_category',[CategoryController::class,'index']);
 route::get('/delete/{id}',[CategoryController::class,'delete']);
 
 
