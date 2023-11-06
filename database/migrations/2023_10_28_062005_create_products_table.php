@@ -17,7 +17,9 @@ return new class extends Migration
             $table-> text("description");
             $table-> integer("price");
             $table-> string("photo");
+            $table->string('status');
             $table-> integer("quantity");
+            $table-> integer("discount");
             $table->timestamps();
         });
     }

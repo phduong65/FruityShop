@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+
+use function Laravel\Prompts\search;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::get('/',[ProductController::class,'index']);
+Route::get('/search',[ProductController::class,'search'])->name('search');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
