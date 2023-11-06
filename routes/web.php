@@ -18,7 +18,7 @@ use function Laravel\Prompts\search;
 |
 */
 
-Route::get('/',[ProductController::class,'index']);
+Route::get('/',[ProductController::class,'index'])->name('index');
 Route::get('/search',[ProductController::class,'search'])->name('search');
 Route::get('/dashboard', function () {
     return view('dashboard');
