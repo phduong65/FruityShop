@@ -53,7 +53,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
             </li>
 
             <li>
-                <a href="{{ route('products.index') }}">
+                <a href="">
                     <span class="icon">
                         <ion-icon name="clipboard-outline"></ion-icon>
                     </span>

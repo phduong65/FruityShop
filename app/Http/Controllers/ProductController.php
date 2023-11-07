@@ -16,15 +16,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        
-        $products = Product::orderBy('created_at', 'desc')->paginate(8);
-        if ($request->ajax()) {
-            $view = view('data', compact('products'))->render();
-            return response()->json(['html' => $view]);
-        }
-        return view('allproduct', compact('products'));
-
-        
+   
     }
 
     /**

@@ -80,6 +80,9 @@ class CategoryPostController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name'=>'required',
+           ]);
 
         $existingCategory = CategoryPost::where('name', $request->name)->first();
 
