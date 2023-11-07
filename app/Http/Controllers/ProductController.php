@@ -99,18 +99,18 @@ class ProductController extends Controller
         }
         
     }
-    // public function getSort(Request $request)
-    // {
-    //     $sortBy = $request->input('sort_by');
+    public function getAllProduct(Request $request)
+    {
+        
+        $products = Product::orderBy('created_at', 'desc')->paginate(8);
+        if ($request->ajax()) {
+            $view = view('data', compact('products'))->render();
+            return response()->json(['html' => $view]);
+        }
+        return view('allproduct', compact('products'));
 
-    //     if ($sortBy === 'old') {
-    //         $extras = Product::orderBy('price', 'asc')->get();
-    //     } else if ($sortBy === 'new') {
-    //         $extras = Product::orderBy('price', 'desc')->get();
-    //     } else {
-    //         $extras = Product::all();
-    //     }
-    //     return response()->json(['products' => $extras]);
-    // }
+        
+    }
+
 
 }

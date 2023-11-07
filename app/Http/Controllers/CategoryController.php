@@ -42,12 +42,12 @@ class CategoryController extends Controller
         $data->delete();
         return redirect()->back()->with('message', 'Xóa thành công');
     }
-    public function show($id)
-    {
-        $data = Category::find($id);
+    // public function show($id)
+    // {
+    //     $data = Category::find($id);
 
-        return view('manager.index', compact('data'));
-    }
+    //     return view('manager.index', compact('data'));
+    // }
     public function update(Request $request, $id)
     {
 

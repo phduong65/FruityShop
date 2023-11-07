@@ -61,7 +61,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
                 </a>
             </li>
             <li>
-                <a href="{{ route('categories.index') }}">
+                <a href="{{ route('categoriesProduct.index') }}">
                     <span class="icon">
                         <ion-icon name="grid-outline"></ion-icon>
                     </span>
@@ -86,7 +86,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('categoriesPost.index') }}">
                     <span class="icon">
                         <ion-icon name="file-tray-full-outline"></ion-icon>
                     </span>

@@ -1,11 +1,11 @@
 @extends('layouts.manager')
-@section('title', 'Manage Category Product')
+@section('title', 'Manager Category Product')
 @section('manager_category_product')
 
 <div class="manager_content">
     <div class="manager_content-product">
         <div class="textbox">
-            <h2>Manager Category Product</h2>
+            <h2>Manager Category Post</h2>
         </div>
         @if (session()->has('message'))
             <div class="alert alert-success">
@@ -18,11 +18,11 @@
                 {{ session('error') }}
             </div>
         @endif
-        <form action="{{ url('/create') }}" method="POST">
+        <form action="{{ url('/createPost') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Tên category product</label>
-                <input type="text" name="category" class="form-control">
+                <label for="exampleInputEmail1" class="form-label">Tên category post</label>
+                <input type="text" name="name" class="form-control">
 
             </div>
             <input type="submit" class="btn btn-primary" name="submit" value="Add">
@@ -39,7 +39,7 @@
             </thead>
 
             <tbody>
-                @foreach ($data as $item)
+                @foreach ($categryPost as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
 
@@ -58,7 +58,7 @@
                             </a>
 
                             <a onclick="return confirm('Bạn có muốn xóa không?')"
-                                href="{{ url('delete', $item->id) }}" class="btn btn-danger"><svg
+                                href="{{ url('deletePost', $item->id) }}" class="btn btn-danger"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
                                     <path
@@ -67,7 +67,7 @@
                         </td>
                     </tr>
                     <!-- Button trigger modal -->
-                    @include('manager.category_product.editcategory')
+                    @include('manager.category_post.editcategorypost')
                 @endforeach
             </tbody>
         </table>
