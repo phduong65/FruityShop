@@ -18,7 +18,8 @@
             </div>
             <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Tên danh mục mới:</label>
-              <input type="name" id="name" class="form-control" name="name">
+              <input type="name" id="name" class="form-control" name="name" pattern="[a-zA-Z\p{L}\d ]{4,20}"
+              title="Vui lòng nhập khoảng 4 đến 20 ký tự, không nhập ký tự đặc biệt!">
               <span id="error" style="color: red;"></span>
             </div>
           

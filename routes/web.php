@@ -44,13 +44,11 @@ Route::resource('categoriesProduct',CategoryController::class);
 Route::resource('categoriesPost',CategoryPostController::class);
 
 Route::get('allproduct',[ProductController::class,'getAllProduct'])->name('products.index');
-Route::get('/products/sort/{order}', [ProductController::class,'sort'])->name('products.sort');
+Route::get('/allproduct/sort/{order}', [ProductController::class,'sort'])->name('products.sort');
 
 //Dat CURD CategoryProduct
 route::post('/create',[CategoryController::class,'create']);
-// route::get('/view_category',[CategoryController::class,'index']);
 route::get('/delete/{id}',[CategoryController::class,'delete']);
-
 route::put('/editcategory/{id}',[CategoryController::class,'update'])->name('category.update');
 
 //Dat CURD CategoryProduct

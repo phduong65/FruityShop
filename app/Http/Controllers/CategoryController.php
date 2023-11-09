@@ -19,6 +19,7 @@ class CategoryController extends Controller
     {
        $request->validate([
         'category'=>'required',
+        'category' => 'required|min:4|max:20',
        ]);
         // Kiểm tra xem danh mục có tồn tại trong cơ sở dữ liệu không
         $existingCategory = Category::where('name', $request->category)->first();
@@ -27,6 +28,7 @@ class CategoryController extends Controller
             // Nếu danh mục đã tồn tại, hiển thị thông báo lỗi hoặc thực hiện xử lý tùy ý
             return redirect()->back()->with('error', 'Danh mục đã tồn tại.');
         }
+        
         $data = new Category;
 
         $data->name = $request->category;
@@ -50,7 +52,10 @@ class CategoryController extends Controller
     // }
     public function update(Request $request, $id)
     {
-
+        $request->validate([
+            'name'=>'required',
+            'name' => 'required|min:4|max:20',
+           ]);
         $existingCategory = Category::where('name', $request->name)->first();
 
         if ($existingCategory) {

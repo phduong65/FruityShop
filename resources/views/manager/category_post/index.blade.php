@@ -22,11 +22,16 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Tên category post</label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" pattern="[a-zA-Z\p{L}\d ]{4,20}"
+                title="Vui lòng nhập khoảng 4 đến 20 ký tự, không nhập ký tự đặc biệt!">
 
             </div>
-            <input type="submit" class="btn btn-primary" name="submit" value="Add">
+            <input type="submit" class="btn btn-primary my-3" name="submit" value="Add">
+            
+            <br>
         </form>
+        
+        <br>
         <table id="table_product-manage">
             <thead>
                 <tr>

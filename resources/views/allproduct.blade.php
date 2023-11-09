@@ -22,6 +22,8 @@
         <div>
             <ul class="sapxep">
                 <li id="title-sapxep">Sắp xếp theo</li>
+                <li><a href="{{ route('products.index') }}">Mới nhất</a></li>
+                <li><a href="{{ route('products.sort', ['order' => 'outsand']) }}" data-filter="noibat">Nổi bật</a></li>
                 <li value="new" id="sort-by-price-button"><a href="{{ route('products.sort', ['order' => 'desc']) }}">Giá
                         cao</a></li>
                 <li value="old"><a href="{{ route('products.sort', ['order' => 'asc']) }}">Giá thấp</a></li>

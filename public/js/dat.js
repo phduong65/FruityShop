@@ -1,3 +1,4 @@
+//sap xep phân trang
 var ENDPOINT = window.location.href;
 console.log(ENDPOINT)
 var page = 1;
@@ -28,6 +29,7 @@ function LoadMore(page) {
   });
 }
 
+//modal
 const myModal = document.getElementById('myModal')
 const myInput = document.getElementById('myInput')
 
@@ -44,3 +46,16 @@ document.getElementById('name').addEventListener('input', function() {
         errorElement.textContent = ''; // Xóa thông báo lỗi nếu hợp lệ
     }
 });
+
+function validateInput() {
+    const input = document.getElementById('inputField');
+    const errorMessage = document.getElementById('errorMessage');
+  
+    if (input.value.length < 4 || input.value.length > 20) {
+      errorMessage.classList.remove('hidden');
+    } else {
+      errorMessage.classList.add('hidden');
+      // Thực hiện các hành động khác khi form hợp lệ
+      // Ví dụ: gửi dữ liệu đi, xử lý form, vv.
+    }
+  }

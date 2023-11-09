@@ -25,6 +25,7 @@ class CategoryPostController extends Controller
         //
         $request->validate([
             'name' => 'required',
+            'name' => 'required|min:4|max:20',
         ]);
         // Kiểm tra xem danh mục có tồn tại trong cơ sở dữ liệu không
         $existingCategory = CategoryPost::where('name', $request->name)->first();
@@ -82,6 +83,7 @@ class CategoryPostController extends Controller
     {
         $request->validate([
             'name'=>'required',
+            'name' => 'required|min:4|max:20',
            ]);
 
         $existingCategory = CategoryPost::where('name', $request->name)->first();

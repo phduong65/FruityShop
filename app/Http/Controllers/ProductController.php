@@ -16,7 +16,6 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-   
     }
 
     /**
@@ -67,42 +66,42 @@ class ProductController extends Controller
         //
     }
 
-    public function sort(Request $request, $order) {
+    public function sort(Request $request, $order)
+    {
         if ($order === 'asc') {
             $products = Product::orderBy('price', 'asc')->paginate(8);
-            if($request->ajax()){
-                $view = view('data',compact('products'))->render();
+            if ($request->ajax()) {
+                $view = view('data', compact('products'))->render();
                 return response()->json(['html' => $view]);
             }
             return view('allproduct', compact('products'));
-        }
-        else if ($order === 'desc') {
+        } else if ($order === 'desc') {
             $products = Product::orderBy('price', 'desc')->paginate(8);
-            if($request->ajax()){
-                $view = view('data',compact('products'))->render();
+            if ($request->ajax()) {
+                $view = view('data', compact('products'))->render();
                 return response()->json(['html' => $view]);
-            }     
+            }
             return view('allproduct', compact('products'));
-            
-        }
-        else
-        {
+        } else if ($order === 'outsand') {
+            $products = Product::where('outstand', 'open')->paginate(8);
+            if ($request->ajax()) {
+                $view = view('data', compact('products'))->render();
+                return response()->json(['html' => $view]);
+            }
+            return view('allproduct', compact('products'));
+        } else {
             return;
         }
-        
     }
     public function getAllProduct(Request $request)
     {
-        
+
         $products = Product::orderBy('created_at', 'desc')->paginate(8);
         if ($request->ajax()) {
             $view = view('data', compact('products'))->render();
             return response()->json(['html' => $view]);
         }
         return view('allproduct', compact('products'));
-
-        
     }
-
-
+   
 }

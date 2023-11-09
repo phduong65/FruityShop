@@ -15,9 +15,10 @@
         href="http://fonts.googleapis.com/css?family=Open+Sans:300,700,800|Open+Sans+Condensed:300,700|Prata&subset=vietnamese"
         rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ URL::asset('css') }}/tri.css">
+    <link rel="stylesheet" href="{{ URL::asset('css') }}/dat.css">
     <script src="
-                                                                            https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js
-                                                                            "></script>
+                                                                                https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js
+                                                                                "></script>
     <link href="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
 " rel="stylesheet">
