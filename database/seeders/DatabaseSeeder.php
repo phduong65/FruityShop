@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +13,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // category
+        DB::table('categories')->insert([
+            'name' => 'Trái cây nhập khẩu',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Trái cây việt',
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'Hạt sấy khô',
+        ]);
+        // category post
+        DB::table('category_posts')->insert([
+            'name' => 'Thực phẩm',
+        ]);
+        DB::table('category_posts')->insert([
+            'name' => 'Sức khoẻ',
+        ]);
+        DB::table('category_posts')->insert([
+            'name' => 'Tin tức',
+        ]);
     }
 }

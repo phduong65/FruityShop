@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,11 +15,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+// manage
+Route::resource('products', ProductController::class);
+Route::resource('posts', PostController::class);
+Route::get('/post', [PostController::class, 'getallpublishpost']);
+// Route::get('/manager/products', [ProductController::class, 'managerproduct']);
+// Route::get('/manager/products/create', [ProductController::class, 'create']);
+Route::get('/manager', function () {
+    return view('manager.doashboard');
 });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -28,4 +34,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
