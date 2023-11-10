@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ URL::asset('css') }}/layout.css">
     <link rel="stylesheet" href="{{ URL::asset('css') }}/_reset.css">
     @stack('style')
@@ -122,7 +123,7 @@
                             </a>
                         </div>
                         <div class="cart_ic">
-                            <a href="{{route('checkout')}}">
+                            <a href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                                     <path
@@ -311,5 +312,4 @@
     });
 </script>
 <script src="{{ URL::asset('js') }}/search_home.js"></script>
-
 </html>

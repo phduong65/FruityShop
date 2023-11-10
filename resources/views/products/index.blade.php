@@ -1,9 +1,21 @@
 @extends('components.layout')
 @push('style')
     <link rel="stylesheet" href="{{ URL::asset('css') }}/home.css">
+    
 @endpush
 @section('pageTitle', 'Trang chủ')
 @section('content')
+@if ($success = Session::get('success'))
+<script>
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '{{ $success }}',
+        showConfirmButton: false,
+        timer: 1500
+    });
+</script>
+@endif
     <section class="banner_1">
         <div class="container">
             <div class="banner_1_content">
