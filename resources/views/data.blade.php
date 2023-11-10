@@ -6,9 +6,9 @@
       <img src="{{ URL::asset('uploads/photobig') }}/{{$products->photo}}" alt="">
      </div>
         <div class="titte-dat">
-            <h5 style="color: rgb(0, 187, 255);">{{$products->name}}</h5>
+            <h5 style="color: rgb(0, 183, 255);">{{$products->name}}</h5>
             <br>
-            <p style="color: rgb(0, 255, 76);">{{$products->price}} VND</p>
+            <p style="color: green">{{number_format($products->price, 0, '.', '.')}} <span class="woocommerce-Price-currencySymbol">₫</span></p>
         </div>
     </div>
 

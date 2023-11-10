@@ -48,10 +48,10 @@ Route::get('/allproduct/sort/{order}', [ProductController::class,'sort'])->name(
 
 //Dat CURD CategoryProduct
 route::post('/create',[CategoryController::class,'create']);
-route::get('/delete/{id}',[CategoryController::class,'delete']);
+route::delete('/delete/{id}',[CategoryController::class,'delete'])->name('categoryP.delete');
 route::put('/editcategory/{id}',[CategoryController::class,'update'])->name('category.update');
 
-//Dat CURD CategoryProduct
+//Dat CURD CategoryPost
 route::post('/createPost',[CategoryPostController::class,'create']);
 route::get('/deletePost/{id}',[CategoryPostController::class,'deletePost']);
 route::put('/editcategoryPost/{id}',[CategoryPostController::class,'update'])->name('categorypost.update');
