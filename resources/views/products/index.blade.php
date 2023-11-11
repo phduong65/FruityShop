@@ -1,7 +1,6 @@
 @extends('components.layout')
 @push('style')
     <link rel="stylesheet" href="{{ URL::asset('css') }}/home.css">
-    
 @endpush
 @section('pageTitle', 'Trang chủ')
 @section('content')
@@ -95,7 +94,7 @@
                     <div class="product_item">
                         <div class="product_item_img">
                             <a href="">
-                                <img src="{{ URL::asset('images') }}/{{$item->photo}}" alt="">
+                                <img src="{{ URL::asset('uploads/photobig') }}/{{$item->photo}}" alt="">
                             </a>
                             <div class="action_icon">
                                 <div class="ic_like"></div>

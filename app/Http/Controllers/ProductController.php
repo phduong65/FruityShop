@@ -13,10 +13,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('products.index')->with('products',$products);
     }
-
+    public function getProductHome(){
+        $products_sell = Product::where('discount', '>', 0)
+                  ->take(8) // Replace 10 with the desired limit
+                  ->get();
+        return view('products.index')->with('products',$products_sell);
+    }
     /**
      * Show the form for creating a new resource.
      */

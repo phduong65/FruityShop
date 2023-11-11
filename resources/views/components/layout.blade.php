@@ -264,7 +264,6 @@
         </div>
     </footer>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 @stack('js')
 <script type="text/javascript">
     $(document).ready(function() {
@@ -311,5 +310,6 @@
         });
     });
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="{{ URL::asset('js') }}/search_home.js"></script>
 </html>

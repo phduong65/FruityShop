@@ -16,10 +16,12 @@ return new class extends Migration
             $table-> string("name");
             $table-> text("description");
             $table-> integer("price");
-            $table-> string("photo");
-            $table->string('status');
-            $table-> integer("quantity");
             $table-> integer("discount");
+            $table-> integer("quantity");
+            $table-> string("photo");
+            $table-> string("thumbnail");
+            $table->string('status');
+            $table->string('outstand');
             $table->timestamps();
         });
     }
