@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 use App\Http\Controllers\CartController;
 use function Laravel\Prompts\search;
@@ -34,7 +35,7 @@ Route::middleware('auth')->group(function () {
 // Trong routes/web.php
 
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
-Route::post('/add-to-cart/{productId}', [CartController::class, 'addToCart']);
+Route::post('/add-to-cart/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
 
 // routes/web.php
 
