@@ -11,9 +11,15 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $post = Post::paginate(4);
+        $search = $request->input('name');
+        if ($search) {
+            $post = Post::where('title', 'like', '%' . $search . '%')->paginate(5);
+            $post->appends(['name' => $search]);
+        } else {
+            $post = Post::paginate(5);
+        }
         return view("manager.posts.index", compact("post"));
     }
     /**

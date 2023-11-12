@@ -11,7 +11,8 @@
                         <div class="form_product-name --same">
                             <label for="exampleFormControlInput1" class="form-label">Tên Sản Phẩm</label>
                             <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Tên Sản Phẩm" name="nameproduct" required />
+                                placeholder="Tên Sản Phẩm" name="nameproduct" required oninput="validateInput()" />
+                            <div class="invalid-feedback" id="error-message-name">Không được nhập quá 255 kí tự</div>
                         </div>
                         <div class="form_product-des --same">
                             <label for="content" class="form-label">Mô Tả</label>
@@ -21,12 +22,18 @@
                             <div class="priceroot">
                                 <label for="exampleFormControlInput1" class="form-label">Giá bán</label>
                                 <input type="number" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Giá sản phẩm" name="price" min="0" required />
+                                    placeholder="Giá sản phẩm" name="price" min="0" required
+                                    oninput="validateInput()" />
+                                <div class="invalid-feedback" id="error-message-price">Không được nhập quá 10 số</div>
+                                {{-- <div class="invalid-feedback" id="error-message-pricenb">Chỉ được nhập số</div> --}}
                             </div>
                             <div class="pricesale">
                                 <label for="exampleFormControlInput1" class="form-label">Giá giảm</label>
                                 <input type="number" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Nhập phần trăm giảm" min="0" value="0" name="discount" />
+                                    placeholder="Nhập phần trăm giảm" min="0" max="100" value="0"
+                                    name="discount" oninput="validateInput()" />
+                                <div class="invalid-feedback" id="error-message-discount">Chỉ được nhập trong khoảng 0-100
+                                </div>
                                 <p class="desc">
                                     Lưu ý: Nhập phần trăm giảm. Ví dụ 30% = 30
                                 </p>
@@ -35,7 +42,9 @@
                         <div class="form_product-quantity --same">
                             <label for="exampleFormControlInput1" class="form-label">Số lượng</label>
                             <input type="number" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Số lượng sản phẩm" min="0" required name="quantity" />
+                                placeholder="Số lượng sản phẩm" min="0" required name="quantity"
+                                oninput="validateInput()" />
+                            <div class="invalid-feedback" id="error-message-quantity">Không được nhập quá 10 số</div>
                             <p class="desc">
                                 Lưu ý: Số lượng được tính bằng kg (kilogram)
                             </p>
@@ -68,7 +77,7 @@
                                 <span class="text">Bản thảo</span>
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" id="btnproductsave">
                             <i class="fa-solid fa-bookmark"></i>
                             <span>Lưu Thay Đổi</span>
                         </button>

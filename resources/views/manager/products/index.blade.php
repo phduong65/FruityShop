@@ -16,6 +16,15 @@
         <div class="manager_content-product">
             <div class="textbox">
                 <h2>Manager Product</h2>
+                <div class="search">
+                    <form action="{{ route('products.index') }}"method="GET">
+                        <label>
+                            <input type="text" placeholder="Search here" name="name" />
+                            <ion-icon name="search-outline"></ion-icon>
+                            <button type="submit" class="btnsearchproduct btn btn-success">Search</button>
+                        </label>
+                    </form>
+                </div>
                 <a href="{{ route('products.create') }}" class="btn btn-success">
                     <i class="fa-solid fa-plus"></i>
                 </a>
@@ -36,7 +45,7 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody class="manager_product-data">
                     @foreach ($products as $item)
                         @php
                             // Tạo URL detail bằng cách kết hợp $encryption và $encodedProductId
@@ -56,7 +65,8 @@
                             <td class="mw50">{{ $item->discount }}%</td>
                             <td class="mw120">{{ number_format($item->quantity) }}kg</td>
                             <td class="mw120 status">
-                                <p class="{{ $item->status }}"><span class="circle"></span><span>{{ $item->status }}</span>
+                                <p class="{{ $item->status }}"><span
+                                        class="circle"></span><span>{{ $item->status }}</span>
                                 </p>
                             </td>
                             <td class="mw120 outstand">
@@ -80,6 +90,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="customnav">
+                {{ $products->links() }}
+            </div>
         </div>
     </div>
 @endsection

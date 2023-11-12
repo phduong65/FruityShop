@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->longText('content');
             $table->string('photo');
-            $table->string('post_status');
-            $table->string('post_outstand')->default('close');
-            $table->string('comment_status')->default('close');
-            $table->string('comment_count')->default(0);
+            $table->char('post_status', 10);
+            $table->char('post_outstand', 10)->default('close');
+            $table->char('comment_status', 10)->default('close');
+            $table->integer('comment_count')->default(0);
             $table->integer('view')->default(0);
             $table->timestamps();
         });

@@ -119,15 +119,9 @@
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
-            <div class="search">
-                <label>
-                    <input type="text" placeholder="Search here" />
-                    <ion-icon name="search-outline"></ion-icon>
-                </label>
-            </div>
             <div class="user">
-                <img src="https://scontent-hkg4-1.xx.fbcdn.net/v/t39.30808-6/395353319_1672809266540399_236902390255612610_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=tyECHJDC0MoAX8zP6nS&_nc_ht=scontent-hkg4-1.xx&oh=00_AfABZde7iACmO5kOBNCUqkcbPrPpTkGFmTp-eq_yvGJMrA&oe=654AA1BC"
-                    alt="" />
+                <img src="https://images.unsplash.com/photo-1698611229097-cf0e2fc8ba81?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="">
             </div>
         </div>
 

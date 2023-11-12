@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('quantity');
             $table->string('photo');
             $table->string('thumnail');
-            $table->string('status');
-            $table->string('outstand')->default('close');
+            $table->char('status', 10);
+            $table->char('outstand', 10)->default('close');
             $table->timestamps();
         });
     }

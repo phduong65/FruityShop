@@ -16,6 +16,15 @@
         <div class="manager_content-product">
             <div class="textbox">
                 <h2>Manager Post</h2>
+                <div class="search">
+                    <form action="{{ route('posts.index') }}"method="GET">
+                        <label>
+                            <input type="text" placeholder="Search here" name="name" />
+                            <ion-icon name="search-outline"></ion-icon>
+                            <button type="submit" class="btnsearchproduct btn btn-success">Search</button>
+                        </label>
+                    </form>
+                </div>
                 <a href="{{ route('posts.create') }}" class="btn btn-success">
                     <i class="fa-solid fa-plus"></i>
                 </a>

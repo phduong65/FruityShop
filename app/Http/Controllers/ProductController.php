@@ -11,10 +11,15 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // giống mmanagerproduct
-        $products = Product::all();
+        $search = $request->input('name');
+        if ($search) {
+            $products = Product::where('name', 'like', '%' . $search . '%')->paginate(5);
+            $products->appends(['name' => $search]);
+        } else {
+            $products = Product::paginate(5);
+        }
         return view('manager.products.index', compact('products'));
     }
     /**
