@@ -1,12 +1,13 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <div class="mb-4 text-sm text-gray-600 text-register">
+        <p>{{ __('
+        Quên mật khẩu? Điều này không thành vấn đề. Vui lòng cung cấp địa chỉ email của bạn, và chúng tôi sẽ gửi cho bạn một liên kết đặt lại mật khẩu qua email. Bạn có thể sử dụng liên kết này để chọn một mật khẩu mới.') }}</p>
     </div>
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('password.email') }}">
+    <form method="POST" action="{{ route('password.email') }}" class="register-form">
         @csrf
 
         <!-- Email Address -->
@@ -16,9 +17,9 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-center justify-end mt-4 btn-register">
             <x-primary-button>
-                {{ __('Email Password Reset Link') }}
+                {{ __('Thay Đổi Mật Khẩu') }}
             </x-primary-button>
         </div>
     </form>
