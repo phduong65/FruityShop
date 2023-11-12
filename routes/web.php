@@ -20,7 +20,9 @@ use function Laravel\Prompts\search;
 |
 */
 
-Route::get('/',[ProductController::class,'index'])->name('index');
+Route::get('/checkout',[OrderController::class,'index'])->name('orders.index');
+Route::get('/thanks',[OrderController::class,'store'])->name('orders.store');
+Route::get('/',[ProductController::class,'getProductHome'])->name('home');
 Route::get('/search',[ProductController::class,'search'])->name('search');
 Route::get('/success', function () {
     return view('orders.success');

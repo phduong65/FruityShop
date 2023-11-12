@@ -266,8 +266,24 @@
         </div>
     </footer>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 @stack('js')
+<script>
+    function displayChangeSearch() {
+    $(".search_bar").hide();
+    $(".search_ic").click(function () {
+        $(".search_bar").show();
+    });
+    $(".search_hidden").click(function () {
+        $(".search_bar").hide();
+    });
+    $(document).keyup(function (e) {
+        if (e.keyCode == 27) {
+            $(".search_bar").hide();
+        }
+    });
+}
+displayChangeSearch();
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         $(document).on('keyup', '.search-input', function() {
