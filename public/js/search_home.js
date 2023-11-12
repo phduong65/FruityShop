@@ -1,7 +1,7 @@
 function displayChangeSearch() {
     $(".search_bar").hide();
     $(".search_ic").click(function () {
-        $(".search_bar").toggle();
+        $(".search_bar").show();
     });
     $(".search_hidden").click(function () {
         $(".search_bar").hide();

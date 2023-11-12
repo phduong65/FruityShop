@@ -19,10 +19,8 @@ use function Laravel\Prompts\search;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::resource('orders', OrderController::class);
-Route::get('/home',[ProductController::class,'getProductHome'])->name('home');
-Route::get('/checkout',[OrderController::class,'index']);
-Route::get('/fetch-regions', [RegionController::class,'index'])->name('fetch.regions');
+
+Route::get('/',[ProductController::class,'index'])->name('index');
 Route::get('/search',[ProductController::class,'search'])->name('search');
 Route::get('/success', function () {
     return view('orders.success');
