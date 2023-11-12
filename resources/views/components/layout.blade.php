@@ -153,18 +153,29 @@
                                         <div class="cart-items">
                                             @if (isset($cartItems) && count($cartItems) > 0)
                                                 @foreach ($cartItems as $cartItem)
-                                                    <div class="cart-item">
-                                                        <div class="item-image">
-                                                            <img src="{{ $cartItem['product_image'] }}"
-                                                                alt="{{ $cartItem['product_name'] }}">
-                                                        </div>
-                                                        <div class="item-details">
-                                                            <h3>{{ $cartItem['product_name'] }}</h3>
-                                                            <p>{{ __('Price:') }} {{ $cartItem['product_price'] }} đ
-                                                            </p>
-                                                            <p>{{ __('Quantity:') }} {{ $cartItem['quantity'] }}</p>
-                                                        </div>
+                                                <div class="cart-item row" id="cartItem_${cartItem.product_id}">
+                                                    <div class="item-image col-md-3">
+                                                        <img src="{{ $cartItem['product_image'] }}" alt="">
+                                                        {{-- <img src="{{ URL::asset('upload/photobig') }}/cam-cara-uc-khfruit.jpg" alt=""
+                                                            style="    height: 100px;
+                                                        width: 100px; }"> --}}
                                                     </div>
+                                                    <div class="item-name col-md-3">
+                                                        <h3>{{ $cartItem['product_name'] }}</h3>
+                                                    </div>
+                                                    <div class="item-details col-md-3">
+                                                        <p>{{ $cartItem['product_price'] }} đ</p>
+                                                    </div>
+                                                    <div class="item-quantity col-md-2">
+                                                        <p>{{ $cartItem['quantity'] }}</p>
+                                                    </div>
+                                                    {{-- <div class="item-total col-md-1">
+                                                        <p>{{ __('Thành Tiền:') }} {{ $cartItem['quantity'] }}</p>
+                                                    </div> --}}
+                                                    <div class="item-close col-md-1">
+                                                        <i class="fa-solid fa-xmark" data-product-id="${cartItem.product_id}"></i>
+                                                    </div>
+                                                </div>
                                                 @endforeach
                                             @else
                                                 <div class="cart-nosp">

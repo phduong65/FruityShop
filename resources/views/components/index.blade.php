@@ -23,7 +23,7 @@
                             <form action="{{ route('cart.add', ['productId' => $item->id]) }}" method="POST">
                                 @csrf
                                 <div class="product_item_img">
-                                    <img src="{{ URL::asset('upload/photobig') }}/{{$item->photo}}" alt="">
+                                    <img src="{{ URL::asset('upload/photobig') }}/{{$item->photo}}" alt="{{ $item->name }}">
                                     <div class="action_icon">
                                         <div class="ic_like"></div>
                                         <div class="ic_see"></div>

@@ -33,31 +33,29 @@ class CartController extends Controller
                     'product_id' => $product->id,
                     'product_name' => $product->name,
                     'product_price' => $product->price,
-                    'product_image' => $product->image_path,
+                    'product_image' =>  $product->photobig,
                     'quantity' => 1,
                 ];
             }
 
             session(['cart' => $cartItems]);
-
-            return response()->json(['message' => 'Product added to cart successfully', 'cartItems' => $cartItems]);
-        } else {
-            return response()->json(['error' => 'Product not found'], 404);
-        }
+            session()->save(); // Lưu lại session
+            return response()->json(['message' => 'Thêm Sản Phẩm Vào Giỏ Hàng Thành Công.']);
+        } 
     }
 
     // Xóa sản phẩm khỏi giỏ hàng
     public function removeFromCart(Request $request, $productId)
     {
         $cartItems = session('cart', []);
-
+    
         $cartItems = array_filter($cartItems, function ($item) use ($productId) {
             return $item['product_id'] != $productId;
         });
-
+    
         session(['cart' => $cartItems]);
-
-        return redirect()->route('cart.index')->with('success', 'Product removed from cart successfully.');
+        session()->save(); // Lưu lại session
+        return response()->json(['message' => 'Xoá Sản Phẩm Thành Công.']);
     }
 
     // Các hàm khác nếu cần
