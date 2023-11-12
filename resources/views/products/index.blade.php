@@ -338,118 +338,34 @@
         </div>
         <div class="container">
             <div class="list_news row">
+                @foreach ($allPost as $item)
                 <div class="news_item col-md-4">
-                    <div class="news_img">
+                    <div class="news_img" style="width:100%;">
                         <a href="">
-                            <img src="{{URL::asset('images')}}/news_1.jpg" alt="" srcset="">
+                            <img src="{{URL::asset('uploads/post')}}/{{$item->photo}}" alt="" srcset="" style="width:100%;"> 
                             <div class="date_news">
-                                <div class="date_day">11</div>
+                                <div class="date_day">{{($item->created_at)->format('d')}}</div>
                                 <span></span>
-                                <div class="date_month">June</div>
+                                <div class="date_month">{{($item->created_at)->format('M')}}</div>
                             </div>
                         </a>
                     </div>
-                    <div class="news_content">
+                    <div class="news_content" style="width:100%;">
                         <div class="tag_news">NEWS</div>
                         <div class="title_news_heading">
                             <a href="">
-                                <h2>Fruit gives us energy</h2>
+                                <h2>{{($item->title)}}</h2>
                             </a>
                         </div>
                         <span></span>
-                        <div class="sub_news_heading">
-                            <p class="sub_text">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-                                ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-                                consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-                                arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-                                pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-                                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-                                enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
-                                Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-                                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
-                                Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
-                                adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id,
-                                lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis
-                                faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                fringilla mauris sit amet nibh.
-                            </p>
+                        <div class="sub_news_heading "style="width:100%;" >
+                                <?php
+                               echo( html_entity_decode($item->content));
+                                ?>
                         </div>
                     </div>
                 </div>
-                <div class="news_item col-md-4">
-                    <div class="news_img">
-                        <img src="{{URL::asset('images')}}/news_1.jpg" alt="" srcset="">
-                        <div class="date_news">
-                            <div class="date_day">11</div>
-                            <span></span>
-                            <div class="date_month">June</div>
-                        </div>
-                    </div>
-                    <div class="news_content">
-                        <div class="tag_news">NEWS</div>
-                        <div class="title_news_heading">
-                            <h2>Fruit gives us energy</h2>
-                        </div>
-                        <span></span>
-                        <div class="sub_news_heading">
-                            <p class="sub_text">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-                                ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-                                consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-                                arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-                                pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-                                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-                                enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
-                                Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-                                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
-                                Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
-                                adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id,
-                                lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis
-                                faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                fringilla mauris sit amet nibh.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="news_item col-md-4">
-                    <div class="news_img">
-                        <img src="{{URL::asset('images')}}/news_1.jpg" alt="" srcset="">
-                        <div class="date_news">
-                            <div class="date_day">11</div>
-                            <span></span>
-                            <div class="date_month">June</div>
-                        </div>
-                    </div>
-                    <div class="news_content">
-                        <div class="tag_news">NEWS</div>
-                        <div class="title_news_heading">
-                            <h2>Fruit gives us energy</h2>
-                        </div>
-                        <span></span>
-                        <div class="sub_news_heading">
-                            <p class="sub_text">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-                                ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-                                consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-                                arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu
-                                pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-                                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-                                enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
-                                Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-                                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
-                                Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
-                                adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id,
-                                lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis
-                                faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                                fringilla mauris sit amet nibh.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

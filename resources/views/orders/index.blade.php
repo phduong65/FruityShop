@@ -28,7 +28,7 @@
                         
                     <div class="check_login">
                         Bạn đã có tài khoản ? <span class="highlight">
-                            <a href="">Đăng nhập</a>
+                            <a href="{{'login'}}">Đăng nhập</a>
                         </span>
                     </div>
                     @endif
@@ -256,6 +256,7 @@
 @endsection
 
 @push('js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $html_name_country = '';

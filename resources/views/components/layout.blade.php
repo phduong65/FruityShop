@@ -12,7 +12,6 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ URL::asset('css') }}/layout.css">
     <link rel="stylesheet" href="{{ URL::asset('css') }}/_reset.css">
     @stack('style')
@@ -83,8 +82,10 @@
             <div class="container">
                 <div class="navbar_link row">
                     <div class="logo_page col-md-3">
-                        <a href="">
-                            <div class="img_logo"><img src="{{ URL::asset('images') }}/FRUITY.png" alt=""></div>
+                        <a href="{{route('home')}}">
+                            <div class="img_logo">
+                                <img src="{{ URL::asset('images') }}/FRUITY.png" alt="">
+                            </div>
                         </a>
                     </div>
                     <div class="cate_list col-md-7">
@@ -123,7 +124,7 @@
                             </a>
                         </div>
                         <div class="cart_ic">
-                            <a href="">
+                            <a href="{{route('orders.index')}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                                     <path
@@ -265,10 +266,13 @@
     </footer>
 </body>
 @stack('js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function() {
         $(document).on('keyup', '.search-input', function() {
             var value = $(this).val();
+            console.log(value);
             $.ajax({
                 url: "{{ route('search') }}",
                 type: 'GET',
@@ -281,10 +285,10 @@
                     var output = '';
                     if (products.length>0) {
                         for (let i = 0; i < products.length; i++) {
-                            output += `<div class="col-md-4">
+                            output += `<div class="col-md-6">
                         <div class="search_item">
                             <div class="img_item">
-                                <img src="{{ URL::asset('images') }}/` + products[i]['photo'] + `"alt="">
+                                <img src="{{ URL::asset('uploads/photobig') }}/` + products[i]['photo'] + `"alt="">
                             </div>
                             <div class="title_item">
                                 <div class="name">
@@ -310,6 +314,6 @@
         });
     });
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <script src="{{ URL::asset('js') }}/search_home.js"></script>
 </html>

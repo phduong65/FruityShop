@@ -20,7 +20,7 @@ use function Laravel\Prompts\search;
 |
 */
 Route::resource('orders', OrderController::class);
-Route::get('/',[ProductController::class,'getProductHome']);
+Route::get('/home',[ProductController::class,'getProductHome'])->name('home');
 Route::get('/checkout',[OrderController::class,'index']);
 Route::get('/fetch-regions', [RegionController::class,'index'])->name('fetch.regions');
 Route::get('/search',[ProductController::class,'search'])->name('search');

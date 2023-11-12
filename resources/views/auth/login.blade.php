@@ -39,6 +39,9 @@
                 </a>
             @endif
 
+            <x-primary-button class="ml-3 mx-3">
+                <a href="{{'register'}}">Register</a>
+            </x-primary-button>
             <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>

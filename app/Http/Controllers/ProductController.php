@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Product;
 // use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
@@ -15,10 +16,14 @@ class ProductController extends Controller
     {
     }
     public function getProductHome(){
+        
+        $all_post = Post::all()->take(3);
         $products_sell = Product::where('discount', '>', 0)
+                                ->where('status','=','publish')
                   ->take(8) // Replace 10 with the desired limit
                   ->get();
-        return view('products.index')->with('products',$products_sell);
+        return view('products.index')->with('products',$products_sell)
+                                    ->with('allPost',$all_post);
     }
     /**
      * Show the form for creating a new resource.
