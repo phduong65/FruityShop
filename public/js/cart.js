@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     var productHtml = `
                         <div class="cart-item row" id="${cartItem.product_id}">
                             <div class="item-image col-md-3">
-                                <img src="${cartItem.product_image}" alt="">
+                                <img src="{{ URL::asset('upload/photobig/') }}/${cartItem.product_image}" alt="">
                             </div>
                             <div class="item-name col-md-3">
                                 <h3>${cartItem.product_name}</h3>
@@ -99,16 +99,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <p>{{ __('Số Lượng:') }} ${cartItem.quantity}</p>
                             </div>
                             <div class="item-total col-md-1">
-                                <p>{{ __('Thành Tiền:') }} ${cartItem.quantity}</p>
-                            </div>
-                            <div class="item-close col-md-1">
-                                <i class="fa-solid fa-xmark" data-product-id="${cartItem.product_id}"></i>
+                                <p class="item-total-price">{{ __('Thành Tiền:') }} ${cartItem.product_price * cartItem.quantity} đ</p>
                             </div>
                         </div>
                     `;
                     cartContainer.innerHTML = productHtml;
-
                     alert(data.message);
+                    updateTotal();
                 })
                 // .catch((error) => {
                 //     console.error("Error:", error);
@@ -116,11 +113,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 // });
         });
     });
-
+    function updateTotal() {
+        var itemTotalPrices = document.getElementsByClassName("item-total-price");
+        var total = 0;
+    
+        for (var i = 0; i < itemTotalPrices.length; i++) {
+            var itemTotal = parseFloat(itemTotalPrices[i].textContent.replace("{{ __('Thành Tiền:') }}", "").trim());
+            total += itemTotal;
+        }
+    
+        // Cập nhật giá trị tổng vào thẻ span
+        var totalValueElement = document.getElementById("totalValue");
+        totalValueElement.textContent = total;
+    }
     // Đăng ký sự kiện nhấp chuột trên biểu tượng "x" ngoài vòng lặp
-    var closeIcons = document.querySelectorAll('.fa-xmark');
+    var closeIcons = document.querySelectorAll('.close');
     closeIcons.forEach(function (closeIcon) {
-        closeIcon.addEventListener('click', function () {
+        closeIcon.addEventListener('click', function (e ) {
+            e.preventDefault();
             var productIdToRemove = this.getAttribute('data-product-id');
             // Gọi hàm để xóa sản phẩm từ giỏ hàng
             removeProductFromCart(productIdToRemove);

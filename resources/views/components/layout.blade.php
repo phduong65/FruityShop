@@ -153,12 +153,9 @@
                                         <div class="cart-items">
                                             @if (isset($cartItems) && count($cartItems) > 0)
                                                 @foreach ($cartItems as $cartItem)
-                                                <div class="cart-item row" id="cartItem_${cartItem.product_id}">
+                                                <div class="cart-item row" id="${cartItem.product_id}">
                                                     <div class="item-image col-md-3">
-                                                        <img src="{{ $cartItem['product_image'] }}" alt="">
-                                                        {{-- <img src="{{ URL::asset('upload/photobig') }}/cam-cara-uc-khfruit.jpg" alt=""
-                                                            style="    height: 100px;
-                                                        width: 100px; }"> --}}
+                                                        <img src="{{ URL::asset('upload/photobig/') }}/{{ $cartItem['product_image'] }} " alt="" height="100px" style="100px">
                                                     </div>
                                                     <div class="item-name col-md-3">
                                                         <h3>{{ $cartItem['product_name'] }}</h3>
@@ -169,11 +166,8 @@
                                                     <div class="item-quantity col-md-2">
                                                         <p>{{ $cartItem['quantity'] }}</p>
                                                     </div>
-                                                    {{-- <div class="item-total col-md-1">
-                                                        <p>{{ __('Thành Tiền:') }} {{ $cartItem['quantity'] }}</p>
-                                                    </div> --}}
                                                     <div class="item-close col-md-1">
-                                                        <i class="fa-solid fa-xmark" data-product-id="${cartItem.product_id}"></i>
+                                                        <i class="fa-solid fa-xmark close" data-product-id="{{$cartItem['product_id']}}"></i>
                                                     </div>
                                                 </div>
                                                 @endforeach

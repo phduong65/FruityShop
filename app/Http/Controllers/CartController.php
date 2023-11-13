@@ -33,13 +33,12 @@ class CartController extends Controller
                     'product_id' => $product->id,
                     'product_name' => $product->name,
                     'product_price' => $product->price,
-                    'product_image' =>  $product->photobig,
+                    'product_image' =>  $product->photo,
                     'quantity' => 1,
                 ];
             }
 
             session(['cart' => $cartItems]);
-            session()->save(); // Lưu lại session
             return response()->json(['message' => 'Thêm Sản Phẩm Vào Giỏ Hàng Thành Công.']);
         } 
     }
@@ -55,6 +54,7 @@ class CartController extends Controller
     
         session(['cart' => $cartItems]);
         session()->save(); // Lưu lại session
+
         return response()->json(['message' => 'Xoá Sản Phẩm Thành Công.']);
     }
 
