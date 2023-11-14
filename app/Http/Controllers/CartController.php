@@ -17,9 +17,9 @@ class CartController extends Controller
     }
 
     // Thêm sản phẩm vào giỏ hàng
-    public function addToCart(Request $request, $productId)
+    public function addToCart(Request $request)
     {
-        $product = Product::find($productId);
+        $product = Product::find($request->input('id'));
         if ($product) {
             $cartItems = session('cart', []);
             $existingItem = collect($cartItems)->where('product_id', $product->id)->first();
@@ -35,7 +35,6 @@ class CartController extends Controller
                     'quantity' => 1,
                 ];
             }
-
             session(['cart' => $cartItems]);
             return redirect()->route('home');
         } 

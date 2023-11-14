@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addToCartButtons.forEach(function (button) {
         button.addEventListener("click", function () {
             var productId = button.getAttribute("data-product-id");
-
+            console.log(productId);
             fetch("/add-to-cart/" + productId, {
                 method: "POST",
                 headers: {

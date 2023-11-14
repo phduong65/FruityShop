@@ -22,6 +22,7 @@
                             <!-- Biểu mẫu để thêm vào giỏ hàng -->
                             <form action="{{ route('cart.add', ['productId' => $item->id]) }}" method="POST">
                                 @csrf
+                                <input type="hidden" name="id" value="{{$item->id}}">
                                 <div class="product_item_img">
                                     <img src="{{ URL::asset('upload/photobig') }}/{{$item->photo}}" alt="{{ $item->name }}">
                                     <div class="action_icon">
