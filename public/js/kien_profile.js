@@ -28,12 +28,28 @@ buttonchangePw.addEventListener("click", function () {
     modalP.classList.add("open");
 });
 
+//Modal upload avatar
+let modalA = document.querySelector(".modal-avatar-user");
+let buttonAvatar = document.querySelector(".buttonAvatar");
+buttonAvatar.addEventListener("click", function () {
+    modalA.classList.add("open");
+});
+
+//Modal upload ảnh bìa
+let modalC = document.querySelector(".modal-cover-user");
+let buttonCover = document.querySelector(".fix-cover");
+buttonCover.addEventListener("click", function () {
+    modalC.classList.add("open");
+});
+
 // Exit modal
 buttonLeave1.forEach((element) => {
     element.addEventListener("click", function () {
         modalU.classList.remove("open");
         modalL.classList.remove("open");
         modalP.classList.remove("open");
+        modalA.classList.remove("open");
+        modalC.classList.remove("open");
     });
 });
 buttonLeave2.forEach((element) => {
@@ -41,6 +57,8 @@ buttonLeave2.forEach((element) => {
         modalU.classList.remove("open");
         modalL.classList.remove("open");
         modalP.classList.remove("open");
+        modalA.classList.remove("open");
+        modalC.classList.remove("open");
     });
 });
 
@@ -49,5 +67,28 @@ document.addEventListener("keydown", function (event) {
         modalU.classList.remove("open");
         modalL.classList.remove("open");
         modalP.classList.remove("open");
+        modalA.classList.remove("open");
+        modalC.classList.remove("open");
     }
+});
+
+//Xử lí kéo upload hình
+$(document).ready(function () {
+    $("input.image-kien").change(function () {
+        var file = this.files[0];
+        var url = URL.createObjectURL(file);
+        $(this)
+            .closest(".kien-flex-avatar")
+            .find(".preview_img")
+            .attr("src", url);
+    });
+    //Xử lí kéo upload ảnh bìa
+    $("input.image-kien-cover").change(function () {
+        var file = this.files[0];
+        var url = URL.createObjectURL(file);
+        $(this)
+            .closest(".total-cover")
+            .find(".upload-cover1")
+            .attr("src", url);
+    });
 });

@@ -17,10 +17,12 @@ return new class extends Migration
             $table->string("cover")->nullable();
             $table->string("avatar")->nullable();
             $table->string("name")->nullable();
-            $table->string("introduce")->nullable();
+            $table->text("introduce")->nullable();
             $table->date("birth")->nullable();
             $table->string("phone")->nullable();
-            $table->string("address")->nullable();
+            $table->string("address")->nullable(); 
+            $table->boolean("status")->default(false);
+            $table->boolean("is_disabled")->default(false);
             $table->timestamps();
         });
     }

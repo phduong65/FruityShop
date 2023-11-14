@@ -18,7 +18,7 @@
                  </li>
                  <li>
                      <label for="phone">Số điện thoại:</label>
-                     <input required  type="number" name="phone" id="phone" class="form-control"
+                     <input required type="number" name="phone" id="phone" class="form-control"
                          value="{{ $user->userProfile->phone ?? '' }}">
                  </li>
                  <li>
@@ -33,7 +33,7 @@
                  </li>
                  <li>
                      <label for="introduce">Giới thiệu bản thân:</label>
-                     <textarea  name="introduce" id="introduce" class="form-control" rows="5">{{ $user->userProfile->introduce ?? '' }}</textarea>
+                     <textarea name="introduce" id="introduce" class="form-control" rows="5">{{ $user->userProfile->introduce ?? '' }}</textarea>
                  </li>
              </ul>
              <div class="modal-footer">
@@ -44,3 +44,5 @@
 
      </div>
  </div>
+
+ 

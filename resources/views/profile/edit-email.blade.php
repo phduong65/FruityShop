@@ -14,7 +14,7 @@
             <ul class="form-list">
                 <li id="input-email">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" class="form-control"
+                    <input required type="email" name="email" id="email" class="form-control"
                         value="{{ $user->email }}">
                 </li>
                 <li id="total">
@@ -29,3 +29,5 @@
 
     </div>
 </div>
+
+

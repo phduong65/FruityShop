@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
-use App\Models\UserProfile;
-use Illuminate\Http\Request;
 
-class UserProfileController extends Controller
+use Illuminate\Http\Request;
+use App\Models\Logo;
+
+class LogoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +13,10 @@ class UserProfileController extends Controller
     public function index()
     {
         //
-        $user = Auth::user();
-        $userProfile = $user->userProfile;
-        return view('profile.index', ['profile' => $userProfile]);  
-        
+        $logo = Logo::all();
+        return view('manager.setting.setting', ['logo' => $logo]);
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -37,9 +36,9 @@ class UserProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(string $id)
     {
-        
+        //
     }
 
     /**
@@ -48,17 +47,25 @@ class UserProfileController extends Controller
     public function edit(string $id)
     {
         //
-        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-      
+        //
+        $logo = new Logo($request->all());
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $destinationPath = 'img';
+            $fileName = $file->getClientOriginalName();
+            $file->move($destinationPath, $fileName);
+            $logo->logo = $fileName;
+        }
+        $logo->save();
+        return redirect()->route('logo.index')->with('success', 'Upload Logo !');
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -66,5 +73,9 @@ class UserProfileController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function uploadLogo(Request $request)
+    {
+        
     }
 }

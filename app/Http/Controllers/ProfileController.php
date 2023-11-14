@@ -47,15 +47,20 @@ class ProfileController extends Controller
             'phone' => 'required',
             'address' => 'required',
         ]);
-        $user = new UserProfile($request->all());
-        $user = UserProfile::find($id);
+        $user = new User($request->all());
+        $user = User::find($id);
         $user->name = $request->input('name');
-        $user->birth = $request->input('birth');
-        $user->phone = $request->input('phone');
-        $user->address = $request->input('address');
-        $user->introduce = $request->input('introduce');
         $user->save();
-        return redirect()->route('profile.index')->with('success', 'Edited successFully');
+        $userProfile = UserProfile::where('user_id', $user->id)->first();
+        if ($userProfile) {
+            $userProfile->name = $user->name;
+            $userProfile->birth = $request->input('birth');
+            $userProfile->phone = $request->input('phone');
+            $userProfile->address = $request->input('address');
+            $userProfile->introduce = $request->input('introduce');
+            $userProfile->save();
+        }
+        return redirect()->route('profile.index')->with('success', 'Cập nhật thành công !');
     }
     public function edit(Request $request, $id)
     {
@@ -63,9 +68,8 @@ class ProfileController extends Controller
         $user = User::find($id);
         $user->email = $request->input('email');
         $user->save();
-        return redirect()->route('profile.index')->with('success', 'Edited successFully');
+        return redirect()->route('profile.index')->with('success', 'Cập nhật thành công !');
     }
-
 
     /**
      * Delete the user's account.
@@ -93,5 +97,35 @@ class ProfileController extends Controller
         $user = Auth::user();
         return view('profile.index', ['user' => $user]);
     }
-   
+    public function show(Request $request, $id)
+    {
+        $user = new UserProfile($request->all());
+        $user = UserProfile::find($id);
+        if ($request->hasFile('avatar')) {
+            // if (file_exists(public_path('img/' . $user->avatar))) {
+            //     unlink(public_path('img/' . $user->avatar));
+            // }
+            $file = $request->file('avatar');
+            $destinationPath = 'img';
+            $fileName = $file->getClientOriginalName();
+            $file->move($destinationPath, $fileName);
+            $user->avatar = $fileName;
+        }
+        $user->save();
+        return redirect()->route('profile.index')->with('success', 'Upload avatar thành công !');
+    }
+    public function uploadCover(Request $request, $id)
+    {
+        $user = new UserProfile($request->all());
+        $user = UserProfile::find($id);
+        if ($request->hasFile('cover')) {
+            $file = $request->file('cover');
+            $destinationPath = 'img';
+            $fileName = $file->getClientOriginalName();
+            $file->move($destinationPath, $fileName);
+            $user->cover = $fileName;
+        }
+        $user->save();
+        return redirect()->back()->with('success', 'Upload ảnh bìa thành công !');
+    }
 }

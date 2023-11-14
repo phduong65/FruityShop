@@ -33,7 +33,7 @@
             @method('put')
             <ul class="form-list">
                 <li>
-                    <x-input-label for="current_password" :value="__('Nhập mật khẩu cũ:')" />
+                    <x-input-label for="current_password" :value="__('Nhập mật khẩu cũ')" />
                     <x-text-input id="current_password" name="current_password" type="password"
                         class="mt-1 block w-full" autocomplete="current-password" />
                     <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
@@ -56,10 +56,17 @@
             <div class="modal-footer">
                 <span class="button-leave">Hủy</span>
                 <x-primary-button class="button-save">{{ __('Save') }}</x-primary-button>
-
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 @if (session('status') === 'password-updated')
-                    <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                        class="text-sm text-gray-600">{{ __('Saved.') }}</p>
+                    <script>
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Đội mật khẩu thành công !',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    </script>
                 @endif
             </div>
         </form>

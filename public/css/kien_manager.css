@@ -1,0 +1,185 @@
+tr td.hm30 {
+    max-height: 80px;
+    text-align: left;
+}
+
+.hm30 img {
+    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    position: relative;
+}
+
+.user-image-td {
+    position: relative;
+}
+
+.user-image-td .status-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #31a24c;
+    border: 2px solid #fff;
+    border-radius: 100%;
+}
+
+#table_user-manage {
+    border-collapse: collapse;
+    max-width: 1300px;
+    display: block;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+#table_user-manage thead {
+    background: #88888832;
+}
+
+#table_user-manage,
+td {
+    border: 1px dotted #88888832;
+}
+
+#table_user-manage::-webkit-scrollbar {
+    background-color: transparent;
+    height: 0px;
+}
+
+
+/* Css cho form edit user quản lý */
+.form-edit-manager {
+    max-width: 100%;
+    /* Điều chỉnh độ rộng theo mong muốn */
+    margin: 0 auto;
+    padding: 20px;
+
+
+}
+
+.edit-mana-lable {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.edit-input-names,
+.edit-input-emails,
+.edit-input-births,
+.edit-input-phones,
+.edit-input-addresses,
+.edit-input-intros {
+    margin-bottom: 15px;
+}
+
+.edit-input-name,
+.edit-input-email,
+.edit-input-birth,
+.edit-input-phone,
+.edit-input-address,
+.edit-input-intro {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+}
+
+.save-manager-user {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-input-name:focus,
+.edit-input-email:focus,
+.edit-input-birth:focus,
+.edit-input-phone:focus,
+.edit-input-address:focus,
+.edit-input-intro:focus {
+    outline: none;
+    border: 1px solid #1877F2;
+    transition: border 0.2s ease;
+    box-shadow: 0 0 5px rgba(0, 116, 217, 0.5);
+}
+
+
+/* Setting css */
+.form-setting {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 100%;
+}
+
+.form-child-setting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    border-bottom: 1px solid #91ad41;
+}
+.change-image-form {
+    padding: 0px;
+}
+.form-child-setting:last-child {
+    border: none;
+}
+
+.form-child-setting h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.form-child-setting p {
+    cursor: pointer;
+    margin: 0;
+}
+
+#language-select,
+#theme-select {
+    padding: 10px;
+    border-radius: 5px;
+    background: #91ad41;
+    color: #fff;
+    width: fit-content;
+    border: none;
+    cursor: pointer;
+}
+
+/* Change Logo */
+.logo-total {
+    display: flex;
+    align-items: center;
+}
+
+.logo-cover {
+    width: 120px;
+    height: 120px;
+    border: 1px dashed #333;
+    border-radius: 10px;
+    margin-right: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.logo-cover img {
+    position: absolute;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+.logo-total .change-img {
+    font-size: 30px;
+}
+.logo-total .change-img label i {
+    cursor: pointer;
+}
+.save-setting {
+    margin-top: 30px;
+}
