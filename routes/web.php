@@ -34,9 +34,13 @@ Route::middleware('auth')->group(function () {
 });
 // Trong routes/web.php
 
+Route::group(['middleware' => ['web']], function () {
+    // Các route liên quan đến giỏ hàng ở đây
+    
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::post('/add-to-cart/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/remove-from-cart/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+});
 
 
 // routes/web.php

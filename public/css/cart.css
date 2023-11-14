@@ -118,3 +118,44 @@ body {
 ::-webkit-scrollbar-thumb {
     background-color: transparent;
 }
+ 
+.cart-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .item-image {
+    float: left;
+  }
+  
+  /* .item-name {
+    margin-left: 100px;
+  }
+  
+  .item-details {
+    margin-left: 200px;
+  }
+  
+  .item-quantity {
+    margin-left: 300px;
+  }
+  
+  .item-total {
+    margin-left: 400px;
+  }
+   */
+  .item-close {
+    float: right;
+  }
+  
+  .cart-item:hover {
+    background-color: #eee;
+  }
+  
+  .cart-item .fa-solid {
+    font-size: 20px;
+    color: red;
+  }
+  

@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use App\Models\Cart;
 
 class CartController extends Controller
 {
     // Hiển thị giỏ hàng
     public function cart()
     {
-        $cartItems = session('cart', []);
-
+        $userId = auth()->user()->id ?? 1; // Nếu bạn đang sử dụng xác thực người dùng
+        $cartItems = Cart::where('user_id', $userId)->get();
+    
         return view('cart', ['cartItems' => $cartItems]);
     }
 
@@ -22,40 +23,45 @@ class CartController extends Controller
         $product = Product::find($productId);
 
         if ($product) {
-            $cartItems = session('cart', []);
-
-            $existingItem = collect($cartItems)->where('product_id', $product->id)->first();
+            // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+            $existingItem = Cart::where('user_id', auth()->user()->id ?? 1)
+                ->where('product_id', $product->id)
+                ->first();
 
             if ($existingItem) {
-                $existingItem['quantity']++;
+                // Nếu sản phẩm đã tồn tại, tăng quantity lên
+                $existingItem->quantity++;
+                $existingItem->save();
             } else {
-                $cartItems[] = [
+                // Nếu sản phẩm chưa tồn tại, tạo mới một bản ghi trong CSDL
+                Cart::create([
+                    'user_id' => auth()->user()->id ?? 1,
                     'product_id' => $product->id,
-                    'product_name' => $product->name,
-                    'product_price' => $product->price,
-                    'product_image' =>  $product->photo,
+                    'name' => $product->name,
+                    'price' => $product->price,
+                    'image' => $product->photo,
                     'quantity' => 1,
-                ];
+                ]);
             }
 
-            session(['cart' => $cartItems]);
-            return response()->json(['message' => 'Thêm Sản Phẩm Vào Giỏ Hàng Thành Công.']);
-        } 
+            // return response()->json(['message' => 'Thêm Sản Phẩm Vào Giỏ Hàng Thành Công.']);
+            return redirect('/');
+        }
     }
 
     // Xóa sản phẩm khỏi giỏ hàng
     public function removeFromCart(Request $request, $productId)
     {
-        $cartItems = session('cart', []);
+        // Tìm và xóa bản ghi trong CSDL dựa trên product_id và user_id
+        $user_id = auth()->user()->id ?? 1; // Nếu bạn đang sử dụng xác thực người dùng
+        Cart::where('user_id', $user_id)->where('product_id', $productId)->delete();
     
-        $cartItems = array_filter($cartItems, function ($item) use ($productId) {
-            return $item['product_id'] != $productId;
-        });
+        $cartItems = Cart::where('user_id', $user_id)->get();
     
-        session(['cart' => $cartItems]);
-        session()->save(); // Lưu lại session
-
-        return response()->json(['message' => 'Xoá Sản Phẩm Thành Công.']);
+        return response()->json([
+            'message' => 'Xoá Sản Phẩm Thành Công.',
+            'cart' => $cartItems, // Trả về thông tin giỏ hàng mới
+        ]);
     }
 
     // Các hàm khác nếu cần

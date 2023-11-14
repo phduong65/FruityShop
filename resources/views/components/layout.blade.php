@@ -153,23 +153,24 @@
                                         <div class="cart-items">
                                             @if (isset($cartItems) && count($cartItems) > 0)
                                                 @foreach ($cartItems as $cartItem)
-                                                <div class="cart-item row" id="${cartItem.product_id}">
-                                                    <div class="item-image col-md-3">
-                                                        <img src="{{ URL::asset('upload/photobig/') }}/{{ $cartItem['product_image'] }} " alt="" height="100px" style="100px">
+                                                    <div class="cart-item row" id="${cartItem.product_id}">
+                                                        <div class="item-image col-md-3">
+                                                            <img src="{{ URL::asset('upload/photobig/') }}/{{ $cartItem->image }}"
+                                                                alt="" height="100px" width="100px">
+                                                        </div>
+                                                        <div class="item-name col-md-3">
+                                                            <h3>{{ $cartItem['name'] }}</h3>
+                                                        </div>
+                                                        <div class="item-details col-md-3">
+                                                            <p>{{ $cartItem['price'] }} đ</p>
+                                                        </div>
+                                                        <div class="item-quantity col-md-2">
+                                                            <p>{{ $cartItem['quantity'] }}</p>
+                                                        </div>
+                                                        <div class="item-close col-md-1">
+                                                            <i class="fa-solid fa-trash close" data-product-id="{{ $cartItem->product_id }}"></i>
+                                                        </div>
                                                     </div>
-                                                    <div class="item-name col-md-3">
-                                                        <h3>{{ $cartItem['product_name'] }}</h3>
-                                                    </div>
-                                                    <div class="item-details col-md-3">
-                                                        <p>{{ $cartItem['product_price'] }} đ</p>
-                                                    </div>
-                                                    <div class="item-quantity col-md-2">
-                                                        <p>{{ $cartItem['quantity'] }}</p>
-                                                    </div>
-                                                    <div class="item-close col-md-1">
-                                                        <i class="fa-solid fa-xmark close" data-product-id="{{$cartItem['product_id']}}"></i>
-                                                    </div>
-                                                </div>
                                                 @endforeach
                                             @else
                                                 <div class="cart-nosp">
@@ -182,8 +183,16 @@
                                     </div>
                                     <div class="col-md-12 cart-sps">
                                         <div class="total row">
-                                            <h1 class="col-md-6">{{ __('Tổng:') }}</h1>
-                                            <h2 id="total" class="col-md-6"></h2>
+                                            {{-- <h1 class="col-md-6">{{ __('Tổng:') }}</h1>
+                                            <span class="col-md-6" id="totalValue">
+                                                @php
+                                                    $totalValue = 0;
+                                                    foreach ($cartItems as $cartItem) {
+                                                        $totalValue += $cartItem->price * $cartItem->quantity;
+                                                    }
+                                                    echo $totalValue;
+                                                @endphp
+                                                đ</span> --}}
                                         </div>
                                         <div class="pay">
                                             <a href="" style="color: white;">{{ __('Thanh Toán') }}</a>
