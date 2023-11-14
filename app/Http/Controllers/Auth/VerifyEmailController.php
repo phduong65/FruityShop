@@ -19,10 +19,8 @@ class VerifyEmailController extends Controller
             return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');
         }
 
-        if ($request->user()->markEmailAsVerified()) {
-            event(new Verified($request->user()));
+        else{
+            return redirect('/login')->with('error', 'Vui lòng xác minh địa chỉ email trước khi đăng nhập.');
         }
-
-        return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');
     }
 }

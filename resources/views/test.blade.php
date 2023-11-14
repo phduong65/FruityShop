@@ -1,1 +1,1 @@
-@extends('components.layout')
+@extends('components.index')

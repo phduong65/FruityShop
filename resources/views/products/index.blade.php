@@ -1,6 +1,7 @@
 @extends('components.layout')
 @push('style')
     <link rel="stylesheet" href="{{ URL::asset('css') }}/home.css">
+    <link rel="stylesheet" href="{{ URL::asset('css') }}/cart.css">
 @endpush
 @section('pageTitle', 'Trang chủ')
 @section('content')
@@ -181,35 +182,40 @@
             <div class="row list_products_fill">
                 <div class="col-md-3 col-xs-6">
                     <div class="product_item">
-                        <div class="product_item_img">
-                            <a href="">
-                                <img src="{{ URL::asset('images') }}/nho-xanh-sugar-crunch.png" alt="">
-                            </a>
-                            <div class="action_icon">
-                                <div class="ic_like"></div>
-                                <div class="ic_see"></div>
+                        <form action="{{ route('cart.add', ['productId' => $item->id]) }}" method="POST">
+                            @csrf
+                            <div class="product_item_img">
+                                <a href="">
+                                    <img src="{{ URL::asset('images') }}/nho-xanh-sugar-crunch.png" alt="">
+                                </a>
+                                <div class="action_icon">
+                                    <div class="ic_like"></div>
+                                    <div class="ic_see"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product_item_name">
-                            <a href="">
-                                Nho xanh
-                            </a>
-                        </div>
-                        <div class="product_item_price">
-                            <div class="after_dis">85,000đ</div>
-                            <div class="before_dis">60,000đ</div>
-                            <div class="dis">Giảm 17%</div>
-                        </div>
-                        <div class="btn_addquick">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-basket2" viewBox="0 0 16 16">
-                                <path
-                                    d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z" />
-                                <path
-                                    d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z" />
-                            </svg>
-                            <span>Thêm vào giỏ hàng</span>
-                        </div>
+                            <div class="product_item_name">
+                                <a href="">
+                                    Nho xanh
+                                </a>
+                            </div>
+                            <div class="product_item_price">
+                                <div class="after_dis">85,000đ</div>
+                                <div class="before_dis">60,000đ</div>
+                                <div class="dis">Giảm 17%</div>
+                            </div>
+                            <div>
+                                <button type="submit btn_addquick">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-basket2" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z" />
+                                        <path
+                                            d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z" />
+                                    </svg>
+                                    <span>Thêm vào giỏ hàng</span>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-6">
@@ -311,6 +317,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -363,34 +370,36 @@
     </section>
 @endsection
 @push('js')
-
     <script src="{{ URL::asset('js') }}/search_home.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-           $(document).on('click','.condition-button', function () {
-            $('.selection_item').removeClass('action');
+            $(document).on('click', '.condition-button', function() {
+                $('.selection_item').removeClass('action');
                 var condition = $(this).data('condition');
                 $(this).parent().addClass('action');
                 console.log(condition);
                 loadProducts(condition);
-           });
-           function loadProducts(condition) {
-            $.ajax({
-                url: "{{ route('fillter') }}",
-                type: "GET",
-                data: {'condition': condition},
-                success: function (data) {
-                   var products_fill = data.products_fill;
-                   console.log(((products_fill[1]['price'])));
-                   var output = '';
-                   if (products_fill.length>0) {
-                       for (let i = 0; i < products_fill.length; i++) {
-                        output +=`
+            });
+
+            function loadProducts(condition) {
+                $.ajax({
+                    url: "{{ route('fillter') }}",
+                    type: "GET",
+                    data: {
+                        'condition': condition
+                    },
+                    success: function(data) {
+                        var products_fill = data.products_fill;
+                        console.log(((products_fill[1]['price'])));
+                        var output = '';
+                        if (products_fill.length > 0) {
+                            for (let i = 0; i < products_fill.length; i++) {
+                                output += `
                         <div class="col-md-3 col-xs-6">
                     <div class="product_item">
                         <div class="product_item_img">
                             <a href="">
-                                <img src="{{ URL::asset('uploads/photobig') }}/`+products_fill[i]['photo']+`" alt="">
+                                <img src="{{ URL::asset('uploads/photobig') }}/` + products_fill[i]['photo'] + `" alt="">
                             </a>
                             <div class="action_icon">
                                 <div class="ic_like"></div>
@@ -399,13 +408,13 @@
                         </div>
                         <div class="product_item_name">
                             <a href="">
-                                `+products_fill[i]['name']+`
+                                ` + products_fill[i]['name'] + `
                             </a>
                         </div>
                         <div class="product_item_price">
-                            <div class="after_dis">`+products_fill[i]['fm_price']+`</div>
-                            <div class="before_dis">`+products_fill[i]['dis_price']+`</div>
-                            <div class="dis">Giảm `+products_fill[i]['discount']+`%</div>
+                            <div class="after_dis">` + products_fill[i]['fm_price'] + `</div>
+                            <div class="before_dis">` + products_fill[i]['dis_price'] + `</div>
+                            <div class="dis">Giảm ` + products_fill[i]['discount'] + `%</div>
                         </div>
                         <div class="btn_addquick">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -419,13 +428,13 @@
                         </div>
                     </div>
                 </div>`;
-                        
-                       }
-                   }
-                   $(".list_products_fill").html(output);
-                }
-            });
-        }
+
+                            }
+                        }
+                        $(".list_products_fill").html(output);
+                    }
+                });
+            }
         });
     </script>
 @endpush

@@ -6,7 +6,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegionController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
+use App\Http\Controllers\CartController;
 use function Laravel\Prompts\search;
 
 /*
@@ -20,6 +22,7 @@ use function Laravel\Prompts\search;
 |
 */
 
+// <<<<<<< HEAD
 Route::get('/checkout',[OrderController::class,'index'])->name('orders.index');
 Route::get('/thanks',[OrderController::class,'store'])->name('orders.store');
 Route::get('/',[ProductController::class,'getProductHome'])->name('home');
@@ -38,5 +41,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+// Trong routes/web.php
+
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::post('/add-to-cart/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/remove-from-cart/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+
+// routes/web.php
+
+
+
+// ... Các tuyến đường khác
 
 require __DIR__.'/auth.php';

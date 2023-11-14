@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>@yield('pageTitle')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,9 +14,16 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+{{-- <<<<<<< HEAD --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+{{-- ======= --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{{-- >>>>>>> tuan --}}
     <link rel="stylesheet" href="{{ URL::asset('css') }}/layout.css">
     <link rel="stylesheet" href="{{ URL::asset('css') }}/_reset.css">
+    <link rel="stylesheet" href="{{ URL::asset('css') }}/cart.css">
+    <link rel="stylesheet" href="{{ URL::asset('css') }}/home.css">
+
     @stack('style')
 </head>
 
@@ -62,7 +71,7 @@
                         <a href="" class="cate_item">Trang chủ</a>
                         <a href="" class="cate_item">Giới thiệu</a>
                         <a href="" class="cate_item">Sản phẩm</a>
-                        <a href="" class="cate_item">Giỏ hàng</a>
+                        <a href="{{ route('cart') }}" class="cate_item">Giỏ hàng</a>
                         <a href="" class="cate_item">Tin tức</a>
                         <a href="" class="cate_item">Liên hệ</a>
                     </div>
@@ -75,7 +84,7 @@
                             </svg>
                         </div>
                         <div class="user_ic">
-                            <a href="">
+                            <a href="{{ route('login') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -93,14 +102,70 @@
                                 </svg>
                             </a>
                         </div>
-                        <div class="cart_ic">
-                            <a href="{{route('orders.index')}}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
-                                    <path
-                                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                                </svg>
-                            </a>
+                        <div class="cart-wrapper">
+                            <div class="cart_ic">
+                                <a href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                                        <path
+                                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="cart-overlay"></div>
+                            <div class="cart-content">
+                                <div class="row cart">
+                                    <div class="cart-gh col-md-10">
+                                        <h1>{{ __('Giỏ Hàng') }} </h1>
+                                    </div>
+                                    <div class="col-md-2 cart-icon" id="closeCartBtn">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </div>
+                                </div>
+                                <!-- Trong cart.blade.php -->
+                                <div class="row">
+                                    <div class="cart-sp col-md-12" id="cartContainer" style="padding-top: 5px">
+                                        <div class="cart-items">
+                                            @if (isset($cartItems) && count($cartItems) > 0)
+                                                @foreach ($cartItems as $cartItem)
+                                                <div class="cart-item row" id="${cartItem.product_id}">
+                                                    <div class="item-image col-md-3">
+                                                        <img src="{{ URL::asset('upload/photobig/') }}/{{ $cartItem['product_image'] }} " alt="" height="100px" style="100px">
+                                                    </div>
+                                                    <div class="item-name col-md-3">
+                                                        <h3>{{ $cartItem['product_name'] }}</h3>
+                                                    </div>
+                                                    <div class="item-details col-md-3">
+                                                        <p>{{ $cartItem['product_price'] }} đ</p>
+                                                    </div>
+                                                    <div class="item-quantity col-md-2">
+                                                        <p>{{ $cartItem['quantity'] }}</p>
+                                                    </div>
+                                                    <div class="item-close col-md-1">
+                                                        <i class="fa-solid fa-xmark close" data-product-id="{{$cartItem['product_id']}}"></i>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                            @else
+                                                <div class="cart-nosp">
+                                                    <h4>{{ __('Bạn chưa có sản phẩm nào trong giỏ hàng') }}</h4>
+                                                    <br>
+                                                    <button>Mua Thêm</button>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 cart-sps">
+                                        <div class="total row">
+                                            <h1 class="col-md-6">{{ __('Tổng:') }}</h1>
+                                            <h2 id="total" class="col-md-6"></h2>
+                                        </div>
+                                        <div class="pay">
+                                            <a href="" style="color: white;">{{ __('Thanh Toán') }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -268,7 +333,7 @@ displayChangeSearch();
                 success: function(data) {
                     var products = data.list_search;
                     var output = '';
-                    if (products.length>0) {
+                    if (products.length > 0) {
                         for (let i = 0; i < products.length; i++) {
                             output += `<div class="col-md-6">
                         <div class="search_item">
@@ -287,8 +352,7 @@ displayChangeSearch();
                         </div>
                     </div>`;
                         }
-                    }
-                    else{
+                    } else {
                         output = "<p>Khong tim thay ket qua</p>"
                     }
                     console.log(output);
@@ -300,4 +364,7 @@ displayChangeSearch();
     });
 </script>
 
+<script src="{{ URL::asset('js') }}/search_home.js"></script>
+<script src="{{ URL::asset('js') }}/cart.js"></script>
+<script></script>
 </html>
