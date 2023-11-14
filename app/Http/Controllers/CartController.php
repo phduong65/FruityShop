@@ -20,10 +20,8 @@ class CartController extends Controller
     public function addToCart(Request $request, $productId)
     {
         $product = Product::find($productId);
-
         if ($product) {
             $cartItems = session('cart', []);
-
             $existingItem = collect($cartItems)->where('product_id', $product->id)->first();
 
             if ($existingItem) {
@@ -39,7 +37,7 @@ class CartController extends Controller
             }
 
             session(['cart' => $cartItems]);
-            return response()->json(['message' => 'Thêm Sản Phẩm Vào Giỏ Hàng Thành Công.']);
+            return redirect()->route('/');
         } 
     }
 
