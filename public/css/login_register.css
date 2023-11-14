@@ -155,6 +155,11 @@ background: linear-gradient(62deg, rgba(162,185,97,1) 0%, rgba(192,177,108,1) 49
 background: rgb(162,185,97);
 background: linear-gradient(62deg, rgba(162,185,97,1) 0%, rgba(192,177,108,1) 49%, rgba(234,162,125,1) 100%);
   }
+  .log-out{
+    background: rgb(162,185,97);
+background: linear-gradient(62deg, rgba(162,185,97,1) 0%, rgba(192,177,108,1) 49%, rgba(234,162,125,1) 100%);
+  }
+
   .btn-register{
     text-align: center;
   }

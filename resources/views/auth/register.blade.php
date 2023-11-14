@@ -56,16 +56,11 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
-        <form method="POST" action="{{ route('verification.link.send') }}">
-            @csrf
-
-            <div>
-                <x-primary-button>
-                    {{ __('Send Mail') }}
-                </x-primary-button>
-            </div>
-        </form>
-        <p>{{ __('Bạn đã có tài khoản?') }}<a href="{{ route('login') }}">
+        <div class="mb-3 btn-register">
+            <x-primary-button>
+                {{ __('Đăng Ký') }}
+            </x-primary-button>
+            <p>{{ __('Bạn đã có tài khoản?') }}<a href="{{ route('login') }}">
                 {{ __('Đăng nhập') }}</a></p>
         </div>
     </form>

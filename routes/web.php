@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
 use function Laravel\Prompts\search;
 
@@ -32,7 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-// Trong routes/web.php
 
 Route::group(['middleware' => ['web']], function () {
     // Các route liên quan đến giỏ hàng ở đây
@@ -43,9 +42,17 @@ Route::post('/remove-from-cart/{productId}', [CartController::class, 'removeFrom
 });
 
 
-// routes/web.php
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
 
-
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+ 
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+ 
+    return redirect('/dashboard');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
 // ... Các tuyến đường khác
 
