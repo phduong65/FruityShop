@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegionController;
 use App\Models\Product;
@@ -74,4 +73,3 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 // ... Các tuyến đường khác
 
 require __DIR__.'/auth.php';
-require __DIR__ . '/auth.php';
