@@ -21,16 +21,12 @@ class CartController extends Controller
     public function addToCart(Request $request, $productId)
     {
         $product = Product::find($productId);
+
         if ($product) {
-<<<<<<< HEAD
             // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
             $existingItem = Cart::where('user_id', auth()->user()->id ?? 1)
                 ->where('product_id', $product->id)
                 ->first();
-=======
-            $cartItems = session('cart', []);
-            $existingItem = collect($cartItems)->where('product_id', $product->id)->first();
->>>>>>> c2b83293146ca738f42562173eca6fcd98d966db
 
             if ($existingItem) {
                 // Nếu sản phẩm đã tồn tại, tăng quantity lên
@@ -48,15 +44,9 @@ class CartController extends Controller
                 ]);
             }
 
-<<<<<<< HEAD
             // return response()->json(['message' => 'Thêm Sản Phẩm Vào Giỏ Hàng Thành Công.']);
             return redirect('/');
         }
-=======
-            session(['cart' => $cartItems]);
-            return redirect()->route('/');
-        } 
->>>>>>> c2b83293146ca738f42562173eca6fcd98d966db
     }
 
     // Xóa sản phẩm khỏi giỏ hàng
