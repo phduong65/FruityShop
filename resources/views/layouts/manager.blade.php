@@ -15,12 +15,8 @@
         href="http://fonts.googleapis.com/css?family=Open+Sans:300,700,800|Open+Sans+Condensed:300,700|Prata&subset=vietnamese"
         rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ URL::asset('css') }}/tri.css">
-    <script src="
-                                                                        https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js
-                                                                        "></script>
-    <link href="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
-" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://cdn.tiny.cloud/1/cbq48gtdz0pfdbuzyype3yu466uymwxiwm110gup8nlexzj2/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
 </head>
@@ -49,7 +45,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
             </li>
 
             <li>
-                <a href="">
+                <a href="{{ route('products.index') }}">
                     <span class="icon">
                         <ion-icon name="clipboard-outline"></ion-icon>
                     </span>
@@ -74,7 +70,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('posts.index') }}">
                     <span class="icon">
                         <ion-icon name="document-text-outline"></ion-icon>
                     </span>
@@ -123,19 +119,12 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
-            <div class="search">
-                <label>
-                    <input type="text" placeholder="Search here" />
-                    <ion-icon name="search-outline"></ion-icon>
-                </label>
-            </div>
             <div class="user">
-                <img src="https://scontent-hkg4-1.xx.fbcdn.net/v/t39.30808-6/395353319_1672809266540399_236902390255612610_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=tyECHJDC0MoAX8zP6nS&_nc_ht=scontent-hkg4-1.xx&oh=00_AfABZde7iACmO5kOBNCUqkcbPrPpTkGFmTp-eq_yvGJMrA&oe=654AA1BC"
-                    alt="" />
+                <img src="https://images.unsplash.com/photo-1698611229097-cf0e2fc8ba81?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="">
             </div>
         </div>
-        @yield('manager_orders')
-        @yield('regions')
+
         @yield('manager_doashboard')
         {{-- Manager Product --}}
         @yield('manager_product')
@@ -146,10 +135,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
         @yield('manager_post-create')
         @yield('manager_post-edit')
     </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="{{ URL::asset('js') }}/tri.js"></script>
 </body>
-@stack('js')
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<script src="{{ URL::asset('js') }}/tri.js"></script>
-<script></script>
+
 </html>

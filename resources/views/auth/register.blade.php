@@ -56,9 +56,14 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
-        <div class="mb-3 btn-register">
-            <x-primary-button>
-                {{ __('Đăng Ký') }}
+
+        <div class="flex items-center justify-end mt-4">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+                {{ __('Already registered?') }}
+            </a>
+
+            <x-primary-button class="ml-4">
+                {{ __('Register') }}
             </x-primary-button>
             <p>{{ __('Bạn đã có tài khoản?') }}<a href="{{ route('login') }}">
                 {{ __('Đăng nhập') }}</a></p>

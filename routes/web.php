@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegionController;
 use App\Models\Product;
@@ -31,6 +32,15 @@ Route::get('/products_new',[ProductController::class,'getNewProducts'])->name('p
 Route::get('/success', function () {
     return view('orders.success');
 })->name('success');
+// manage
+Route::resource('products', ProductController::class);
+Route::resource('posts', PostController::class);
+Route::get('/post', [PostController::class, 'getallpublishpost']);
+// Route::get('/manager/products', [ProductController::class, 'managerproduct']);
+// Route::get('/manager/products/create', [ProductController::class, 'create']);
+Route::get('/manager', function () {
+    return view('manager.doashboard');
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -64,3 +74,4 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 // ... Các tuyến đường khác
 
 require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

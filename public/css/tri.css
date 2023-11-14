@@ -457,7 +457,7 @@ body {
 }
 .bannerdetail {
     height: 160px;
-    background: url(/img/bg_detail-one.png) no-repeat center;
+    background: url(../image/bg_detail-one.png) no-repeat center;
     background-size: cover;
     position: relative;
 }
@@ -477,6 +477,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 70px;
+    align-items: center;
     padding: 50px 0;
 }
 .productdetail_content-image .thumnailbig {
@@ -669,7 +670,7 @@ body {
 }
 .description_content-banner {
     position: relative;
-    background: url(/img/bg_detail-two.jpg) no-repeat center;
+    background: url(../image/bg_detail-two.jpg) no-repeat center;
     height: 150px;
     background-size: cover;
     position: relative;
@@ -898,6 +899,24 @@ body {
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
 }
+.main .news_content-left .news_big .content .desc.--importanttext {
+    height: 100px;
+    overflow: hidden;
+}
+.main .news_content-left .news_big .content .desc.--importanttext h1,
+.main .news_content-left .news_big .content .desc.--importanttext h2,
+.main .news_content-left .news_big .content .desc.--importanttext h3,
+.main .news_content-left .news_big .content .desc.--importanttext h4,
+.main .news_content-left .news_big .content .desc.--importanttext h5,
+.main .news_content-left .news_big .content .desc.--importanttext h6,
+.main .news_content-left .news_big .content .desc.--importanttext img,
+.main .news_content-left .news_big .content .desc.--importanttext ul,
+.main .news_content-left .news_big .content .desc.--importanttext li,
+.main .news_content-left .news_big .content .desc.--importanttext ol,
+.main .news_content-left .news_big .content .desc.--importanttext iframe,
+.main .news_content-left .news_big .content .desc.--importanttext table {
+    display: none;
+}
 .main .news_content-left .news_big .content .day {
     margin-bottom: 0;
     padding-top: 10px;
@@ -1080,6 +1099,122 @@ body {
     -webkit-box-orient: vertical;
     margin-top: 10px;
 }
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext {
+    height: 75px;
+    overflow: hidden;
+}
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    h1,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    h2,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    h3,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    h4,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    h5,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    h6,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    ul,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    li,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    ol,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    img,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    iframe,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    table,
+.main
+    .news_content-left
+    .outstanding
+    .outstanding-list
+    .item
+    .content
+    .desc.--importanttext
+    br {
+    display: none;
+}
 .main .news_content-left .outstanding .outstanding-list .item .content .day {
     margin-bottom: 0;
     display: flex;
@@ -1088,7 +1223,7 @@ body {
     color: #888;
     font-size: 15px;
     text-transform: uppercase;
-    margin-bottom: 0;
+    margin-top: 10px;
 }
 .main .news_content-right .category-news {
     background: #cacaca2f;
@@ -1344,7 +1479,7 @@ ul {
     padding-left: 0;
 }
 .container {
-    position: relative;
+    /* position: relative; */
 }
 .navigation {
     position: fixed;
@@ -1447,7 +1582,6 @@ ul {
     width: calc(100% - 80px);
     left: 80px;
     min-height: 100vh;
-    background: #f0f3f5;
     transition: 0.5s;
 }
 .manager_main.active {
@@ -1460,7 +1594,7 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 20px 0 10px;
 }
 .toggle {
     position: relative;
@@ -1474,7 +1608,7 @@ ul {
 }
 .search {
     position: relative;
-    width: 400px;
+    width: 700px;
     margin: 0 10px;
 }
 .search label {
@@ -1742,34 +1876,72 @@ ul {
     padding-bottom: 68%;
     max-width: inherit;
 }
+
+.box_left-preview {
+    padding: 0 30px;
+    background: #fff;
+    margin-top: -30px;
+}
+.box_left-preview .title {
+    font-size: 18px;
+    margin-bottom: 17px;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif,
+        Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+.box_left-preview .thumnail {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 40%;
+}
+.box_left-preview .thumnail img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
 /*# sourceMappingURL=style.min.css.map */
 
 /* custom table */
 .manager_content-product {
-    margin-left: 30px;
     background: #fff;
     padding: 20px;
+    padding-bottom: 45px;
 }
 .manager_content-product .textbox {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+    position: relative;
 }
 .manager_content-product .textbox h2 {
     font-size: 25px;
     color: #91ad41;
     font-weight: 600;
 }
+.manager_content-product .textbox .search {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -65px;
+}
 #table_product-manage {
     border-collapse: collapse;
-    max-width: 1300px;
+    max-width: 1320px;
     overflow: scroll;
     display: block;
     overflow-y: hidden;
 }
 #table_product-manage thead {
     background: #88888832;
+}
+#table_product-manage thead tr td {
+    text-align: center;
 }
 #table_product-manage,
 td {
@@ -1782,8 +1954,11 @@ td {
 td {
     padding: 8px;
     vertical-align: top;
-    text-align: center;
+    text-align: left;
     min-width: 200px;
+}
+td a {
+    color: #000;
 }
 td.mw120 {
     min-width: 120px;
@@ -1848,6 +2023,56 @@ td.outstand .close .circle {
 td.outstand .close .circle::after {
     background: #fb71851a;
 }
+td.customimage .thumnail {
+    position: relative;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+td.customimage .thumnail img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
 .alert-success {
     margin: 10px 0 10px 30px;
+}
+/* custompaginate */
+.customnav nav {
+    display: block;
+    padding: 30px 0;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif,
+        Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+.customnav .flex.justify-between.flex-1 {
+    display: none;
+}
+.customnav .hidden {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.customnav svg {
+    width: 20px;
+    height: 20px;
+}
+.customnav a {
+    text-decoration: none;
+}
+/* adminproduct */
+.btnsearchproduct {
+    position: absolute;
+    border: none;
+    height: 95%;
+    right: 1px;
+    padding: 0 20px;
+    border-radius: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
