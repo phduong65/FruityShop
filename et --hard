@@ -1,0 +1,238 @@
+[33mcommit f446997b01e1bb1de184effa156100a6d1fb91ec[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m, [m[1;31morigin/duong-checkout[m[33m, [m[1;32mduong-checkout[m[33m)[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Tue Nov 14 19:12:05 2023 +0700
+
+    duong-checkout
+
+[33mcommit ff0d2b1e9bdcd89b83f3854539ff69d1d9bcdd21[m
+Merge: fa69087 3a3435b
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Tue Nov 14 18:16:40 2023 +0700
+
+    duong-6:16
+
+[33mcommit fa690874597421fabbfd11466daf45b79b3eb1c2[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Tue Nov 14 16:28:40 2023 +0700
+
+    duong-checkout-cart
+
+[33mcommit 3a3435bb61e10eab466817f45d4caca7539f8dbe[m[33m ([m[1;31morigin/tuan[m[33m, [m[1;32mtuan[m[33m)[m
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Tue Nov 14 15:47:41 2023 +0700
+
+    up mail
+
+[33mcommit 8a5ffdcba4aeaa0c0732dfb9d91af36107375610[m
+Merge: cb6346c c2b8329
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Tue Nov 14 15:03:03 2023 +0700
+
+    tuan
+
+[33mcommit 284f0ad6e3286be8a0de9bd8016fe613405530d6[m
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Tue Nov 14 14:43:55 2023 +0700
+
+    up cartcontronller
+
+[33mcommit 96b1b3c7f00337aa186cce660d64ebad140cbfcf[m
+Merge: b9c7a38 c2b8329
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Tue Nov 14 14:40:49 2023 +0700
+
+    update cart
+
+[33mcommit b9c7a389a13b7bc83e3e8c783e116a1650482f74[m
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Tue Nov 14 14:38:49 2023 +0700
+
+    update cart
+
+[33mcommit c2b83293146ca738f42562173eca6fcd98d966db[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Tue Nov 14 13:47:20 2023 +0700
+
+    tuan
+
+[33mcommit cb6346c521820db1f6e31c84b0c544dc5aff4080[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Tue Nov 14 10:45:56 2023 +0700
+
+    duong-checkout
+
+[33mcommit af45e9896ec4d49ef1e42808332493e659b94550[m
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Mon Nov 13 14:44:32 2023 +0700
+
+    update
+
+[33mcommit 53cc283b6fed3405faa94a532d98f6dab979921e[m
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Mon Nov 13 04:23:22 2023 +0700
+
+    mupload remove cart
+
+[33mcommit 0f7bad74729e7400796065c4b13563653ecf0a4e[m
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Sun Nov 12 22:02:06 2023 +0700
+
+    upload css
+
+[33mcommit a90d10feb96ee729b5862c6dddd0c5fa2bd47532[m
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Sun Nov 12 21:53:05 2023 +0700
+
+    upload banner
+
+[33mcommit 8132761171407ee7c7b297511129356a021f9468[m
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Sun Nov 12 21:46:14 2023 +0700
+
+    upload index
+
+[33mcommit 86836d84d410eb76f6629ab9d4c2fcbe5fff25f3[m
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Sun Nov 12 20:34:35 2023 +0700
+
+    upload cart
+
+[33mcommit 547df913190bde84727c25d11b2eafe9e8e64883[m
+Author: NovRirtar <rirtar.lofi@gmail.com>
+Date:   Sun Nov 12 18:40:59 2023 +0700
+
+    upload  login cart
+
+[33mcommit da3955b8a25a789ce28de3f06a8c42d2e305a39c[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Sun Nov 12 16:37:06 2023 +0700
+
+    duong-merge
+
+[33mcommit 97b16c3835571f90a672ab6fb9ee977ccf6048dc[m
+Merge: 6960724 029a27b
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Sun Nov 12 16:12:51 2023 +0700
+
+    duong-merge
+
+[33mcommit 6960724ce261dc0188f64ca63244728417150c56[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Sun Nov 12 16:08:13 2023 +0700
+
+    duong-merge
+
+[33mcommit 029a27b24843447b111cae2c17027977d3ec4362[m[33m ([m[1;31morigin/duong-home[m[33m, [m[1;32mduong-home[m[33m)[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Sat Nov 11 13:53:03 2023 +0700
+
+    home
+
+[33mcommit d10fd81085bd50d8080a16d1f7156ca76158504d[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Sat Nov 11 13:47:18 2023 +0700
+
+    DUong-heckout 11/11
+
+[33mcommit ed11186ee9b9700cbc02a8904ec1163ca6645cc7[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Fri Nov 10 16:30:58 2023 +0700
+
+    duong-checkout
+
+[33mcommit 7b63c0c081539a42765aa123346baff30d4581d2[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Mon Nov 6 19:52:53 2023 +0700
+
+    duong_checkout
+
+[33mcommit 1023d2a1e8082acceb5028e9fc87537d6544e1c7[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Mon Nov 6 18:58:03 2023 +0700
+
+    duong homme 6:57 11_6
+
+[33mcommit 8456743610d3f1c7fc703f354d428b50249d3b25[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Mon Nov 6 18:36:20 2023 +0700
+
+    layout-11_6
+
+[33mcommit a371e4622c5dadf89ad8a1b056969c038ab94e36[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Mon Nov 6 18:36:20 2023 +0700
+
+    layout-11_6
+
+[33mcommit cb6116d62d5644527e56de1681dd303fd9223c41[m[33m ([m[1;31morigin/dev[m[33m)[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Mon Nov 6 18:02:16 2023 +0700
+
+    test-dev
+
+[33mcommit a492555a2fae67a8f1b12d3983d5c2764ea391df[m[33m ([m[1;31morigin/kien[m[33m)[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Mon Nov 6 17:44:42 2023 +0700
+
+    duong-search
+
+[33mcommit cbe60f481b2ff98c67246e8f678928590d4e7c29[m
+Merge: 2effdb0 71f8c4c
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Fri Nov 3 16:31:27 2023 +0700
+
+    update-layout
+
+[33mcommit 2effdb08107aab298191d96ca8575c2135ee91c2[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Fri Nov 3 16:30:30 2023 +0700
+
+    update
+
+[33mcommit 71f8c4cb6a6949339077305361d63dc7ad23956a[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Fri Nov 3 16:25:54 2023 +0700
+
+    update-layout
+
+[33mcommit a04bd3117c597e86cfe9908655162008245b85b3[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Fri Nov 3 00:29:46 2023 +0700
+
+    duong-home-11_3
+
+[33mcommit 7470e52b21f03c78c7f0f1d27c9bcc39f55d33e9[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Wed Nov 1 17:02:45 2023 +0700
+
+    header_footer
+
+[33mcommit 189eeaef82adff91c0e26083dd3e05de1410d956[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Sun Oct 29 12:59:43 2023 +0700
+
+    duong-update
+
+[33mcommit 4bde1f6dbb3b477e0a5d4b46b6472d910c21ce16[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Sat Oct 28 14:58:15 2023 +0700
+
+    duong-update
+
+[33mcommit d50c229f55cdbfe2873528d0d6644a1bdb2138eb[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Sat Oct 28 14:13:18 2023 +0700
+
+    main-update
+
+[33mcommit bfd0690736ba584119de8b6528fc5153de8f8404[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Sat Oct 28 13:35:56 2023 +0700
+
+    first commit
+
+[33mcommit a1eb0df50498d5320f4268b0eced500f6c4f90f6[m
+Author: phduong65 <phamduong652003@gmail.com>
+Date:   Sat Oct 28 11:14:56 2023 +0700
+
+    first commit
