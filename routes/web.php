@@ -1,11 +1,16 @@
 <?php
 
+
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserProfileController;
 use App\Models\Logo;
+
+use function Laravel\Prompts\search;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +23,7 @@ use App\Models\Logo;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,6 +34,10 @@ Route::get('/manager', function () {
 
 
 //Quản lý profile người dùng
+
+Route::get('/',[ProductController::class,'index']);
+Route::get('/search',[ProductController::class,'search'])->name('search');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -36,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('profile', ProfileController::class);
     Route::get('/upload.cover/{id}', [ProfileController::class, 'uploadCover'])->name('upload.cover');
 });
+
 
 
 //Quản lý user

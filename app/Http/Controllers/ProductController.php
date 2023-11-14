@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+// use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     /**
@@ -11,7 +13,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('home')->with('products',$products);
+        
     }
 
     /**
@@ -35,7 +39,6 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -60,5 +63,23 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    // Format VNĐ
+    public static function asVND($value) {
+        return number_format($value, 0, ".") ."₫";;
+      }
+    public function search(Request $request)
+    {
+        $query = Product::query();
+        if ($request->ajax()) {
+            $extras = $query
+            ->where('name', 'like', '%' . $request->keyword . '%')
+            ->get();
+            // var_dump($extras);
+            return response()->json(['list_search' => $extras]);
+        } else {
+            $extras = $query->get();
+            return view('home', ['list_search' => $extras]);
+        }
     }
 }
