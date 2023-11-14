@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('orders.index');
+        $userId = auth()->user()->id ?? 1; // Nếu bạn đang sử dụng xác thực người dùng
+        $cartItems = Cart::where('user_id', $userId)->get();
+        $total =0 ;
+        foreach ($cartItems as $item) {
+            $total += $item->price;
+        }
+        return view('orders.index')->with('cartItems',$cartItems)
+                                ->with('total',$total);
     }
 
     /**
@@ -43,11 +51,12 @@ class OrderController extends Controller
             $orders->status = "Dang xu ly";
             $orders->note_user = $request->input('note');
             $orders->save();
-            return redirect('success')->with('success','Tạo thành c')->with('orders', $orders);
+            return redirect('success')->with('orders', $orders);
         }
-        else{
-            return view('auth.login');
+        else {
+            return redirect()->route('login');
         }
+        
     }
 
     /**

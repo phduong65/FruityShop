@@ -1,5 +1,4 @@
 <x-guest-layout>
-    <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="text-login">
         <a href="/">{{ __('Trang Chủ') }}</a>
@@ -44,18 +43,9 @@
                     {{ __('Quên mật khẩu ?') }}
                 </a>
             @endif
-<<<<<<< HEAD
-
-            <x-primary-button class="ml-3 mx-3">
-                <a href="{{'register'}}">Register</a>
-            </x-primary-button>
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-=======
         </div>
         <div class="mb-3 btn-login"><x-primary-button class="mb-3" style="text-align: center;">
                 {{ __('ĐĂNG NHẬP') }}
->>>>>>> tuan
             </x-primary-button>
         </div>
         <div class="mb-3 btn-logins"><x-primary-button class="mb-3" style="text-align: center;">

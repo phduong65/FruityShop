@@ -32,8 +32,8 @@
                         </span>
                     </div>
                     @endif
-                    <form action="{{route('orders.store')}}" method="post" class="frm_checkout row g-4">
-                        {{ csrf_field()}}
+                    <form action="{{route('success')}}" method="GET" class="frm_checkout row g-4">
+                        @csrf  
                         <div class="col-md-12">
                             <label for="inputName" class="form-label" >Họ và Tên</label>
                             <input type="text" class="form-control" id="inputName" name="name" required>
@@ -110,131 +110,31 @@
                         Thông tin giỏ hàng
                     </div>
                     <div class="infor_product">
+                        @foreach ($cartItems as $item)    
                         <div class="product_item">
                             <div class="product_left">
                                 <div class="product_left_img">
-                                    <img src="{{ URL::asset('images') }}\nho-xanh-sugar-crunch.png" alt=""
+                                    <img src="{{ URL::asset('uploads/photobig') }}/{{$item->image}} " alt=""
                                         srcset="">
                                 </div>
                                 <div class="product_left_name">
                                     <span class="name">
-                                        Đào đỏ Mỹ
-                                        <span class="quantity">x1</span>
+                                        {{$item->name}}
+                                        <span class="quantity">X {{$item->quantity}}</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="product_price">
-                                31000
+                                {{$item->price}}
                             </div>
                         </div>
-                        <div class="product_item">
-                            <div class="product_left">
-                                <div class="product_left_img">
-                                    <img src="{{ URL::asset('images') }}\nho-xanh-sugar-crunch.png" alt=""
-                                        srcset="">
-                                </div>
-                                <div class="product_left_name">
-                                    <span class="name">
-                                        Đào đỏ Mỹ
-                                        <span class="quantity">x 1</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="product_price">
-                                31000
-                            </div>
-                        </div>
-                        <div class="product_item">
-                            <div class="product_left">
-                                <div class="product_left_img">
-                                    <img src="{{ URL::asset('images') }}\nho-xanh-sugar-crunch.png" alt=""
-                                        srcset="">
-                                </div>
-                                <div class="product_left_name">
-                                    <span class="name">
-                                        Đào đỏ Mỹ
-                                        <span class="quantity">x 1</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="product_price">
-                                31000
-                            </div>
-                        </div>
-                        <div class="product_item">
-                            <div class="product_left">
-                                <div class="product_left_img">
-                                    <img src="{{ URL::asset('images') }}\nho-xanh-sugar-crunch.png" alt=""
-                                        srcset="">
-                                </div>
-                                <div class="product_left_name">
-                                    <span class="name">
-                                        Đào đỏ Mỹ
-                                        <span class="quantity">x 1</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="product_price">
-                                31000
-                            </div>
-                        </div>
-                        <div class="product_item">
-                            <div class="product_left">
-                                <div class="product_left_img">
-                                    <img src="{{ URL::asset('images') }}\nho-xanh-sugar-crunch.png" alt=""
-                                        srcset="">
-                                </div>
-                                <div class="product_left_name">
-                                    <span class="name">
-                                        Đào đỏ Mỹ
-                                        <span class="quantity">x 1</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="product_price">
-                                31000
-                            </div>
-                        </div>
-                        <div class="product_item">
-                            <div class="product_left">
-                                <div class="product_left_img">
-                                    <img src="{{ URL::asset('images') }}\nho-xanh-sugar-crunch.png" alt=""
-                                        srcset="">
-                                </div>
-                                <div class="product_left_name">
-                                    <span class="name">
-                                        Đào đỏ Mỹ
-                                        <span class="quantity">x 1</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="product_price">
-                                31000
-                            </div>
-                        </div>
-                        <div class="product_item">
-                            <div class="product_left">
-                                <div class="product_left_img">
-                                    <img src="{{ URL::asset('images') }}\nho-xanh-sugar-crunch.png" alt=""
-                                        srcset="">
-                                </div>
-                                <div class="product_left_name">
-                                    <span class="name">
-                                        Đào đỏ Mỹ
-                                        <span class="quantity">x 1</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="product_price">
-                                31000
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="tam_tinh">
                         <div class="tam_tinh_main">
                             <span class="title_tam_tinh">Tạm tính
                             </span>
-                            <span class="price">31000đ</span>
+                            <span class="price">{{$total}}</span>
                         </div>
                         <div class="phi_van_chuyen">
                             <span class="title_van_chuyen">Phí vận chuyển
@@ -247,7 +147,7 @@
                         <span class="tong_cong_title">Tổng cộng
                         </span>
                         <span class="price">
-                         <span>VND</span>   51000 đ 
+                         <span>VND</span> {{$total}} đ 
                         </span>
                     </div>
                 </div>
