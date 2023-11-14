@@ -23,7 +23,9 @@ use function Laravel\Prompts\search;
 Route::get('/checkout',[OrderController::class,'index'])->name('orders.index');
 Route::get('/thanks',[OrderController::class,'store'])->name('orders.store');
 Route::get('/',[ProductController::class,'getProductHome'])->name('home');
+Route::get('/fillter',[ProductController::class,'getNewProducts'])->name('fillter');
 Route::get('/search',[ProductController::class,'search'])->name('search');
+Route::get('/products_new',[ProductController::class,'getNewProducts'])->name('products_new');
 Route::get('/success', function () {
     return view('orders.success');
 })->name('success');

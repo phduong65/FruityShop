@@ -18,14 +18,43 @@ class ProductController extends Controller
         return view('products.index')->with('products',$products);
     }
     public function getProductHome(){
-        
-        $all_post = Post::all()->take(3);
+        $all_post = Post::orderBy('created_at', 'desc')->take(4)->get();
         $products_sell = Product::where('discount', '>', 0)
                                 ->where('status','=','publish')
                   ->take(8) // Replace 10 with the desired limit
                   ->get();
         return view('products.index')->with('products',$products_sell)
-                                    ->with('allPost',$all_post);
+                                        ->with('allPost',$all_post);
+    }
+    public function getNewProducts(Request $request){
+        $query = Product::query();
+
+        $condition = $request->input('condition');
+        if (!is_null($condition)) {
+            switch ($condition) {
+                case 'latest':
+                    $query->latest('created_at')->take(8);
+                    break;
+                case 'price_high':
+                    $query->orderBy('price', 'asc')->take(8);
+                    break;
+                case 'price_low':
+                    $query->orderBy('price', 'desc')->take(8);
+                    break;
+            }
+        }
+        $products_fill = $query->get();
+        foreach ($products_fill as $item) {
+            $item->fm_price = number_format($item->price,0,'',',').'₫';
+            if ($item->discount>0) {
+                $item->dis_price = $item->price-($item->price*($item->discount/100));
+                $item->dis_price = number_format($item->dis_price,0,'',',').'₫';
+            }
+            else{
+                $item->dis_price = '';
+            }
+        }
+        return response()->json(['products_fill' => $products_fill]);
     }
     /**
      * Show the form for creating a new resource.

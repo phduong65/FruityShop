@@ -43,38 +43,7 @@
         </form>
         <div class="result">
             <div class="result_search row">
-                {{-- <div class="col-md-4">
-                    <div class="search_item">
-                        <div class="img_item">
-                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
-                        </div>
-                        <div class="title_item">
-                            <div class="name">
-                                <a href="">Guava</a>
-                            </div>
-                            <div class="price">
-                                <div class="after_price">$25.00 USD </div>
-                                <div class="before_price">$30.00 USD</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="search_item">
-                        <div class="img_item">
-                            <img src="{{URL::asset('images')}}/nho-xanh-sugar-crunch.png" alt="">
-                        </div>
-                        <div class="title_item">
-                            <div class="name">
-                                <a href="">Guava</a>
-                            </div>
-                            <div class="price">
-                                <div class="after_price">$25.00 USD </div>
-                                <div class="before_price">$30.00 USD</div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
+                
             </div>
         </div>
     </div>
@@ -102,7 +71,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-search" viewBox="0 0 16 16">
                                 <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                    d="M11.72 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                             </svg>
                         </div>
                         <div class="user_ic">
