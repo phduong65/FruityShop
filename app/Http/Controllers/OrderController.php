@@ -54,7 +54,7 @@ class OrderController extends Controller
             return redirect('success')->with('orders', $orders);
         }
         else {
-            return redirect()->route('login');
+            return redirect('login');
         }
         
     }

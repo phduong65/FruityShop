@@ -46,11 +46,8 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-<<<<<<< HEAD
         Auth::login($user);
         return redirect('home');
-=======
         return redirect('/login')->with('success', 'Đăng ký thành công! Vui lòng xác nhận mail trước khi đăng nhập.');
->>>>>>> tuan
     }
 }
