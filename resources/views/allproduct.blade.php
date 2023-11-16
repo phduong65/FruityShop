@@ -19,9 +19,9 @@
 
 
     <div class="container">
-        <div>
+        <div style="display:flex;align-items: center;">
+            <p id="title-sapxep">Sắp xếp theo</p>
             <ul class="sapxep">
-                <li id="title-sapxep">Sắp xếp theo</li>
                 <li><a href="{{ route('products.index') }}">Mới nhất</a></li>
                 <li><a href="{{ route('products.sort', ['order' => 'outsand']) }}" data-filter="noibat">Nổi bật</a></li>
                 <li value="new" id="sort-by-price-button"><a href="{{ route('products.sort', ['order' => 'desc']) }}">Giá

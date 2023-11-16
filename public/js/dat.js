@@ -8,6 +8,7 @@ $(".load-more-data").click(function () {
     LoadMore(page);
 });
 
+
 function LoadMore(page) {
     $.ajax({
         url: ENDPOINT + "?page=" + page,
@@ -17,16 +18,26 @@ function LoadMore(page) {
             $(".auto-load").show();
         },
     }).done(function (response) {
-        console.log(response);
-        if (response.html == "") {
-            $(".auto-load").hide();
-            $(".load-more-data").hide();
-        } else {
-            $(".auto-load").hide();
-            $("#data-wrapper").append(
-                "<div class='row'>" + response.html + "</div>"
-            );
-           
+        // console.log(response);
+
+        $(".auto-load").hide();
+        $("#data-wrapper").append(
+            "<div class='row'>" + response.html + "</div>"
+        );
+        if(response.html==""){
+            $(".load-more-data").hide()
+        }
+    });
+    checkDataNext(page+1);
+}
+const checkDataNext=async(page)=>{
+    $.ajax({
+        url: ENDPOINT + "?page=" + page,
+        datatype: "html",
+        type: "get",
+    }).done(function (response) {
+        if(response.html==""){
+            document.querySelector('.load-more-data').remove();
         }
     });
 }
@@ -63,4 +74,13 @@ function validateInput() {
     }
 }
 
-
+// const handleTab=()=>{
+//     const listTab=document.querySelectorAll('.sapxep li');
+//     listTab.forEach(e=>{
+//         listTab.forEach(el=>{
+//             el.classList.remove('active');
+//         })
+//         e.classList.add("active");
+//     })
+// }
+// handleTab();

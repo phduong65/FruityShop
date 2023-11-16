@@ -53,5 +53,5 @@ route::put('/editcategory/{id}',[CategoryController::class,'update'])->name('cat
 
 //Dat CURD CategoryPost
 route::post('/createPost',[CategoryPostController::class,'create']);
-route::get('/deletePost/{id}',[CategoryPostController::class,'deletePost']);
+route::delete('/deletePost/{id}',[CategoryPostController::class,'deletePost'])->name('categoryPost.delete');
 route::put('/editcategoryPost/{id}',[CategoryPostController::class,'update'])->name('categorypost.update');
