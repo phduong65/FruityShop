@@ -1,0 +1,161 @@
+/* ... (các phần CSS khác) */
+
+.cart-wrapper {
+    position: relative;
+}
+
+.cart_ic {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Màu trắng với độ trong suốt */
+    opacity: 0;
+    transition: width 0.3s, opacity 0.3s;
+}
+
+.cart-content {
+    position: fixed;
+    top: 0;
+    right: -33.33%; /* Một phần ba của màn hình */
+    width: 33.33%;
+    height: 100%;
+    background-color: #fff;
+    overflow-y: auto; /* Cho phép cuộn nếu nội dung quá lớn */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s;
+}
+
+/* ... (các phần CSS khác) */
+.cart-gh{
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    padding-left: 115px;
+    padding-top: 15px;
+}
+.cart-icon{
+    text-align: center;
+    padding-top: 15px;
+}
+.cart{
+    border-bottom: 1px solid;
+    padding-bottom: 15px;
+}
+.cart-nosp{
+    text-align: center;
+    margin-top: 200px;
+}
+.cart-nosp>h4{
+    color: #b6b1b1;
+}
+.cart-nosp>button{
+    border-radius: 40px;
+    height: 40px;
+    width: 120px;
+}
+.cart-sps>.pay{
+    text-align: center;
+    background: black;
+    height: 85px;
+    padding-top: 30px;
+    font-size: 20px;
+}
+.cart-sps>.pay>a{
+    color: white;
+}
+.cart-sps>.total{
+    background: #d9d9d9;
+    height: 60px;
+    padding-top: 20px;
+    font-size: 130%;
+    padding-left: 20px;
+
+}
+.cart-sp>img{
+    height: 100px;
+    width: 100px;
+}
+.total>h2{
+    text-align:center;
+}
+.content>.cart-container>img{
+    height: 403px;
+    width: 1519px;
+}
+.cart-content>.row>.cart-sps{
+    padding-top: 500px;
+    bottom: 0px !important;
+    position: sticky;
+    z-index: 1;
+}
+.content>.row>.cart-sps{
+    background: #d9d9d9;
+    font-size: larger;
+    text-align: center;
+    padding-bottom: 25px;
+}
+.content>.row>.cart-sps>a{
+    color: black;
+}
+body {
+    scrollbar-width: thin; /* Cho Firefox */
+    scrollbar-color: transparent transparent; /* Cho Firefox */
+    overflow-y: scroll; /* Cho các trình duyệt khác */
+}
+
+/* Tùy chỉnh thanh cuộn cho Chrome, Edge, và Safari */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+ 
+.cart-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .item-image {
+    float: left;
+  }
+  
+  /* .item-name {
+    margin-left: 100px;
+  }
+  
+  .item-details {
+    margin-left: 200px;
+  }
+  
+  .item-quantity {
+    margin-left: 300px;
+  }
+  
+  .item-total {
+    margin-left: 400px;
+  }
+   */
+  .item-close {
+    float: right;
+  }
+  
+  .cart-item:hover {
+    background-color: #eee;
+  }
+  
+  .cart-item .fa-solid {
+    font-size: 20px;
+    color: red;
+  }
+  
