@@ -17,6 +17,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
 use App\Models\Order;
+use App\Http\Controllers\UserController;
 
 use function Laravel\Prompts\search;
 
@@ -59,15 +60,13 @@ Route::resource('commentpost', CommentPostController::class);
 
 
 
-Route::get('/dashboard', function () {
+Route::get('/home', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('profile', ProfileController::class);
+    Route::get('/upload.cover/{id}', [ProfileController::class, 'uploadCover'])->name('upload.cover');
 });
 
 Route::group(['middleware' => ['web']], function () {
@@ -115,3 +114,9 @@ route::put('/editcategory/{id}',[CategoryController::class,'update'])->name('cat
 route::post('/createPost',[CategoryPostController::class,'create']);
 route::delete('/deletePost/{id}',[CategoryPostController::class,'deletePost'])->name('categoryPost.delete');
 route::put('/editcategoryPost/{id}',[CategoryPostController::class,'update'])->name('categorypost.update');
+
+//Quản lý user Kien
+Route::resource('users', UserController::class);
+Route::delete('/users/{id}', [UserController::class, 'destroy']);
+Route::get('/users/{user}/unDisable', [UserController::class, 'unDisable'])->name('users.unDisable');
+Route::get('/users/{user}/disable', [UserController::class, 'disable'])->name('users.disable');
