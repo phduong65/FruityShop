@@ -35,7 +35,7 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Tên category product</label>
                     <input type="text" name="category" class="form-control" pattern="[a-zA-Z\p{L}\d ]{4,20}"
-                        title="Vui lòng nhập khoảng 4 đến 20 ký tự, không nhập ký tự đặc biệt!">
+                        title="Vui lòng nhập khoảng 4 đến 20 ký tự, không nhập ký tự đặc biệt!" required>
                 </div>
                 <input type="submit" class="btn btn-primary my-3" name="submit" value="Add">
             </form>
