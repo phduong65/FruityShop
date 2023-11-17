@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('components.layout')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ $post->title }}</title>
-    @include('post/linkcss')
-
-</head>
-
-<body>
+@section('pageTitle', 'Bài Viết')
+@include('post/linkcss')
+@section('content')
     <main class="main">
         <section class="detailnew">
             <div class="container">
@@ -216,6 +209,4 @@
             </div>
         </section>
     </main>
-</body>
-
-</html>
+@endsection

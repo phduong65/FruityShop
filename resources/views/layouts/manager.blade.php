@@ -19,6 +19,21 @@
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://cdn.tiny.cloud/1/cbq48gtdz0pfdbuzyype3yu466uymwxiwm110gup8nlexzj2/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
+    @stack('style')
+
+    <link rel="stylesheet" href="{{ URL::asset('css') }}/dat.css">
+    <script src="
+                                                                                https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js
+                                                                                "></script>
+    <link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
+" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/cbq48gtdz0pfdbuzyype3yu466uymwxiwm110gup8nlexzj2/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
@@ -53,7 +68,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('categoriesProduct.index') }}">
                     <span class="icon">
                         <ion-icon name="grid-outline"></ion-icon>
                     </span>
@@ -78,7 +93,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('categoriesPost.index') }}">
                     <span class="icon">
                         <ion-icon name="file-tray-full-outline"></ion-icon>
                     </span>
@@ -87,7 +102,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="{{route('managerOrders')}}">
                     <span class="icon">
                         <ion-icon name="bag-outline"></ion-icon>
                     </span>
@@ -134,10 +149,15 @@
         @yield('manager_post')
         @yield('manager_post-create')
         @yield('manager_post-edit')
+        {{-- Manager Order --}}
+        @yield('manager_orders')
+        {{-- category product --}}
+        @yield('manager_category_product')
     </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="{{ URL::asset('js') }}/tri.js"></script>
+    <script src="{{ URL::asset('js') }}/dat.js"></script>
 </body>
 
 </html>

@@ -9,8 +9,12 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+
 class ProductController extends Controller
 {
+
+
+
     /**
      * Display a listing of the resource.
      */
@@ -276,23 +280,46 @@ class ProductController extends Controller
         $product->delete();
         return redirect('/products');
     }
-    // Format VNĐ
-    public static function asVND($value) {
-        return number_format($value, 0, ".") ."₫";;
-      }
-    public function search(Request $request)
+
+    public function sort(Request $request, $order)
     {
-        $query = Product::query();
-        if ($request->ajax()) {
-            $extras = $query
-            ->where('name', 'like', '%' . $request->keyword . '%')
-            ->get();
-            // var_dump($extras);
-            return response()->json(['list_search' => $extras]);
+        if ($order === 'asc') {
+            $products = Product::where('status','publish')->orderBy('price', 'asc')->paginate(8);
+            if ($request->ajax()) {
+                $view = view('data', compact('products'))->render();
+                return response()->json(['html' => $view]);
+            }
+            return view('allproduct', compact('products'));
+        } else if ($order === 'desc') {
+            $products = Product::where('status','publish')->orderBy('price', 'desc')->paginate(8);
+            if ($request->ajax()) {
+                $view = view('data', compact('products'))->render();
+                return response()->json(['html' => $view]);
+            }
+            return view('allproduct', compact('products'));
+        } else if ($order === 'outsand') {
+            $products = Product::where('outstand', 'open')->where('status','publish')->paginate(8);
+            if ($request->ajax()) {
+                $view = view('data', compact('products'))->render();
+                return response()->json(['html' => $view]);
+            }
+            return view('allproduct', compact('products'));
         } else {
-            $extras = $query->get();
-            return view('home', ['list_search' => $extras]);
+            return;
         }
         
     }
+    public function getAllProduct(Request $request)
+    {
+        $products = Product::where('status','publish')->orderBy('created_at', 'desc')->paginate(8);
+        if ($request->ajax()) {
+            $view = view('data', compact('products'))->render();
+            return response()->json(['html' => $view]);
+        }
+        return view('allproduct', compact('products'));
+    }
+    public static function asVND($value) {
+        return number_format($value, 0, ".") ."₫";;
+      }
+   
 }

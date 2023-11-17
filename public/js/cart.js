@@ -1,4 +1,3 @@
-const { log } = require("console");
 
 $(document).ready(function () {
     var cartWrapper = $(".cart-wrapper");

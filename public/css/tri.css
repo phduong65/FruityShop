@@ -457,7 +457,11 @@ body {
 }
 .bannerdetail {
     height: 160px;
+<<<<<<< HEAD
     background: url(../image/bg_detail-one.png) no-repeat center;
+=======
+    background: url(/img/bg_detail-one.png) no-repeat center;
+>>>>>>> dat
     background-size: cover;
     position: relative;
 }
@@ -477,7 +481,10 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 70px;
+<<<<<<< HEAD
     align-items: center;
+=======
+>>>>>>> dat
     padding: 50px 0;
 }
 .productdetail_content-image .thumnailbig {
@@ -670,7 +677,11 @@ body {
 }
 .description_content-banner {
     position: relative;
+<<<<<<< HEAD
     background: url(../image/bg_detail-two.jpg) no-repeat center;
+=======
+    background: url(/img/bg_detail-two.jpg) no-repeat center;
+>>>>>>> dat
     height: 150px;
     background-size: cover;
     position: relative;
@@ -899,6 +910,7 @@ body {
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
 }
+<<<<<<< HEAD
 .main .news_content-left .news_big .content .desc.--importanttext {
     height: 100px;
     overflow: hidden;
@@ -917,6 +929,8 @@ body {
 .main .news_content-left .news_big .content .desc.--importanttext table {
     display: none;
 }
+=======
+>>>>>>> dat
 .main .news_content-left .news_big .content .day {
     margin-bottom: 0;
     padding-top: 10px;
@@ -1099,6 +1113,7 @@ body {
     -webkit-box-orient: vertical;
     margin-top: 10px;
 }
+<<<<<<< HEAD
 .main
     .news_content-left
     .outstanding
@@ -1215,6 +1230,8 @@ body {
     br {
     display: none;
 }
+=======
+>>>>>>> dat
 .main .news_content-left .outstanding .outstanding-list .item .content .day {
     margin-bottom: 0;
     display: flex;
@@ -1223,7 +1240,11 @@ body {
     color: #888;
     font-size: 15px;
     text-transform: uppercase;
+<<<<<<< HEAD
     margin-top: 10px;
+=======
+    margin-bottom: 0;
+>>>>>>> dat
 }
 .main .news_content-right .category-news {
     background: #cacaca2f;
@@ -1479,7 +1500,11 @@ ul {
     padding-left: 0;
 }
 .container {
+<<<<<<< HEAD
     /* position: relative; */
+=======
+    position: relative;
+>>>>>>> dat
 }
 .navigation {
     position: fixed;
@@ -1582,6 +1607,10 @@ ul {
     width: calc(100% - 80px);
     left: 80px;
     min-height: 100vh;
+<<<<<<< HEAD
+=======
+    background: #f0f3f5;
+>>>>>>> dat
     transition: 0.5s;
 }
 .manager_main.active {
@@ -1594,7 +1623,11 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+<<<<<<< HEAD
     padding: 0 20px 0 10px;
+=======
+    padding: 0 10px;
+>>>>>>> dat
 }
 .toggle {
     position: relative;
@@ -1608,7 +1641,11 @@ ul {
 }
 .search {
     position: relative;
+<<<<<<< HEAD
     width: 700px;
+=======
+    width: 400px;
+>>>>>>> dat
     margin: 0 10px;
 }
 .search label {
@@ -1876,6 +1913,7 @@ ul {
     padding-bottom: 68%;
     max-width: inherit;
 }
+<<<<<<< HEAD
 
 .box_left-preview {
     padding: 0 30px;
@@ -1904,26 +1942,38 @@ ul {
     min-height: 100%;
     object-fit: cover;
 }
+=======
+>>>>>>> dat
 /*# sourceMappingURL=style.min.css.map */
 
 /* custom table */
 .manager_content-product {
+<<<<<<< HEAD
     background: #fff;
     padding: 20px;
     padding-bottom: 45px;
+=======
+    margin-left: 30px;
+    background: #fff;
+    padding: 20px;
+>>>>>>> dat
 }
 .manager_content-product .textbox {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+<<<<<<< HEAD
     position: relative;
+=======
+>>>>>>> dat
 }
 .manager_content-product .textbox h2 {
     font-size: 25px;
     color: #91ad41;
     font-weight: 600;
 }
+<<<<<<< HEAD
 .manager_content-product .textbox .search {
     position: absolute;
     left: 50%;
@@ -1933,6 +1983,11 @@ ul {
 #table_product-manage {
     border-collapse: collapse;
     max-width: 1320px;
+=======
+#table_product-manage {
+    border-collapse: collapse;
+    max-width: 1300px;
+>>>>>>> dat
     overflow: scroll;
     display: block;
     overflow-y: hidden;
@@ -1940,9 +1995,12 @@ ul {
 #table_product-manage thead {
     background: #88888832;
 }
+<<<<<<< HEAD
 #table_product-manage thead tr td {
     text-align: center;
 }
+=======
+>>>>>>> dat
 #table_product-manage,
 td {
     border: 1px dotted #88888832;
@@ -1954,12 +2012,18 @@ td {
 td {
     padding: 8px;
     vertical-align: top;
+<<<<<<< HEAD
     text-align: left;
     min-width: 200px;
 }
 td a {
     color: #000;
 }
+=======
+    text-align: center;
+    min-width: 200px;
+}
+>>>>>>> dat
 td.mw120 {
     min-width: 120px;
 }
@@ -2023,6 +2087,7 @@ td.outstand .close .circle {
 td.outstand .close .circle::after {
     background: #fb71851a;
 }
+<<<<<<< HEAD
 td.customimage .thumnail {
     position: relative;
     padding-bottom: 100%;
@@ -2076,3 +2141,8 @@ td.customimage .thumnail img {
     top: 50%;
     transform: translateY(-50%);
 }
+=======
+.alert-success {
+    margin: 10px 0 10px 30px;
+}
+>>>>>>> dat

@@ -359,4 +359,37 @@ body {
   font-size: 1.2rem;
 }
 
+.manager_orders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  padding-bottom: 40px;
+  background-color: #fff;
+  gap: 20px;
+}
+.manager_orders .orders_table::-webkit-scrollbar {
+  background: transparent;
+}
+.manager_orders .orders_table {
+  max-width: 1420px;
+  border-collapse: collapse;
+  overflow: scroll;
+  overflow-y: hidden;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 20px;
+}
+.manager_orders .orders_table .title_page {
+  color: #84b71c;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: 32px;
+}
+.manager_orders .orders_table .heading tr {
+  color: #fff;
+  background-color: #84b71c;
+}
+
 /*# sourceMappingURL=checkout.css.map */

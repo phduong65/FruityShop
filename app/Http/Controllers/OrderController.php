@@ -17,9 +17,9 @@ class OrderController extends Controller
     {
         $userId = auth()->user()->id ?? 1; // Nếu bạn đang sử dụng xác thực người dùng
         $cartItems = Cart::where('user_id', $userId)->get();
-        $total =0 ;
+        $total = 0 ;
         foreach ($cartItems as $item) {
-            $total += $item->price;
+            $total += $item['price']*$item['quantity'];
         }
         return view('orders.index')->with('cartItems',$cartItems)
                                 ->with('total',$total);
@@ -41,17 +41,32 @@ class OrderController extends Controller
         $prefix = '#';
         $orders = new Order();
         $orders->id_orders = $prefix . Str::random(6);
+        // Lấy dữ liệu từ request
+        $city = $request->input('inputCountry');
+        $district = $request->input('inputQuan');
+        $ward = $request->input('inputHuyen');
+        // Kết hợp các giá trị thành một chuỗi
+        $fullAddress = "{$ward}, {$district}, {$city}";
+        $userId = auth()->user()->id ?? 1; // Nếu bạn đang sử dụng xác thực người dùng
+        $cartItems = Cart::where('user_id', $userId)->get();
+        $total = 0 ;
+        foreach ($cartItems as $item) {
+            $total += $item['price']*$item['quantity'];
+        }
+
         if (auth()->check()) {
             $orders->id_user= Auth::user()->id;
             $orders->name_user = $request->input('name');
             $orders->email_user = $request->input('email');
             $orders->phone_user = $request->input('phone');
-            $orders->address_user = $request->input('address');
-            $orders->total_price = 0;
+            $orders->address_user = $fullAddress;
+            $orders->total_price = $total;
             $orders->status = "Dang xu ly";
             $orders->note_user = $request->input('note');
             $orders->save();
-            return redirect('success')->with('orders', $orders);
+            Cart::where('user_id', auth()->user()->id)->delete();
+            return redirect('/')->with('orders', $orders)->
+                                with('success','Đặt hàng thành công');
         }
         else {
             return redirect('login');
@@ -89,5 +104,22 @@ class OrderController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    // Manager ORDER
+    public function managerOrders(){
+        $your_orders = Order::orderBy('created_at', 'desc')
+            ->take(10)
+            ->get();
+        return view('manager.orders.index')->with('orders',$your_orders);
+    }
+    public function changeStatus(Request $request){
+        $id = $request -> input('id');
+        $status_changed = $request->input('selected-status');
+        var_dump($status_changed);
+        $order = Order::findOrFail($id);
+            $order->status = $status_changed;
+            $order->save();
+            return redirect('/manager_orders');
+        
     }
 }
