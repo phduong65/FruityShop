@@ -346,7 +346,7 @@ img.--center {
     display: block;
 }
 a {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 .cpn-new-mini {
     background: #cacaca2f;
@@ -604,10 +604,10 @@ body {
     background: #888888a3;
     transition: 0.4s;
 }
-.productdetail_content-textbox .quality .wrap span:hover svg {
-    fill: #fff;
+.productdetail_content-textbox .quality .wrap span:hover i {
+    color: #fff;
 }
-.productdetail_content-textbox .quality .wrap span svg {
+.productdetail_content-textbox .quality .wrap span i {
     cursor: pointer;
     transition: 0.4s;
     position: absolute;
@@ -728,9 +728,20 @@ body {
     display: block;
 }
 .description_content-wrap .box p {
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 16px;
+    line-height: 20px;
     margin-bottom: 10px;
+}
+.description_content-wrap .box h1,
+.description_content-wrap .box h2,
+.description_content-wrap .box h3 {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    line-height: 30px;
+}
+.description_content-wrap .box h1 {
+    font-size: 25px;
 }
 .description_content-wrap .box ul {
     padding-left: 30px;
@@ -751,13 +762,13 @@ body {
     text-transform: uppercase;
 }
 .productsame_content-box {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
     padding-top: 40px;
+    width: 100%;
 }
 .productsame_content-box .item {
     text-align: center;
+    width: calc(25% - 14px);
+    margin-right: 20px;
 }
 .productsame_content-box .item .thumnail {
     position: relative;
@@ -799,8 +810,8 @@ body {
 }
 .productsame_content-box .item .content .price {
     color: #91ad41;
-    margin-top: 15px;
     font-size: 17px;
+    margin-bottom: 0;
 }
 @keyframes light {
     0% {
@@ -1324,18 +1335,21 @@ body {
     min-width: 100%;
     margin-bottom: 30px;
 }
-.main .detailnew_content-left .comment {
+.main .detailnew_content-left .comment,
+.description_content-wrap .comment {
     margin-top: 20px;
     background: #cacaca2f;
     padding: 20px;
 }
-.main .detailnew_content-left .comment .title {
+.main .detailnew_content-left .comment .title,
+.description_content-wrap .comment .title {
     font-size: 25px;
     font-family: "Open Sans Condensed", sans-serif;
     font-weight: 600;
     line-height: 30px;
 }
-.main .detailnew_content-left .comment .text {
+.main .detailnew_content-left .comment .text,
+.description_content-wrap .comment .text {
     font-size: 18px;
     font-family: "Open Sans Condensed", sans-serif;
     color: #888;
@@ -1343,19 +1357,22 @@ body {
     align-items: center;
     gap: 10px;
 }
-.main .detailnew_content-left .comment .form-group .user_comment {
+.main .detailnew_content-left .comment .form-group .user_comment,
+.description_content-wrap .comment .form-group .user_comment {
     display: grid;
     gap: 20px;
     grid-template-columns: 60px 1fr;
     padding-bottom: 10px;
 }
-.main .detailnew_content-left .comment .form-group .user_comment .avatar {
+.main .detailnew_content-left .comment .form-group .user_comment .avatar,
+.description_content-wrap .comment .form-group .user_comment .avatar {
     position: relative;
     overflow: hidden;
     padding-bottom: 100%;
     border-radius: 100%;
 }
-.main .detailnew_content-left .comment .form-group .user_comment .avatar img {
+.main .detailnew_content-left .comment .form-group .user_comment .avatar img,
+.description_content-wrap .comment .form-group .user_comment .avatar img {
     max-width: 100%;
     min-width: 100%;
     min-height: 100%;
@@ -1370,13 +1387,15 @@ body {
     -o-transform: translate(-50%, -50%);
     position: absolute;
 }
-.main .detailnew_content-left .comment .form-group .user_comment .infor .name {
+.main .detailnew_content-left .comment .form-group .user_comment .infor .name,
+.description_content-wrap .comment .form-group .user_comment .infor .name {
     font-size: 18px;
     font-weight: 600;
     font-family: "Open Sans", sans-serif;
     margin-bottom: 0;
 }
-.main .detailnew_content-left .comment .form-group .user_comment .infor .day {
+.main .detailnew_content-left .comment .form-group .user_comment .infor .day,
+.description_content-wrap .comment .form-group .user_comment .infor .day {
     display: flex;
     font-family: "Open Sans", sans-serif;
     gap: 10px;
@@ -1385,52 +1404,62 @@ body {
     color: #888;
     font-size: 13px;
 }
-.main .detailnew_content-left .comment .form-group .comment-form {
+.main .detailnew_content-left .comment .form-group .comment-form,
+.description_content-wrap .comment .form-group .comment-form {
     position: relative;
     padding-bottom: 50px;
 }
-.main .detailnew_content-left .comment .form-group .comment-form .custom {
+.main .detailnew_content-left .comment .form-group .comment-form .custom,
+.description_content-wrap .comment .form-group .comment-form .custom {
     width: max-content;
     margin-top: 20px;
     position: absolute;
     bottom: 0;
     right: 0;
 }
-.main .detailnew_content-left .comment .list_comment::-webkit-scrollbar {
+.main .detailnew_content-left .comment .list_comment::-webkit-scrollbar,
+.description_content-wrap .comment .list_comment::-webkit-scrollbar {
     background: transparent;
 }
-.main .detailnew_content-left .comment .list_comment {
+.main .detailnew_content-left .comment .list_comment,
+.description_content-wrap .comment .list_comment {
     margin-top: 20px;
     overflow-y: scroll;
     max-height: 500px;
 }
-.main .detailnew_content-left .comment .list_comment .no-comment {
+.main .detailnew_content-left .comment .list_comment .no-comment,
+.description_content-wrap .comment .list_comment .no-comment {
     font-size: 17px;
     font-family: "Open Sans", sans-serif;
 }
-.main .detailnew_content-left .comment .list_comment .item {
+.main .detailnew_content-left .comment .list_comment .item,
+.description_content-wrap .comment .list_comment .item {
     border-bottom: 1px dashed #dbdbdb;
     margin-bottom: 15px;
     padding-bottom: 10px;
 }
-.main .detailnew_content-left .comment .list_comment .item:last-child {
+.main .detailnew_content-left .comment .list_comment .item:last-child,
+.description_content-wrap .comment .list_comment .item:last-child {
     border-bottom: unset;
     margin-bottom: 0;
     padding-bottom: 0;
 }
-.main .detailnew_content-left .comment .list_comment .item .wrap {
+.main .detailnew_content-left .comment .list_comment .item .wrap,
+.description_content-wrap .comment .list_comment .item .wrap {
     display: grid;
     grid-template-columns: 60px 1fr;
     gap: 20px;
     padding-bottom: 10px;
 }
-.main .detailnew_content-left .comment .list_comment .item .wrap .avatar {
+.main .detailnew_content-left .comment .list_comment .item .wrap .avatar,
+.description_content-wrap .comment .list_comment .item .wrap .avatar {
     position: relative;
     overflow: hidden;
     padding-bottom: 100%;
     border-radius: 100%;
 }
-.main .detailnew_content-left .comment .list_comment .item .wrap .avatar img {
+.main .detailnew_content-left .comment .list_comment .item .wrap .avatar img,
+.description_content-wrap .comment .list_comment .item .wrap .avatar img {
     max-width: 100%;
     min-width: 100%;
     min-height: 100%;
@@ -1445,13 +1474,15 @@ body {
     -o-transform: translate(-50%, -50%);
     position: absolute;
 }
-.main .detailnew_content-left .comment .list_comment .item .wrap .infor .name {
+.main .detailnew_content-left .comment .list_comment .item .wrap .infor .name,
+.description_content-wrap .comment .list_comment .item .wrap .infor .name {
     font-size: 18px;
     font-weight: 600;
     font-family: "Open Sans", sans-serif;
     margin-bottom: 0;
 }
-.main .detailnew_content-left .comment .list_comment .item .wrap .infor .day {
+.main .detailnew_content-left .comment .list_comment .item .wrap .infor .day,
+.description_content-wrap .comment .list_comment .item .wrap .infor .day {
     display: flex;
     font-family: "Open Sans", sans-serif;
     gap: 10px;
@@ -1460,7 +1491,8 @@ body {
     color: #888;
     font-size: 13px;
 }
-.main .detailnew_content-left .comment .list_comment .item .content {
+.main .detailnew_content-left .comment .list_comment .item .content,
+.description_content-wrap .comment .list_comment .item .content {
     font-size: 16px;
     line-height: 20px;
     font-family: "Open Sans", sans-serif;

@@ -1,14 +1,17 @@
 <?php
 
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CommentPostController;
+use App\Http\Controllers\CommentProductController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategoryPostController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\CategoryPost;
 use App\Models\Product;
+use App\Models\CommentPost;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Http\Request;
@@ -45,19 +48,23 @@ Route::get('/manager_orders', [OrderController::class, 'managerOrders'])->name('
 //managerDonHang
 Route::post('orders/update', [OrderController::class,'changeStatus'])->name('orders.changeStatus');
 // manage
-Route::resource('products', ProductController::class);
-Route::resource('posts', PostController::class);
 Route::get('/post', [PostController::class, 'getallpublishpost'])->name('post');
-// Route::get('/manager/products', [ProductController::class, 'managerproduct']);
-// Route::get('/manager/products/create', [ProductController::class, 'create']);
 Route::get('/manager', function () {
     return view('manager.doashboard');
 });
+Route::resource('products', ProductController::class);
+Route::resource('posts', PostController::class);
+Route::resource('comments', CommentProductController::class);
+Route::resource('commentpost', CommentPostController::class);
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -96,7 +103,7 @@ Route::get('/manager', function () {
 Route::resource('categoriesProduct',CategoryController::class);
 Route::resource('categoriesPost',CategoryPostController::class);
 
-Route::get('allproduct',[ProductController::class,'getAllProduct'])->name('products.index');
+Route::get('allproduct',[ProductController::class,'getAllProduct'])->name('allproducts.index');
 Route::get('/allproduct/sort/{order}', [ProductController::class,'sort'])->name('products.sort');
 
 //Dat CURD CategoryProduct

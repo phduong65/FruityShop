@@ -12,5 +12,9 @@ class Post extends Model
     {
         return $this->belongsToMany(CategoryPost::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(CommentPost::class)->latest();
+    }
     protected $fillable = ['title', 'content', 'photo', 'post_status', 'post_outstand', 'comment_status', 'comment_count', 'view'];
 }

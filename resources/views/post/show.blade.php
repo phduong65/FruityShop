@@ -34,116 +34,67 @@
                             <h2 class="title">Đánh giá bài viết</h2>
                             <p class="text">
                                 <i class="fa-solid fa-pen-to-square"></i>
-                                <span> Chỉ những người dùng đăng nhập mới được đánh giá</span>
+                                @if (Auth::user())
+                                    <span> Viết đánh giá của bạn ở dưới</span>
+                                @else
+                                    <span> Chỉ những người dùng đăng nhập mới được đánh giá</span>
+                                @endif
                             </p>
-                            <div class="form-group">
-                                <div class="user_comment">
-                                    <div class="avatar">
-                                        <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/395353319_1672809266540399_236902390255612610_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=7cKCX3DB06UAX-bG9ze&_nc_ht=scontent-tpe1-1.xx&oh=00_AfDp7p_fuwanDDoKEoAjR-zxSdTBIIVO48LqrtaoyPe2rA&oe=6548A77C"
-                                            alt="" />
+                            @if ($post->comment_status == 'close')
+                                <p>Bài viết đã tắt tính năng bình luận</p>
+                            @elseif(Auth::user())
+                                <div class="form-group">
+                                    <div class="user_comment">
+                                        <div class="avatar">
+                                            <img src="https://images.unsplash.com/photo-1699727152109-b5b9592641ca?q=80&w=2889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                alt="" />
+                                        </div>
+                                        <div class="infor">
+                                            <p class="name">{{ $infor->name }}</p>
+                                            <p class="day">
+                                                <i class="fa-solid fa-clock"></i>
+                                                <span>{{ date('Y-m-d g:i a') }}</span>
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="infor">
-                                        <p class="name">Nguyễn Đắc Kiên</p>
-                                        <p class="day">
-                                            <i class="fa-solid fa-clock"></i>
-                                            <span>March 07, 2021</span>
-                                        </p>
-                                    </div>
+                                    <form action="{{ route('commentpost.store') }}" method="post" class="comment-form">
+                                        @csrf
+                                        <div class="form-floating">
+                                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                            <input type="hidden" name="user_id" value="{{ $infor->id }}">
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" required name="content"
+                                                rows="7" style="height: inherit"></textarea>
+                                            <label for="floatingTextarea2">Comments</label>
+                                        </div>
+                                        <button class="btn btn-success custom">Đánh giá</button>
+                                    </form>
                                 </div>
-                                <form action="" method="post" class="comment-form">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                                        <label for="floatingTextarea2">Comments</label>
-                                    </div>
-                                    <button class="btn btn-success custom">Đánh giá</button>
-                                </form>
-                            </div>
+                            @endif
                             <div class="list_comment">
-                                <!-- <p class="no-comment">Bài viết chưa có đánh giá nào</p> -->
-                                <div class="item">
-                                    <div class="wrap">
-                                        <div class="avatar">
-                                            <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-1/356847140_3586488198334825_3303260936444347827_n.jpg?stp=dst-jpg_s480x480&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=3PQdVNYWaqUAX8ptE69&_nc_ht=scontent-tpe1-1.xx&oh=00_AfCQQt_w77_mae8g9tJNK9a_gecbjXMdeNQvn6cY47phEw&oe=6548244C"
-                                                alt="" />
-                                        </div>
-                                        <div class="infor">
-                                            <p class="name">Trương Quốc Đạt</p>
-                                            <p class="day">
-                                                <i class="fa-solid fa-clock"></i>
-                                                <span>March 07, 2021</span>
+                                @if ($post->comment_count > 0)
+                                    @foreach ($post->comments as $comment)
+                                        <div class="item">
+                                            <div class="wrap">
+                                                <div class="avatar">
+                                                    <img src="https://images.unsplash.com/photo-1699727152109-b5b9592641ca?q=80&w=2889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                        alt="" />
+                                                </div>
+                                                <div class="infor">
+                                                    <p class="name">{{ $comment->user->name }}</p>
+                                                    <p class="day">
+                                                        <i class="fa-solid fa-clock"></i>
+                                                        <span>{{ $comment->created_at }}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <p class="content">
+                                                {{ $comment->content }}
                                             </p>
                                         </div>
-                                    </div>
-                                    <p class="content">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Excepturi dolore, temporibus veniam quo quia corrupti
-                                        voluptatum perferendis nesciunt error doloremque et. Atque
-                                        porro temporibus quidem ex maxime fugiat harum autem.
-                                    </p>
-                                </div>
-                                <div class="item">
-                                    <div class="wrap">
-                                        <div class="avatar">
-                                            <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-1/356847140_3586488198334825_3303260936444347827_n.jpg?stp=dst-jpg_s480x480&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=3PQdVNYWaqUAX8ptE69&_nc_ht=scontent-tpe1-1.xx&oh=00_AfCQQt_w77_mae8g9tJNK9a_gecbjXMdeNQvn6cY47phEw&oe=6548244C"
-                                                alt="" />
-                                        </div>
-                                        <div class="infor">
-                                            <p class="name">Trương Quốc Đạt</p>
-                                            <p class="day">
-                                                <i class="fa-solid fa-clock"></i>
-                                                <span>March 07, 2021</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <p class="content">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Excepturi dolore, temporibus veniam quo quia corrupti
-                                        voluptatum perferendis nesciunt error doloremque et. Atque
-                                        porro temporibus quidem ex maxime fugiat harum autem.
-                                    </p>
-                                </div>
-                                <div class="item">
-                                    <div class="wrap">
-                                        <div class="avatar">
-                                            <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-1/356847140_3586488198334825_3303260936444347827_n.jpg?stp=dst-jpg_s480x480&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=3PQdVNYWaqUAX8ptE69&_nc_ht=scontent-tpe1-1.xx&oh=00_AfCQQt_w77_mae8g9tJNK9a_gecbjXMdeNQvn6cY47phEw&oe=6548244C"
-                                                alt="" />
-                                        </div>
-                                        <div class="infor">
-                                            <p class="name">Trương Quốc Đạt</p>
-                                            <p class="day">
-                                                <i class="fa-solid fa-clock"></i>
-                                                <span>March 07, 2021</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <p class="content">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Excepturi dolore, temporibus veniam quo quia corrupti
-                                        voluptatum perferendis nesciunt error doloremque et. Atque
-                                        porro temporibus quidem ex maxime fugiat harum autem.
-                                    </p>
-                                </div>
-                                <div class="item">
-                                    <div class="wrap">
-                                        <div class="avatar">
-                                            <img src="https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-1/356847140_3586488198334825_3303260936444347827_n.jpg?stp=dst-jpg_s480x480&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=3PQdVNYWaqUAX8ptE69&_nc_ht=scontent-tpe1-1.xx&oh=00_AfCQQt_w77_mae8g9tJNK9a_gecbjXMdeNQvn6cY47phEw&oe=6548244C"
-                                                alt="" />
-                                        </div>
-                                        <div class="infor">
-                                            <p class="name">Trương Quốc Đạt</p>
-                                            <p class="day">
-                                                <i class="fa-solid fa-clock"></i>
-                                                <span>March 07, 2021</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <p class="content">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Excepturi dolore, temporibus veniam quo quia corrupti
-                                        voluptatum perferendis nesciunt error doloremque et. Atque
-                                        porro temporibus quidem ex maxime fugiat harum autem.
-                                    </p>
-                                </div>
+                                    @endforeach
+                                @else
+                                    <p class="no-comment">Bài viết chưa có đánh giá nào</p>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryPost;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -134,8 +136,16 @@ class PostController extends Controller
             // Lưu danh sách vào session
             session(['viewedProducts' => $viewedProducts]);
         }
-
-        return view('post.show', compact('post', 'relatedPosts', 'postnew', 'mostViewedPosts'));
+        // lấy infor user
+        $infor = null;
+        if (Auth::user()) {
+            $id_user = Auth::user()->id;
+            $infor = User::find($id_user);
+        }
+        // lấy comment theo product
+        $prd = new Post();
+        $comments = $prd->comments();
+        return view('post.show', compact('post', 'relatedPosts', 'postnew', 'mostViewedPosts', 'infor', 'comments'));
     }
 
     /**

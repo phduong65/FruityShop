@@ -1,12 +1,12 @@
 @extends('components.layout')
 @push('style')
     <link rel="stylesheet" href="{{ URL::asset('css') }}/tri.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link
         href="http://fonts.googleapis.com/css?family=Open+Sans:300,700,800|Open+Sans+Condensed:300,700|Prata&subset=vietnamese"
         rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 @endpush
-
-<!-- Mỗi body của mỗi page nên có class ví dụ homepage, aboutpage, contactpage... -->
 @section('content')
     <main class="main">
         <section class="bannerdetail">
@@ -51,43 +51,36 @@
                                             echo $price . 'đ';
                                         }
                                     @endphp
+                       
+
+                            </span>
+                        </p>
+                        <p class="shortdesc">
+                            Mô tả đang được cập nhật
+                        </p>
+                        <p class="notes">
+                            <span>Lưu ý:</span> Số lượng của sản phẩm được tính bằng
+                            kg(kilogram)
+                        </p>
+                        <div class="quality">
+                            <span class="text">Số lượng:</span>
+                            <div class="wrap">
+                                <span class="mul">
+                                    <i class="fa-solid fa-minus"></i>
+                                </span>
+                                <input type="number" min="1" max="100" value="1" name="quality"
+                                    id="quality" />
+                                <span class="plus">
+                                    <i class="fa-solid fa-plus"></i>
                                 </span>
                                 {{-- {{ '-' . $product->discount . '%' }}; --}}
                             </p>
-                            <p class="shortdesc">
-                                Mô tả đang được cập nhật
-                            </p>
-                            <p class="notes">
-                                <span>Lưu ý:</span> Số lượng của sản phẩm được tính bằng
-                                kg(kilogram)
-                            </p>
-                            <div class="quality">
-                                <span class="text">Số lượng:</span>
-                                <div class="wrap">
-                                    <span class="mul">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                                            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                            <path
-                                                d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
-                                        </svg>
-                                    </span>
-                                    <input type="number" min="1" max="100" value="1" name="quality"
-                                        id="quality" />
-                                    <span class="plus">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                                            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                            <path
-                                                d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn-add">
-                                Thêm vào giỏ hàng
-                            </button>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                    <button type="submit" class="btn-add">
+                        Thêm vào giỏ hàng
+                    </button>
+                </form>
             </div>
         </section>
         <section class="description">
@@ -101,14 +94,83 @@
                     </div>
                     <div class="description_content-tabs">
                         <p class="tab active">Mô tả</p>
-                        <p class="tab">Đánh giá(2)</p>
+                        <p class="tab">Đánh giá({{ $product->comment_count }})</p>
                     </div>
                     <div class="description_content-wrap">
                         <div class="box active">
                             <?php echo html_entity_decode($product->description); ?>
                         </div>
-                        <div class="box">
-                            <input type="text" placeholder="Nhập comment" />
+                        <div class="box comment">
+                            <h2 class="title">Đánh giá bài viết</h2>
+                            @if (Auth::user())
+                                <p class="text">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <span> Viết đánh giá của bạn ở dưới</span>
+                                </p>
+                            @else
+                                <p class="text">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <span> Chỉ những người dùng đăng nhập mới được đánh giá</span>
+                                </p>
+                            @endif
+                            <div class="form-group">
+                                @if (Auth::user())
+                                    <div class="user_comment">
+                                        <div class="avatar">
+                                            <img src="https://images.unsplash.com/photo-1699727152109-b5b9592641ca?q=80&w=2889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                alt="" />
+                                        </div>
+                                        <div class="infor">
+                                            <p class="name">{{ $infor->name }}</p>
+                                            <p class="day">
+                                                <i class="fa-solid fa-clock"></i>
+                                                @php
+                                                    $date = date('Y-m-d g:i a');
+
+                                                @endphp
+                                                <span>{{ $date }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <form action="{{ route('comments.store') }}" method="post" class="comment-form">
+                                        @csrf
+                                        <div class="form-floating">
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <input type="hidden" name="user_id" value="{{ $infor->id }}">
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" rows="7"
+                                                style="height: inherit" name="content" required></textarea>
+                                            <label for="floatingTextarea2">Comments</label>
+                                        </div>
+                                        <button class="btn btn-success custom">Đánh giá</button>
+                                    </form>
+                                @endif
+                            </div>
+                            <div class="list_comment">
+                                @if ($product->comment_count > 0)
+                                    @foreach ($product->comments as $comment)
+                                        <div class="item">
+                                            <div class="wrap">
+                                                <div class="avatar">
+                                                    <img src="https://images.unsplash.com/photo-1699727152109-b5b9592641ca?q=80&w=2889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                        alt="" />
+                                                </div>
+                                                <div class="infor">
+                                                    <p class="name">{{ $comment->user->name }}</p>
+                                                    <p class="day">
+                                                        <i class="fa-solid fa-clock"></i>
+                                                        <span>{{ $comment->created_at }}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <p class="content">
+                                                {{ $comment->content }}
+                                            </p>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <p class="no-comment">Bài viết chưa có đánh giá nào</p>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -118,7 +180,8 @@
             <div class="container">
                 <div class="productsame_content">
                     <h2 class="productsame_content-heading">Sản Phẩm Tương Tự</h2>
-                    <div class="productsame_content-box">
+                    <div class="productsame_content-box"data-flickity='{ "cellAlign": "left", "contain": true,"freeScroll": true,
+                    "wrapAround": true,"prevNextButtons": false,"pageDots": false, "autoPlay": 1500}'>
                         @foreach ($relatedPosts as $item)
                             @php
                                 // Tạo URL detail bằng cách kết hợp $encryption và $encodedProductId

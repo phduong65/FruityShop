@@ -6,8 +6,11 @@ use App\Models\Post;
 // use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use App\Models\CommentProduct;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProductController extends Controller
@@ -170,9 +173,18 @@ class ProductController extends Controller
             // loại trừ post hiện tại
             ->where('id', '!=', $product->id)
             ->where('status', 'publish')
-            ->take(4)
+            // ->take(4)
             ->get();
-        return view('product.show', compact('product', 'relatedPosts'));
+        //  lấy id user
+        $infor = null;
+        if (Auth::user()) {
+            $id_user = Auth::user()->id;
+            $infor = User::find($id_user);
+        }
+        // lấy comment theo product
+        $prd = new Product();
+        $comments = $prd->comments();
+        return view('product.show', compact('product', 'relatedPosts', 'infor', 'comments'));
     }
 
     /**

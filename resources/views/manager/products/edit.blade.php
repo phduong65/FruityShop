@@ -12,7 +12,9 @@
                         <div class="form_product-name --same">
                             <label for="exampleFormControlInput1" class="form-label">Tên Sản Phẩm</label>
                             <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Tên Sản Phẩm" name="nameproduct" required value="{{ $product->name }}" />
+                                placeholder="Tên Sản Phẩm" name="nameproduct" required value="{{ $product->name }}"
+                                oninput="validateInput()" />
+                            <div class="invalid-feedback" id="error-message-name">Không được nhập quá 255 kí tự</div>
                         </div>
                         <div class="form_product-des --same">
                             <label for="content" class="form-label">Mô Tả</label>
@@ -23,13 +25,16 @@
                                 <label for="exampleFormControlInput1" class="form-label">Giá bán</label>
                                 <input type="number" class="form-control" id="exampleFormControlInput1"
                                     placeholder="Giá sản phẩm" name="price" min="0" required
-                                    value="{{ $product->price }}" />
+                                    value="{{ $product->price }}" oninput="validateInput()" />
+                                <div class="invalid-feedback" id="error-message-price">Không được nhập quá 10 số</div>
                             </div>
                             <div class="pricesale">
                                 <label for="exampleFormControlInput1" class="form-label">Giá giảm</label>
                                 <input type="number" class="form-control" id="exampleFormControlInput1"
                                     placeholder="Nhập phần trăm giảm" min="0" name="discount"
-                                    value="{{ $product->discount }}" />
+                                    value="{{ $product->discount }}" oninput="validateInput()" />
+                                <div class="invalid-feedback" id="error-message-discount">Chỉ được nhập trong khoảng 0-100
+                                </div>
                                 <p class="desc">
                                     Lưu ý: Nhập phần trăm giảm. Ví dụ 30% = 30
                                 </p>
@@ -39,7 +44,8 @@
                             <label for="exampleFormControlInput1" class="form-label">Số lượng</label>
                             <input type="number" class="form-control" id="exampleFormControlInput1"
                                 placeholder="Số lượng sản phẩm" min="0" required name="quantity"
-                                value="{{ $product->quantity }}" />
+                                value="{{ $product->quantity }}" oninput="validateInput()" />
+                            <div class="invalid-feedback" id="error-message-quantity">Không được nhập quá 10 số</div>
                             <p class="desc">
                                 Lưu ý: Số lượng được tính bằng kg (kilogram)
                             </p>
@@ -75,7 +81,7 @@
                                 <span class="text">Bản thảo</span>
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" id="btnproductsave">
                             <i class="fa-solid fa-bookmark"></i>
                             <span>Lưu Thay Đổi</span>
                         </button>
@@ -126,4 +132,72 @@
             </div>
         </form>
     </div>
+    <script>
+        function validateInput() {
+            let count = 0;
+            // input
+            const inputNameProduct = document.querySelector(
+                'input[name="nameproduct"]'
+            );
+            const inputPriceProduct = document.querySelector('input[name="price"]');
+            const inputQuantityProduct = document.querySelector(
+                'input[name="quantity"]'
+            );
+            const inputDiscountProduct = document.querySelector(
+                'input[name="discount"]'
+            );
+            // err message
+            const errorNameProduct = document.getElementById("error-message-name");
+            const errorPriceProduct = document.getElementById("error-message-price");
+            // const errorPriceNBProduct = document.getElementById(
+            //     "error-message-pricenb"
+            // );
+            const errorQuantityProduct = document.getElementById(
+                "error-message-quantity"
+            );
+            const errorDiscountProduct = document.getElementById(
+                "error-message-discount"
+            );
+            // input value
+            const inputNameValue = inputNameProduct.value;
+            const inputPriceValue = inputPriceProduct.value;
+            const inputQuantityValue = inputQuantityProduct.value;
+            const inputDiscountValue = inputDiscountProduct.value;
+            // btnsave
+            const btnproductsave = document.querySelector("#btnproductsave");
+
+            inputNameValue.length > 255 ?
+                handleBlock(errorNameProduct, inputNameProduct) :
+                (handleNone(errorNameProduct, inputNameProduct), count++);
+
+            inputPriceValue.length > 10 ?
+                handleBlock(errorPriceProduct, inputPriceProduct) :
+                (handleNone(errorPriceProduct, inputPriceProduct), count++);
+
+            inputQuantityValue.length > 10 ?
+                handleBlock(errorQuantityProduct, inputQuantityProduct) :
+                (handleNone(errorQuantityProduct, inputQuantityProduct), count++);
+
+            parseInt(inputDiscountValue, 10) > 100 ?
+                handleBlock(errorDiscountProduct, inputDiscountProduct) :
+                (handleNone(errorDiscountProduct, inputDiscountProduct), count++);
+
+            // /[^0-9]/.test(inputPriceValue)
+            //     ? handleBlock(errorPriceNBProduct, inputPriceProduct)
+            //     : (handleNone(errorPriceNBProduct, inputPriceProduct), count++);
+            count == 4 ?
+                (btnproductsave.disabled = false) :
+                (btnproductsave.disabled = true);
+            console.log(count);
+        }
+
+        const handleBlock = (err, inputName) => {
+            err.style.display = "block";
+            inputName.classList.add("is-invalid");
+        };
+        const handleNone = (err, inputName) => {
+            err.style.display = "none";
+            inputName.classList.remove("is-invalid");
+        };
+    </script>
 @endsection

@@ -61,18 +61,18 @@ document.getElementById("name").addEventListener("input", function () {
     }
 });
 
-function validateInput() {
-    const input = document.getElementById("inputField");
-    const errorMessage = document.getElementById("errorMessage");
+// function validateInputDat() {
+//     const input = document.getElementById("inputField");
+//     const errorMessage = document.getElementById("errorMessage");
 
-    if (input.value.length < 4 || input.value.length > 20) {
-        errorMessage.classList.remove("hidden");
-    } else {
-        errorMessage.classList.add("hidden");
-        // Thực hiện các hành động khác khi form hợp lệ
-        // Ví dụ: gửi dữ liệu đi, xử lý form, vv.
-    }
-}
+//     if (input.value.length < 4 || input.value.length > 20) {
+//         errorMessage.classList.remove("hidden");
+//     } else {
+//         errorMessage.classList.add("hidden");
+//         // Thực hiện các hành động khác khi form hợp lệ
+//         // Ví dụ: gửi dữ liệu đi, xử lý form, vv.
+//     }
+// }
 
 // const handleTab=()=>{
 //     const listTab=document.querySelectorAll('.sapxep li');
