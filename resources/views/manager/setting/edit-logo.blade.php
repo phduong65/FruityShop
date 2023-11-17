@@ -1,18 +1,5 @@
 @extends('layouts.manager')
 @section('manager_setting')
-    <style>
-        .darkMode1 {
-            background: #343541;
-        }
-
-        .darkMode2 {
-            color: #ffffff;
-        }
-
-        .darkMode3 {
-            background: #444654;
-        }
-    </style>
     <div class="manager_content">
         <div class="manager_content-product">
             <div class="textbox">

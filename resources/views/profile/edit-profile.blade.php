@@ -13,12 +13,14 @@
              <ul class="form-list">
                  <li>
                      <label for="name">Họ và tên:</label>
-                     <input required type="text" name="name" id="name" class="form-control"
+                     <input required pattern="[a-zA-Z\p{L}\d ]+" title="(Không nhập ký tự đặc biệt!)"
+                         type="text" name="name" id="name" class="form-control"
                          value="{{ $user->userProfile->name ?? $user->name }}">
                  </li>
                  <li>
                      <label for="phone">Số điện thoại:</label>
-                     <input required type="number" name="phone" id="phone" class="form-control"
+                     <input required pattern="0[0-9]{9,10}" title="(Chỉ nhập số ĐT 10 hoặc 11 chữ số!)" type="tel"
+                         name="phone" id="phone" class="form-control"
                          value="{{ $user->userProfile->phone ?? '' }}">
                  </li>
                  <li>
@@ -44,5 +46,3 @@
 
      </div>
  </div>
-
- 

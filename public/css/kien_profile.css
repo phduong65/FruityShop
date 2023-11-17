@@ -227,6 +227,11 @@
 .profile-cate .cate-col .cate-content i {
     margin-right: 10px;
 }
+form.cate-content a {
+    padding: 0;
+    font-size: 15px;
+    min-height: 22.5px;
+}
 
 .cate-col .cate-content:hover {
     filter: brightness(.9);
@@ -363,6 +368,9 @@
 }
 .text-intro {
     border-radius: 5px;
+    border-style: dashed;
+    box-shadow: 0 0 5px rgba(0, 116, 217, 0.5);
+    font-style: italic;
 }
 
 .form-control {

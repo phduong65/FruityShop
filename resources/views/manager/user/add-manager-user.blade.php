@@ -13,7 +13,8 @@
                 <div class="form-edit-manager">
                     <div class="edit-input-names">
                         <label for="name" class="edit-mana-lable">Name</label>
-                        <input required type="text" class="edit-input-name" id="name" name="name">
+                        <input required pattern="[a-zA-Z\p{L}\d ]+" title="(Không nhập ký tự đặc biệt!)"
+                            type="text" class="edit-input-name" id="name" name="name">
                     </div>
                     <div class="edit-input-emails">
                         <label for="email" class="edit-mana-lable">Email</label>
@@ -25,7 +26,8 @@
                     </div>
                     <div class="edit-input-phones">
                         <label for="phone" class="edit-mana-lable">Phone number</label>
-                        <input required type="number" class="edit-input-phone" id="phone" name="phone">
+                        <input required pattern="0[0-9]{9,10}" title="(Chỉ nhập số ĐT 10 hoặc 11 chữ số!)" type="tel"
+                            class="edit-input-phone" id="phone" name="phone">
                     </div>
                     <div class="edit-input-addresses">
                         <label for="address" class="edit-mana-lable">Address</label>

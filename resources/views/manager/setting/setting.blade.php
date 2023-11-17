@@ -1,44 +1,6 @@
 @extends('layouts.manager')
 @section('manager_setting')
-    <style>
-        .darkMode1 {
-            background: #343541;
-        }
-
-        .darkMode2 {
-            color: #ffffff;
-        }
-
-        .darkMode3 {
-            background: #444654;
-        }
-
-
-        .modal-logo {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-
-        .modal-content-logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-        }
-
-        #closeModalBtn {
-            display: block;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-    </style>
+    
     {{--  modal  --}}
     <div class="modal-logo" id="imageModal">
         <div class="modal-content-logo">
