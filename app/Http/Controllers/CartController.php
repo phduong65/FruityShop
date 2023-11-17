@@ -50,6 +50,10 @@ class CartController extends Controller
             }
             return redirect()->route('cart');
         }
+        else {
+            return redirect()->route('home');
+        }
+        
     }
 
     // Xóa sản phẩm khỏi giỏ hàng

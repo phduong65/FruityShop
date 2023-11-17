@@ -67,7 +67,7 @@
                     <div class="cate_list col-md-7">
                         <a href="" class="cate_item">Trang chủ</a>
                         <a href="" class="cate_item">Giới thiệu</a>
-                        <a href="" class="cate_item">Sản phẩm</a>
+                        <a href="{{ route('products.index') }}" class="cate_item">Sản phẩm</a>
                         <a href="{{ route('cart') }}" class="cate_item">Giỏ hàng</a>
                         <a href="{{route('post')}}" class="cate_item">Bài Viết</a>
                         <a href="" class="cate_item">Liên hệ</a>

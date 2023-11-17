@@ -13,4 +13,5 @@ class Product extends Model
         return $this->belongsToMany(Category::class);
     }
     protected $fillable = ['name', 'price', 'photo', 'description', 'status', 'quantity', 'outstand', 'thumnail', 'discount'];
+
 }
