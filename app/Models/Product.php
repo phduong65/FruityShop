@@ -12,5 +12,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(CommentProduct::class)->latest();
+    }
     protected $fillable = ['name', 'price', 'photo', 'description', 'status', 'quantity', 'outstand', 'thumnail', 'discount'];
 }
