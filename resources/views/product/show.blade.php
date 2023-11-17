@@ -82,7 +82,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <button type="submit">
+                            <button type="submit" class="btn-add">
                                 Thêm vào giỏ hàng
                             </button>
                         </form>
@@ -143,10 +143,8 @@
             </div>
         </section>
     </main>
-@endsection
-@push('js')
     <script src="{{ URL::asset('js') }}/tri.js"></script>
-    <script type="text/javascript" >
+    <script>
         const handleChangeQuality = () => {
             const multi = document.querySelector(".mul"),
                 plus = document.querySelector(".plus"),
@@ -161,5 +159,24 @@
             });
         };
         handleChangeQuality();
+        const handleTab = () => {
+            const listTab = document.querySelectorAll(".description_content-tabs .tab"),
+                listContent = document.querySelectorAll(
+                    ".description_content-wrap .box"
+                );
+            listTab.forEach((e, i) => {
+                e.addEventListener("click", () => {
+                    listTab.forEach((ev) => {
+                        ev.classList.remove("active");
+                    });
+                    e.classList.add("active");
+                    listContent.forEach((ev) => {
+                        ev.classList.remove("active");
+                    });
+                    listContent[i].classList.add("active");
+                });
+            });
+        };
+        handleTab();
     </script>
-@endpush
+@endsection

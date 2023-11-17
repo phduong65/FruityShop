@@ -1,7 +1,7 @@
 @foreach ($products as $products)
 
 <div class="col-md-3 mb-5">
-    <div class="product">
+    <div class="productdat">
      <div class="photo">
       <img src="{{ URL::asset('uploads/photobig') }}/{{$products->photo}}" alt="">
      </div>
