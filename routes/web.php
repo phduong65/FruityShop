@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
+use App\Models\Order;
+
 use function Laravel\Prompts\search;
 
 /*
@@ -22,20 +24,26 @@ use function Laravel\Prompts\search;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-// <<<<<<< HEAD
-Route::get('/checkout',[OrderController::class,'index'])->name('orders.index');
+// Trang thanh toán
+// Route::get('/checkout',[OrderController::class,'index'])->name('orders.index');
+// trang index
 Route::get('/',[ProductController::class,'getProductHome'])->name('home');
+// filter-home
 Route::get('/fillter',[ProductController::class,'getNewProducts'])->name('fillter');
+// search-home
 Route::get('/search',[ProductController::class,'search'])->name('search');
+// best-seller
 Route::get('/products_new',[ProductController::class,'getNewProducts'])->name('products_new');
-Route::get('/success', function () {
-    return view('orders.success');
-})->name('success');
+// Lưu đơn hàng
+Route::resource('orders', OrderController::class);
+Route::get('/success', [OrderController::class, 'store'])->name('orders.store');
+Route::get('/manager_orders', [OrderController::class, 'managerOrders'])->name('managerOrders');
+//managerDonHang
+Route::post('orders/update', [OrderController::class,'changeStatus'])->name('orders.changeStatus');
 // manage
 Route::resource('products', ProductController::class);
 Route::resource('posts', PostController::class);
-Route::get('/post', [PostController::class, 'getallpublishpost']);
+Route::get('/post', [PostController::class, 'getallpublishpost'])->name('post');
 // Route::get('/manager/products', [ProductController::class, 'managerproduct']);
 // Route::get('/manager/products/create', [ProductController::class, 'create']);
 Route::get('/manager', function () {

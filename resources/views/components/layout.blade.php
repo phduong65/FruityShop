@@ -14,11 +14,8 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-{{-- <<<<<<< HEAD --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-{{-- ======= --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-{{-- >>>>>>> tuan --}}
     <link rel="stylesheet" href="{{ URL::asset('css') }}/layout.css">
     <link rel="stylesheet" href="{{ URL::asset('css') }}/_reset.css">
     <link rel="stylesheet" href="{{ URL::asset('css') }}/cart.css">
@@ -72,7 +69,7 @@
                         <a href="" class="cate_item">Giới thiệu</a>
                         <a href="" class="cate_item">Sản phẩm</a>
                         <a href="{{ route('cart') }}" class="cate_item">Giỏ hàng</a>
-                        <a href="" class="cate_item">Tin tức</a>
+                        <a href="{{route('post')}}" class="cate_item">Bài Viết</a>
                         <a href="" class="cate_item">Liên hệ</a>
                     </div>
                     <div class="icon_link col-md-2">

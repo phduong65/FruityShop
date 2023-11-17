@@ -32,7 +32,7 @@
                         </span>
                     </div>
                     @endif
-                    <form action="{{route('success')}}" method="GET" class="frm_checkout row g-4">
+                    <form action="{{route('orders.store')}}" method="GET" class="frm_checkout row g-4">
                         @csrf  
                         <div class="col-md-12">
                             <label for="inputName" class="form-label" >Họ và Tên</label>
@@ -49,19 +49,19 @@
 
                         <div class="col-md-4">
                             <label for="inputCountry" class="form-label">Tỉnh / Thành</label>
-                            <select id="inputCountry" class="form-select">
+                            <select id="inputCountry" class="form-select" name="inputCountry">
                                 <option selected>Choose...</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label for="inputQuan" class="form-label">Quận / Huyện</label>
-                            <select id="inputQuan" class="form-select">
+                            <select id="inputQuan" class="form-select" name="inputQuan">
                                 <option selected>Choose...</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label for="inputHuyen" class="form-label">Phường / Xã</label>
-                            <select id="inputHuyen" class="form-select">
+                            <select id="inputHuyen" class="form-select" name="inputHuyen">
                             </select>
                         </div>
                         <div class="col-12">
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="product_price">
-                                {{$item->price}}
+                                {{ App\Http\Controllers\ProductController::asVND($item->price * $item->quantity) }}
                             </div>
                         </div>
                         @endforeach
@@ -134,7 +134,7 @@
                         <div class="tam_tinh_main">
                             <span class="title_tam_tinh">Tạm tính
                             </span>
-                            <span class="price">{{$total}}</span>
+                            <span class="price">{{ App\Http\Controllers\ProductController::asVND($total)}}</span>
                         </div>
                         <div class="phi_van_chuyen">
                             <span class="title_van_chuyen">Phí vận chuyển
@@ -147,7 +147,7 @@
                         <span class="tong_cong_title">Tổng cộng
                         </span>
                         <span class="price">
-                         <span>VND</span> {{$total}} đ 
+                         <span>VND</span> {{ App\Http\Controllers\ProductController::asVND($total) }}
                         </span>
                     </div>
                 </div>

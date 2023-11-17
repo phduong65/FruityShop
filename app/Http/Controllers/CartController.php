@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -22,9 +23,15 @@ class CartController extends Controller
         $product = Product::find($request->input('id'));
         if ($product) {
             // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-            $existingItem = Cart::where('user_id', auth()->user()->id ?? 1)
-                ->where('product_id', $product->id)
-                ->first();
+            if (Auth::check()) {
+                # code...
+                $existingItem = Cart::where('user_id', Auth::id() )
+                    ->where('product_id', $product->id)
+                    ->first();
+            }
+            else {
+                return redirect('login');
+            }
 
             if ($existingItem) {
                 // Nếu sản phẩm đã tồn tại, tăng quantity lên

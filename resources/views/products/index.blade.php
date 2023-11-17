@@ -1,21 +1,23 @@
 @extends('components.layout')
 @push('style')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link rel="stylesheet" href="{{ URL::asset('css') }}/home.css">
     <link rel="stylesheet" href="{{ URL::asset('css') }}/cart.css">
 @endpush
 @section('pageTitle', 'Trang chủ')
 @section('content')
-    @if ($success = Session::get('success'))
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: '{{ $success }}',
-                showConfirmButton: false,
-                timer: 1500
-            });
-        </script>
-    @endif
+@if ($success = Session::get('success'))
+<script>
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '{{ $success }}',
+        showConfirmButton: false,
+        timer: 1500
+    });
+</script>
+@endif
     <section class="banner_1">
         <div class="container">
             <div class="banner_1_content">
@@ -274,6 +276,7 @@
 @endsection
 @push('js')
     <script src="{{ URL::asset('js') }}/search_home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $(document).on('click', '.condition-button', function() {
