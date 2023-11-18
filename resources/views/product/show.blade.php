@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="productdetail_content-textbox">
-                        <form action="{{ route('cart.add') }}" method="POST">
+                        <form action="{{ route('cart.add.detail') }}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{ $product->id }}">
                             <h3 class="name">{{ $product->name }}</h3>

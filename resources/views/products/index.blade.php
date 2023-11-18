@@ -303,10 +303,12 @@
                     },
                     success: function(data) {
                         var products_fill = data.products_fill;
-                        console.log(((products_fill[1]['price'])));
                         var output = '';
+                        var encryptiontwo = '94721074921748127486217101204231940921034921849280';
+                        var encryptionone = '493275427158023849218444922492048902';
                         if (products_fill.length > 0) {
                             for (let i = 0; i < products_fill.length; i++) {
+                                var urlDetail = encryptionone + encryptiontwo + products_fill[i]['id'];
                                 output += `
                         <div class="col-md-3 col-xs-6">
                     <div class="product_item">
@@ -323,13 +325,13 @@
                             </div>
                         </div>
                         <div class="product_item_name">
-                            <a href="">
+                            <a href="{{ url('/products') }}/`+urlDetail+`">
                                 ` + products_fill[i]['name'] + `
-                            </a>
+                            </a>    
                         </div>
                         <div class="product_item_price">
-                            <div class="after_dis">` + products_fill[i]['fm_price'] + `</div>
-                            <div class="before_dis">` + products_fill[i]['dis_price'] + `</div>
+                            <div class="after_dis">` + products_fill[i]['dis_price'] + `</div>
+                            <div class="before_dis">` + products_fill[i]['fm_price'] + `</div>
                             <div class="dis">Giảm ` + products_fill[i]['discount'] + `%</div>
                         </div>
                         <button type="submit" class="btn_addquick" data-product-id="` + products_fill[i]['id'] + ` ">

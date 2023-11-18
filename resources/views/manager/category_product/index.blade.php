@@ -1,7 +1,6 @@
 @extends('layouts.manager')
 @section('title', 'Manage Category Product')
 @section('manager_category_product')
-
     <div class="manager_content">
         <div class="manager_content-product">
             <div class="textbox">

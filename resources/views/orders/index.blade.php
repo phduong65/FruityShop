@@ -114,7 +114,7 @@
                         <div class="product_item">
                             <div class="product_left">
                                 <div class="product_left_img">
-                                    <img src="{{ URL::asset('uploads/photobig') }}/{{$item->image}} " alt=""
+                                    <img src="{{ URL::asset('uploads/photobig') }}/{{$item->product_image}} " alt=""
                                         srcset="">
                                 </div>
                                 <div class="product_left_name">
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="product_price">
-                                {{ App\Http\Controllers\ProductController::asVND($item->price * $item->quantity) }}
+                                {{ App\Http\Controllers\ProductController::asVND($item->product_price * $item->quantity) }}
                             </div>
                         </div>
                         @endforeach

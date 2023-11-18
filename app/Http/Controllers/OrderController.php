@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -19,7 +20,7 @@ class OrderController extends Controller
         $cartItems = Cart::where('user_id', $userId)->get();
         $total = 0 ;
         foreach ($cartItems as $item) {
-            $total += $item['price']*$item['quantity'];
+            $total += $item['product_price']*$item['quantity'];
         }
         return view('orders.index')->with('cartItems',$cartItems)
                                 ->with('total',$total);
@@ -51,7 +52,7 @@ class OrderController extends Controller
         $cartItems = Cart::where('user_id', $userId)->get();
         $total = 0 ;
         foreach ($cartItems as $item) {
-            $total += $item['price']*$item['quantity'];
+            $total += $item['product_price']*$item['quantity'];
         }
 
         if (auth()->check()) {
@@ -104,12 +105,20 @@ class OrderController extends Controller
     public function destroy(string $id)
     {
         //
+       
+    }
+    public function deleteOrder($orderCode){
+        $order = Order::where('id',$orderCode)->first();
+        if ($order) {
+            $order->delete();
+            return redirect('/manager_orders')->with('success', 'Đơn hàng đã được xóa thành công.');
+        }
+        return redirect('/manager_orders')->with('erorr', 'Đơn hàng đã được không xóa thành công.');
     }
     // Manager ORDER
     public function managerOrders(){
         $your_orders = Order::orderBy('created_at', 'desc')
-            ->take(10)
-            ->get();
+        ->get();
         return view('manager.orders.index')->with('orders',$your_orders);
     }
     public function changeStatus(Request $request){
@@ -117,9 +126,9 @@ class OrderController extends Controller
         $status_changed = $request->input('selected-status');
         var_dump($status_changed);
         $order = Order::findOrFail($id);
-            $order->status = $status_changed;
-            $order->save();
-            return redirect('/manager_orders');
+        $order->status = $status_changed;
+        $order->save();
+        return redirect('/manager_orders');
         
     }
 }

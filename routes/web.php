@@ -48,6 +48,7 @@ Route::get('/success', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/manager_orders', [OrderController::class, 'managerOrders'])->name('managerOrders');
 //managerDonHang
 Route::post('orders/update', [OrderController::class,'changeStatus'])->name('orders.changeStatus');
+Route::delete('/manager_orders/{orderCode}', [OrderController::class,'deleteOrder'])->name('orders.delete');
 // manage
 Route::get('/post', [PostController::class, 'getallpublishpost'])->name('post');
 Route::get('/manager', function () {
@@ -73,6 +74,7 @@ Route::group(['middleware' => ['web']], function () {
     
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/add-to-cart-detail', [CartController::class, 'addToCartDetail'])->name('cart.add.detail');
 Route::post('/remove-from-cart/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 });
 

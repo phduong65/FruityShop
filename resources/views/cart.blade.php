@@ -45,22 +45,22 @@
                     @foreach ($cartItems as $cartItem)
                         <div class="cart-item row" id="cartItem_{{ $cartItem->id }}" style="text-align: center">
                             <div class="item-image col-md-2">
-                                <img src="{{ URL::asset('uploads/photobig') }}/{{ $cartItem->image }}" alt=""
+                                <img src="{{ URL::asset('uploads/photobig') }}/{{ $cartItem->product_image }}" alt=""
                                     height="100px" width="100px">
                             </div>
                             <div class="item-name col-md-3" style="border-right: 1px solid #cccccc;">
-                                <h3>{{ $cartItem->name }}</h3>
+                                <h3>{{ $cartItem->product_name }}</h3>
                                 {{-- <h3>{{ $cartItem->product_id }}</h3> --}}
                             </div>
                             <div class="item-details col-md-2" style="border-right: 1px solid #cccccc;">
-                                <p>{{ App\Http\Controllers\ProductController::asVND($cartItem->price) }}</p>
+                                <p>{{ App\Http\Controllers\ProductController::asVND($cartItem->product_price) }}</p>
                             </div>
                             <div class="item-quantity col-md-2"style="border-right: 1px solid #cccccc;">
                                 <p> {{ $cartItem->quantity }}</p>
                                 <!-- Thêm các điều chỉnh số lượng ở đây nếu cần -->
                             </div>
                             <div class="item-total col-md-2" style="border-right: 1px solid #cccccc">
-                                <p>{{ App\Http\Controllers\ProductController::asVND($cartItem->price * $cartItem->quantity) }}
+                                <p>{{ App\Http\Controllers\ProductController::asVND($cartItem->product_price * $cartItem->quantity) }}
                                 </p>
                             </div>
                             <div class="item-close col-md-1">
@@ -83,7 +83,7 @@
                         @php
                             $totalValue = 0;
                             foreach ($cartItems as $cartItem) {
-                                $totalValue += $cartItem->price * $cartItem->quantity;
+                                $totalValue += $cartItem->product_price * $cartItem->quantity;
                             }
                             echo App\Http\Controllers\ProductController::asVND($totalValue);
                         @endphp

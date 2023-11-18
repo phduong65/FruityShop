@@ -157,7 +157,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css
         {{-- Manager User --}}
         @yield('manager_user')
     </div>
-    @yield('kien-js')
+        @yield('kien-js')
+        @yield('duong-js')
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="{{ URL::asset('js') }}/tri.js"></script>

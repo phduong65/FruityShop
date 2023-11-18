@@ -333,5 +333,18 @@ class ProductController extends Controller
     public static function asVND($value) {
         return number_format($value, 0, ".") ."₫";;
       }
-   
+      public function search(Request $request)
+      {
+          $query = Product::query();
+          if ($request->ajax()) {
+              $extras = $query
+              ->where('name', 'like', '%' . $request->keyword . '%')
+              ->get();
+              // var_dump($extras);
+              return response()->json(['list_search' => $extras]);
+          } else {
+              $extras = $query->get();
+              return view('home', ['list_search' => $extras]);
+          }
+      }
 }
