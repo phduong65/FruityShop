@@ -77,7 +77,7 @@
                                 <span class="text">Bản thảo</span>
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="btnproductsave">
+                        <button type="submit" class="btn btn-primary" id="btnproductsave" onclick="onclicksave()">
                             <i class="fa-solid fa-bookmark"></i>
                             <span>Lưu Thay Đổi</span>
                         </button>
@@ -110,6 +110,13 @@
         </form>
     </div>
     <script>
+        const onclicksave = () => {
+            const btn = document.querySelector("#btnproductsave");
+            btn.addEventListener('click', () => {
+                btn.disabled = true;
+            })
+        }
+
         function validateInput() {
             let count = 0;
             // input

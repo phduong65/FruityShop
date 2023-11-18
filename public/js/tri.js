@@ -10,7 +10,6 @@ const handleHoverImage = () => {
 };
 handleHoverImage();
 
-
 const handelTinyEditor = () => {
     tinymce.init({
         selector: ".block",
