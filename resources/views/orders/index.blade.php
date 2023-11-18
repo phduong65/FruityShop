@@ -101,7 +101,7 @@
                                     <span>Quay lại Trang Chủ</span>
                                 </a>
                             </div>
-                            <button type="submit" class="btn btn-primary">Hoàn tất đơn hàng</button>
+                            <button type="submit" class="btn btn-primary" id="btnordersave" onclick="onclicksavOrder()">Hoàn tất đơn hàng</button>
                         </div>
                     </form>
                 </div>
@@ -215,5 +215,13 @@
                 },
             });
         });
+
+        function onclicksavOrder () {
+            let btn = document.querySelector("#btnordersave");
+            console.log(btn);
+            btn.addEventListener('click',function(){
+                btn.disable = true;
+            } )
+        }
     </script>
 @endpush
