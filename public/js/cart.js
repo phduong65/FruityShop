@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         button.addEventListener("click", function () {
             var productId = button.getAttribute("data-product-id");
             console.log(productId);
-            fetch("/add-to-cart/" + productId, {
+            fetch("/fruityshop/public/add-to-cart/" + productId, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -109,10 +109,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     alert(data.message);
                     updateTotal();
                 })
-                .catch((error) => {
-                    console.error("Error:", error);
-                    alert("Thêm Sản Phẩm Vào Giỏ Hàng Thành Công.");
-                });
+                // .catch((error) => {
+                //     console.error("Error:", error);
+                //     alert("Thêm Sản Phẩm Vào Giỏ Hàng Thành Công.");
+                // });
         });
     });
 
@@ -165,13 +165,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
             removeProductFromCart(productIdToRemove);
         });
     });
-    if (event.target.classList.contains("close")) {
+    // if (event.target.classList.contains("close")) {
         event.preventDefault();
         var productIdToRemove = event.target.getAttribute('data-product-id');
         removeProductFromCart(productIdToRemove);
-    }
+    // }
     function removeProductFromCart(productId) {
-        fetch("/remove-from-cart/" + productId, {
+        fetch("/fruityshop/public/remove-from-cart/" + productId, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

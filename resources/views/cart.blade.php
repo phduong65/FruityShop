@@ -72,7 +72,8 @@
                     <div class="cart-nosp">
                         <h4>{{ __('Bạn chưa có sản phẩm nào trong giỏ hàng') }}</h4>
                         <br>
-                        <button>Mua Thêm</button>
+                        <a href="{{ route('allproducts.index') }}"><button> Mua Thêm </button></a>
+                        
                     </div>
                 @endif
             </div>
@@ -94,7 +95,7 @@
                 </div>
             </div>
             <div class="col-md-12 cart-sps" style="padding-top: 10px">
-                <a href="">{{ __('Mua Thêm') }}</a>
+                <a href="{{ route('allproducts.index') }}">{{ __('Mua Thêm') }}</a>
             </div>
         </div>
     </div>

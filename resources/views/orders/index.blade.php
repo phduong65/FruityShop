@@ -36,7 +36,7 @@
                         @csrf  
                         <div class="col-md-12">
                             <label for="inputName" class="form-label" >Họ và Tên</label>
-                            <input type="text" class="form-control" id="inputName" name="name" required>
+                            <input type="text" class="form-control" id="inputName" name="name" pattern="^[a-zA-ZÀ-Ỹà-ỹẠ-Ỵạ-ỵĂ-Ắă-ắÂ-Ấâ-ấĐđÈ-Ỹè-ỹẸ-Ỵẹ-ỵÊ-Ếê-ếÌ-Ỷì-ỷỊ-Ỵị-ỵÒ-Ỹò-ỹỌ-Ỵọ-ỵÔ-Ốô-ốƠ-Ớơ-ớÙ-Ỷù-ỷỤ-Ỵụ-ỵƯ-ỨưỨỪ-ỰứựỦủỨ-Ỵứ-ỵ ]+$"  required>
                         </div>
                         <div class="col-md-8">
                             <label for="inputEmail" class="form-label">Email</label>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-md-4">
                             <label for="inputPhone" class="form-label">Điện thoại</label>
-                            <input type="number" class="form-control" id="inputPhone" name="phone" required>
+                            <input type="tel" class="form-control" id="inputPhone" name="phone" pattern="[0-9]{10}" required>
                         </div>
 
                         <div class="col-md-4">
@@ -101,7 +101,7 @@
                                     <span>Quay lại Trang Chủ</span>
                                 </a>
                             </div>
-                            <button type="submit" class="btn btn-primary" id="btnordersave" onclick="onclicksavOrder()">Hoàn tất đơn hàng</button>
+                            <button type="submit" class="btn btn-primary" id="btnordersave" onclick="validateForm()">Hoàn tất đơn hàng</button>
                         </div>
                     </form>
                 </div>
@@ -224,4 +224,5 @@
             } )
         }
     </script>
+    
 @endpush

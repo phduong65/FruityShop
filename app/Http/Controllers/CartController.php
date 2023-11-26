@@ -103,7 +103,7 @@ class CartController extends Controller
     public function removeFromCart(Request $request, $productId)
     {
         // Tìm và xóa bản ghi trong CSDL dựa trên product_id và user_id
-        $user_id = auth()->user()->id ?? 1; // Nếu bạn đang sử dụng xác thực người dùng
+        $user_id = auth()->user()->id; // Nếu bạn đang sử dụng xác thực người dùng
         Cart::where('user_id', $user_id)->where('product_id', $productId)->delete();
         $cartItems = Cart::where('user_id', $user_id)->get();
         return redirect()->route('home',['cart',$cartItems]);

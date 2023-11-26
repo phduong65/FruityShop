@@ -166,6 +166,9 @@ class ProductController extends Controller
         $productId = (int)$urlDetail;
         // lấy sản phẩm chi tiết
         $product = Product::find($productId);
+        if(!$product){
+            return abort(404);
+        }
         // lấy sản phẩm tương tự
         $relatedPosts = Product::whereHas('categories', function ($query) use ($product) {
             $query->whereIn('categories.id', $product->categories->pluck('id'));
@@ -194,6 +197,9 @@ class ProductController extends Controller
     {
         //
         $product = Product::find($id);
+        if(!$product){
+            return abort(404);
+        }
         $categories = Category::all();
         return view('manager.products.edit', compact('product', 'categories'));
     }
@@ -205,7 +211,9 @@ class ProductController extends Controller
     {
         //
         $product = Product::findOrFail($id);
-
+        if(!$product){
+            return abort(404);
+        }
         $request->validate([
             'nameproduct' => 'required',
             'description' => 'required',
@@ -272,6 +280,9 @@ class ProductController extends Controller
     {
         //
         $product = Product::find($id);
+        if(!$product){
+            return abort(404);
+        }
         // Lấy đường dẫn của hình lớn
         $photoPath = public_path('uploads/photobig/' . $product->photo);
         if (file_exists($photoPath)) {
@@ -336,7 +347,7 @@ class ProductController extends Controller
       public function search(Request $request)
       {
           $query = Product::query();
-          if ($request->ajax()) {
+          if ($request->ajax()){
               $extras = $query
               ->where('name', 'like', '%' . $request->keyword . '%')
               ->get();

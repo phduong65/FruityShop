@@ -117,8 +117,7 @@
                                 @if (Auth::user())
                                     <div class="user_comment">
                                         <div class="avatar">
-                                            <img src="https://images.unsplash.com/photo-1699727152109-b5b9592641ca?q=80&w=2889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                alt="" />
+                                            <img src="{{ asset('img') }}/{{ $infor->userProfile->avatar }}" alt="">
                                         </div>
                                         <div class="infor">
                                             <p class="name">{{ $infor->name }}</p>
@@ -148,11 +147,10 @@
                             <div class="list_comment">
                                 @if ($product->comment_count > 0)
                                     @foreach ($product->comments as $comment)
-                                        <div class="item">
-                                            <div class="wrap">
+                                        <div class="item"
+                                            <div class="wrap" style="display: grid;grid-template-columns: 60px 1fr;gap:20px">
                                                 <div class="avatar">
-                                                    <img src="https://images.unsplash.com/photo-1699727152109-b5b9592641ca?q=80&w=2889&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt="" />
+                                                    <img src="{{ asset('img') }}/{{ $comment->user->userProfile->avatar }}" alt="" style="border-radius: 50%;width: 60px;height: 60px;;">
                                                 </div>
                                                 <div class="infor">
                                                     <p class="name">{{ $comment->user->name }}</p>

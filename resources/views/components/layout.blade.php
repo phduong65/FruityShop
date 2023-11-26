@@ -81,7 +81,7 @@
                             </svg>
                         </div>
                         <div class="user_ic">
-                            <a href="{{ route('login') }}">
+                            <a href="{{ route('profile.index') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -124,50 +124,41 @@
                                     <div class="cart-sp col-md-12" id="cartContainer" style="padding-top: 5px">
                                         <div class="cart-items">
                                             @if (isset($cartItems) && count($cartItems) > 0)
-                                                @foreach ($cartItems as $cartItem)
-                                                    <div class="cart-item row" id="${cartItem.product_id}">
-                                                        <div class="item-image col-md-3">
-                                                            <img src="{{ URL::asset('upload/photobig/') }}/{{ $cartItem->image }}"
-                                                                alt="" height="100px" width="100px">
-                                                        </div>
-                                                        <div class="item-name col-md-3">
-                                                            <h3>{{ $cartItem['name'] }}</h3>
-                                                        </div>
-                                                        <div class="item-details col-md-3">
-                                                            <p>{{ $cartItem['price'] }} đ</p>
-                                                        </div>
-                                                        <div class="item-quantity col-md-2">
-                                                            <p>{{ $cartItem['quantity'] }}</p>
-                                                        </div>
-                                                        <div class="item-close col-md-1">
-                                                            <i class="fa-solid fa-trash close" data-product-id="{{ $cartItem->product_id }}"></i>
-                                                        </div>
+                                            @foreach ($cartItems as $cartItem)
+                                                <div class="cart-item row" id="cartItem_{{ $cartItem->id }}" style="text-align: center">
+                                                    <div class="item-image col-md-2">
+                                                        <img src="{{ URL::asset('uploads/photobig') }}/{{ $cartItem->product_image }}" alt=""
+                                                            height="100px" width="100px">
                                                     </div>
-                                                @endforeach
-                                            @else
-                                                <div class="cart-nosp">
-                                                    <h4>{{ __('Bạn chưa có sản phẩm nào trong giỏ hàng') }}</h4>
-                                                    <br>
-                                                    <button>Mua Thêm</button>
+                                                    <div class="item-name col-md-3" style="border-right: 1px solid #cccccc;">
+                                                        <h3>{{ $cartItem->product_name }}</h3>
+                                                        {{-- <h3>{{ $cartItem->product_id }}</h3> --}}
+                                                    </div>
+                                                    <div class="item-details col-md-2" style="border-right: 1px solid #cccccc;">
+                                                        <p>{{ App\Http\Controllers\ProductController::asVND($cartItem->product_price) }}</p>
+                                                    </div>
+                                                    <div class="item-quantity col-md-2"style="border-right: 1px solid #cccccc;">
+                                                        <p> {{ $cartItem->quantity }}</p>
+                                                        <!-- Thêm các điều chỉnh số lượng ở đây nếu cần -->
+                                                    </div>
+                                                    <div class="item-total col-md-3" style="border-right: 1px solid #cccccc">
+                                                        <p>{{ App\Http\Controllers\ProductController::asVND($cartItem->product_price * $cartItem->quantity) }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            @endif
+                                            @endforeach
+                                        @else
+                                            <div class="cart-nosp">
+                                                <h4>{{ __('Bạn chưa có sản phẩm nào trong giỏ hàng') }}</h4>
+                                                <br>
+                                                <button>Mua Thêm</button>
+                                            </div>
+                                        @endif
                                         </div>
                                     </div>
                                     <div class="col-md-12 cart-sps">
-                                        <div class="total row">
-                                            {{-- <h1 class="col-md-6">{{ __('Tổng:') }}</h1>
-                                            <span class="col-md-6" id="totalValue">
-                                                @php
-                                                    $totalValue = 0;
-                                                    foreach ($cartItems as $cartItem) {
-                                                        $totalValue += $cartItem->price * $cartItem->quantity;
-                                                    }
-                                                    echo $totalValue;
-                                                @endphp
-                                                đ</span> --}}
-                                        </div>
                                         <div class="pay">
-                                            <a href="" style="color: white;">{{ __('Thanh Toán') }}</a>
+                                            <a href="{{ route('orders.index') }}" style="color: white;">{{ __('Thanh Toán') }}</a>
                                         </div>
                                     </div>
                                 </div>

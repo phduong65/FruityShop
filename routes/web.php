@@ -62,8 +62,8 @@ Route::resource('commentpost', CommentPostController::class);
 
 
 Route::get('/home', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return redirect()->route('home');
+})->middleware(['auth', 'verified'])->name('/');
 
 Route::middleware('auth')->group(function () {
     Route::resource('profile', ProfileController::class);
@@ -88,7 +88,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
  
-    return redirect('/dashboard');
+    return redirect('/');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 // ... Các tuyến đường khác

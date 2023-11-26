@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="text-login">
-        <a href="/">{{ __('Trang Chủ') }}</a>
+        <a href="{{ route('home') }}">{{ __('Trang Chủ') }}</a>
         <H1>{{ __('ĐĂNG NHẬP') }}</H1>
         <p>{{ __('Vui lòng đăng nhập hệ thống') }}</p>
         @if (session('success'))
@@ -49,8 +49,7 @@
                 {{ __('ĐĂNG NHẬP') }}
             </x-primary-button>
         </div>
-        <div class="mb-3 btn-logins"><x-primary-button class="mb-3" style="text-align: center;">
-                <x-primary-button class=" btn-google">
+        <div class="mb-3 btn-logins"><x-primary-button class="mb-3 btn-google" style="text-align: center;">
                     <a href="" class="btn btn-gg">
                         <i class="icon-gg fa-brands fa-google-plus-g"></i>{{ __('Đăng nhập bằng Google') }}
                     </a>
@@ -60,7 +59,6 @@
                         <i class="icon-fb fa-brands fa-facebook-f"></i>{{ __(' Đăng nhập bằng Facebook') }}
                     </a>
                 </x-primary-button>
-            </x-primary-button>
         </div>
         <div class="mb-3 title-login">
             <p>{{ __('Bạn chưa có tài khoản?') }}<a href="{{ route('register') }}"> {{ __('Đăng ký') }}</a></p>

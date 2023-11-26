@@ -183,5 +183,6 @@
             err.style.display = "none";
             inputName.classList.remove("is-invalid");
         };
+        
     </script>
 @endsection

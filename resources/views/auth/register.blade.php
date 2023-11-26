@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="text-register">
-        <a href="/">{{ __('Trang Chủ') }}</a>
+        <a href="{{ route('home') }}">{{ __('Trang Chủ') }}</a>
         <H1>{{ __('ĐĂNG KÝ') }}</H1>
         <p>{{ __('Tham gia cùng chúng tôi') }}</p>
     </div>
@@ -62,7 +62,8 @@
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ml-4">
+            <x-primary-button class="ml-4 btn-login" style="text-align: center; background: rgb(162,185,97);
+            background: linear-gradient(62deg, rgba(162,185,97,1) 0%, rgba(192,177,108,1) 49%, rgba(234,162,125,1) 100%);">
                 {{ __('Register') }}
             </x-primary-button>
             <p>{{ __('Bạn đã có tài khoản?') }}<a href="{{ route('login') }}">

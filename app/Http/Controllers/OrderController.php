@@ -51,8 +51,10 @@ class OrderController extends Controller
         $userId = auth()->user()->id ?? 1; // Nếu bạn đang sử dụng xác thực người dùng
         $cartItems = Cart::where('user_id', $userId)->get();
         $total = 0 ;
+        $allID_product =[];
         foreach ($cartItems as $item) {
             $total += $item['product_price']*$item['quantity'];
+            $allID_product += $item['product_id'];
         }
 
         if (auth()->check()) {
