@@ -138,12 +138,15 @@
                             </span>
                             <span class="price">{{ App\Http\Controllers\ProductController::asVND($total) }}</span>
                         </div>
+                        @if (session()->get('discount_percentage'))
                         <div class="phi_van_chuyen">
-                            <span class="title_van_chuyen">Phí vận chuyển
+                            <span class="title_van_chuyen">Giảm
                             </span>
-                            <span class="price">20,000 đ
+                                
+                            <span class="price">{{ App\Http\Controllers\ProductController::asVND((($total*session()->get('discount_percentage'))/100)) }}
                             </span>
                         </div>
+                        @endif
                         @if ($success = Session::get('message'))
                             <div class="alert alert-success" role="alert">
                                 {{ $success }}
@@ -162,11 +165,12 @@
                         <span class="tong_cong_title">Tổng cộng
                         </span>
                         <span class="price">
-                            @if (session('discount_percentage'))
+                            @if (optional(session()->get('min_order_value') >= $total))
+                            <span>VND</span> {{ App\Http\Controllers\ProductController::asVND($total-(($total*session()->get('discount_percentage'))/100)) }}
+                            @else
+                                
                             <span>VND</span> {{ App\Http\Controllers\ProductController::asVND($total) }}
-                            <span>{{session()->get('discount_percentage')}}</span> 
                             @endif
-                            <span>VND</span> {{ App\Http\Controllers\ProductController::asVND($total) }}
 
                         </span>
                     </div>
