@@ -1,7 +1,6 @@
 @extends('components.layout')
 @push('style')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <link rel="stylesheet" href="{{ URL::asset('css') }}/home.css">
     <link rel="stylesheet" href="{{ URL::asset('css') }}/cart.css">
 @endpush

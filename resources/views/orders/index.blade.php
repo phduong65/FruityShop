@@ -1,10 +1,8 @@
 @extends('components.layout')
 @push('style')
     <link rel="stylesheet" href="{{ URL::asset('css') }}/checkout.css">
-   
 @endpush
 @section('content')
-
     <section class="checkout_page">
         <div class="breadcrumb_bg">
             <div class="breadcrumb-box-img">
@@ -25,18 +23,19 @@
                     </div>
                     @if (Auth::check())
                     @else
-                        
-                    <div class="check_login">
-                        Bạn đã có tài khoản ? <span class="highlight">
-                            <a href="{{'login'}}">Đăng nhập</a>
-                        </span>
-                    </div>
+                        <div class="check_login">
+                            Bạn đã có tài khoản ? <span class="highlight">
+                                <a href="{{ 'login' }}">Đăng nhập</a>
+                            </span>
+                        </div>
                     @endif
-                    <form action="{{route('orders.store')}}" method="GET" class="frm_checkout row g-4">
-                        @csrf  
+                    <form action="{{ route('orders.store') }}" method="GET" class="frm_checkout row g-4">
+                        @csrf
                         <div class="col-md-12">
-                            <label for="inputName" class="form-label" >Họ và Tên</label>
-                            <input type="text" class="form-control" id="inputName" name="name" pattern="^[a-zA-ZÀ-Ỹà-ỹẠ-Ỵạ-ỵĂ-Ắă-ắÂ-Ấâ-ấĐđÈ-Ỹè-ỹẸ-Ỵẹ-ỵÊ-Ếê-ếÌ-Ỷì-ỷỊ-Ỵị-ỵÒ-Ỹò-ỹỌ-Ỵọ-ỵÔ-Ốô-ốƠ-Ớơ-ớÙ-Ỷù-ỷỤ-Ỵụ-ỵƯ-ỨưỨỪ-ỰứựỦủỨ-Ỵứ-ỵ ]+$"  required>
+                            <label for="inputName" class="form-label">Họ và Tên</label>
+                            <input type="text" class="form-control" id="inputName" name="name"
+                                pattern="^[a-zA-ZÀ-Ỹà-ỹẠ-Ỵạ-ỵĂ-Ắă-ắÂ-Ấâ-ấĐđÈ-Ỹè-ỹẸ-Ỵẹ-ỵÊ-Ếê-ếÌ-Ỷì-ỷỊ-Ỵị-ỵÒ-Ỹò-ỹỌ-Ỵọ-ỵÔ-Ốô-ốƠ-Ớơ-ớÙ-Ỷù-ỷỤ-Ỵụ-ỵƯ-ỨưỨỪ-ỰứựỦủỨ-Ỵứ-ỵ ]+$"
+                                required>
                         </div>
                         <div class="col-md-8">
                             <label for="inputEmail" class="form-label">Email</label>
@@ -44,7 +43,8 @@
                         </div>
                         <div class="col-md-4">
                             <label for="inputPhone" class="form-label">Điện thoại</label>
-                            <input type="tel" class="form-control" id="inputPhone" name="phone" pattern="[0-9]{10}" required>
+                            <input type="tel" class="form-control" id="inputPhone" name="phone" pattern="[0-9]{10}"
+                                required>
                         </div>
 
                         <div class="col-md-4">
@@ -66,7 +66,8 @@
                         </div>
                         <div class="col-12">
                             <label for="inputAddress" class="form-label">Địa chỉ</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="Tên Đường, số nhà" name="address" required>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Tên Đường, số nhà"
+                                name="address" required>
                         </div>
                         <div class="col-12">
                             <label for="floatingTextarea2" class="form-label">Ghi chú</label>
@@ -92,7 +93,7 @@
                                         <span>Chuyển khoản qua ngân hàng</span>
                                     </label>
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div class="col-12 d-flex justify-content-between align-items-center">
@@ -101,7 +102,8 @@
                                     <span>Quay lại Trang Chủ</span>
                                 </a>
                             </div>
-                            <button type="submit" class="btn btn-primary" id="btnordersave" onclick="validateForm()">Hoàn tất đơn hàng</button>
+                            <button type="submit" class="btn btn-primary" id="btnordersave"
+                                onclick="validateForm()">Hoàn tất đơn hàng</button>
                         </div>
                     </form>
                 </div>
@@ -110,31 +112,31 @@
                         Thông tin giỏ hàng
                     </div>
                     <div class="infor_product">
-                        @foreach ($cartItems as $item)    
-                        <div class="product_item">
-                            <div class="product_left">
-                                <div class="product_left_img">
-                                    <img src="{{ URL::asset('uploads/photobig') }}/{{$item->product_image}} " alt=""
-                                        srcset="">
+                        @foreach ($cartItems as $item)
+                            <div class="product_item">
+                                <div class="product_left">
+                                    <div class="product_left_img">
+                                        <img src="{{ URL::asset('uploads/photobig') }}/{{ $item->product_image }} "
+                                            alt="" srcset="">
+                                    </div>
+                                    <div class="product_left_name">
+                                        <span class="name">
+                                            {{ $item->name }}
+                                            <span class="quantity">X {{ $item->quantity }}</span>
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="product_left_name">
-                                    <span class="name">
-                                        {{$item->name}}
-                                        <span class="quantity">X {{$item->quantity}}</span>
-                                    </span>
+                                <div class="product_price">
+                                    {{ App\Http\Controllers\ProductController::asVND($item->product_price * $item->quantity) }}
                                 </div>
                             </div>
-                            <div class="product_price">
-                                {{ App\Http\Controllers\ProductController::asVND($item->product_price * $item->quantity) }}
-                            </div>
-                        </div>
                         @endforeach
                     </div>
                     <div class="tam_tinh">
                         <div class="tam_tinh_main">
                             <span class="title_tam_tinh">Tạm tính
                             </span>
-                            <span class="price">{{ App\Http\Controllers\ProductController::asVND($total)}}</span>
+                            <span class="price">{{ App\Http\Controllers\ProductController::asVND($total) }}</span>
                         </div>
                         <div class="phi_van_chuyen">
                             <span class="title_van_chuyen">Phí vận chuyển
@@ -142,12 +144,30 @@
                             <span class="price">20,000 đ
                             </span>
                         </div>
+                        @if ($success = Session::get('message'))
+                            <div class="alert alert-success" role="alert">
+                                {{ $success }}
+                            </div>
+                        @endif
+                        <form action="{{ route('orders.applyVoucher') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="voucher_code" class="form-label">Voucher</label>
+                                <input type="text" class="form-control" id="voucher_code" name="voucher_code">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                     <div class="tong_cong">
                         <span class="tong_cong_title">Tổng cộng
                         </span>
                         <span class="price">
-                         <span>VND</span> {{ App\Http\Controllers\ProductController::asVND($total) }}
+                            @if (session('discount_percentage'))
+                            <span>VND</span> {{ App\Http\Controllers\ProductController::asVND($total) }}
+                            <span>{{session()->get('discount_percentage')}}</span> 
+                            @endif
+                            <span>VND</span> {{ App\Http\Controllers\ProductController::asVND($total) }}
+
                         </span>
                     </div>
                 </div>
@@ -156,7 +176,7 @@
 @endsection
 
 @push('js')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $html_name_country = '';
@@ -216,13 +236,12 @@
             });
         });
 
-        function onclicksavOrder () {
+        function onclicksavOrder() {
             let btn = document.querySelector("#btnordersave");
             console.log(btn);
-            btn.addEventListener('click',function(){
+            btn.addEventListener('click', function() {
                 btn.disable = true;
-            } )
+            })
         }
     </script>
-    
 @endpush

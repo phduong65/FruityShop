@@ -105,6 +105,14 @@
                     <span class="title">Đơn hàng</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('vouchers.index') }}">
+                    <span class="icon">
+                        <ion-icon name="bag-outline"></ion-icon>
+                    </span>
+                    <span class="title">Voucher</span>
+                </a>
+            </li>
 
             <li>
                 <a href="#">
@@ -151,6 +159,8 @@
         @yield('manager_category_product')
         {{-- Manager User --}}
         @yield('manager_user')
+        {{-- Manager voucher --}}
+        @yield('manager_voucher')
     </div>
     @yield('kien-js')
     @yield('duong-js')

@@ -89,6 +89,7 @@
                     <div class="description_content-banner">
                         <div class="wrap">
                             <h2 class="name">FRUITY SHOP</h2>
+                            <a href="{{ route('viewed.products') }}">xem đã xem</a>
                             <p class="text">Thực phẩm an toàn 100%</p>
                         </div>
                     </div>

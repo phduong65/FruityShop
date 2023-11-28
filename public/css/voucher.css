@@ -1,0 +1,18 @@
+.manager_voucher {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.manager_voucher .create_voucher {
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: #fff;
+  padding: 20px;
+  position: absolute;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*# sourceMappingURL=voucher.css.map */

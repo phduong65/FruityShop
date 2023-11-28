@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
 use App\Models\Order;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VoucherController;
 
 use function Laravel\Prompts\search;
 
@@ -48,6 +49,7 @@ Route::get('/success', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/manager_orders', [OrderController::class, 'managerOrders'])->name('managerOrders');
 //managerDonHang
 Route::post('orders/update', [OrderController::class,'changeStatus'])->name('orders.changeStatus');
+Route::post('/voucher_code', [OrderController::class,'applyVoucher'])->name('orders.applyVoucher');
 Route::delete('/manager_orders/{orderCode}', [OrderController::class,'deleteOrder'])->name('orders.delete');
 // manage
 Route::get('/post', [PostController::class, 'getallpublishpost'])->name('post');
@@ -55,11 +57,13 @@ Route::get('/manager', function () {
     return view('manager.doashboard');
 });
 Route::resource('products', ProductController::class);
+Route::resource('vouchers', VoucherController::class);
 Route::resource('posts', PostController::class);
 Route::resource('comments', CommentProductController::class);
 Route::resource('commentpost', CommentPostController::class);
 
-
+// routes/web.php
+Route::get('/viewed-products', [ProductController::class,'viewedProducts'])->name('viewed.products');
 
 Route::get('/home', function () {
     return redirect()->route('home');
