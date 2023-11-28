@@ -4,9 +4,8 @@
     <h1 style="text-align: center">Sản phẩm đã xem gần đây</h1>
     <div style="display: flex;justify-content: center;height: 300px" class="table-tong">
         <table id="table_user-manage">
-            @if (count($recentlyViewedProducts) > 0)
+            @if ($recentlyViewedProducts)
                 <thead>
-
                     <tr>
                         <td style="width: 100px" class="mw50 hm30">Photo</td>
                         <td style="width: 600px" >Name</td>

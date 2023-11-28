@@ -130,9 +130,15 @@ Route::get('/users/{user}/disable', [UserController::class, 'disable'])->name('u
 //Sản phẩm vừa xem
 Route::get('/recently-viewed', function () {
     $recentlyViewedProductIds = session('recently_viewed_products', []);
-    $productIdsString = implode(',', $recentlyViewedProductIds);
-    $recentlyViewedProducts = DB::select("SELECT id, name, photo, price FROM products WHERE id IN ($productIdsString) ORDER BY FIELD(id, $productIdsString)");
-    return view('profile.recent', ['recentlyViewedProducts' => $recentlyViewedProducts]);
+    if(count($recentlyViewedProductIds) > 0) {
+        $productIdsString = implode(',', $recentlyViewedProductIds);
+        $recentlyViewedProducts = DB::select("SELECT id, name, photo, price FROM products WHERE id IN ($productIdsString) ORDER BY FIELD(id, $productIdsString)");
+        return view('profile.recent', ['recentlyViewedProducts' => $recentlyViewedProducts]);
+    }
+    else {
+        $productClone = $recentlyViewedProductIds;
+        return view('profile.recent', ['recentlyViewedProducts' => $productClone]);
+    }
 });
 
 //sản phẩm đã thích

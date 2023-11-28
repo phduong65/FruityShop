@@ -104,6 +104,9 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
+        if (!$user) {
+            return abort(404);
+        }
         return view('manager.user.edit-manager-user')->with('user', $user);
     }
 
@@ -120,6 +123,9 @@ class UserController extends Controller
             'phone' => 'required',
             'address' => 'required',
         ]);
+
+      
+
         $user = new User($request->all());
         $user = User::find($id);
         $user->name = $request->input('name');
