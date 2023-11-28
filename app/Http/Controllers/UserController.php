@@ -8,7 +8,10 @@ use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserCreated;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
@@ -51,11 +54,22 @@ class UserController extends Controller
             'address' => 'required',
         ]);
 
+        // Check if the email already exists
+        $existingUser = User::where('email', $request->input('email'))->first();
+        if ($existingUser) {
+            return redirect()->route('users.index')->with('error', 'Email đã tồn tại. Không thể thêm người dùng.');
+        }
+
+        // Tạo mật khẩu ngẫu nhiên
+        $password = Str::random(8); // 8 ký tự ngẫu nhiên
+        $password .= mt_rand(0, 9); // Thêm một số ngẫu nhiên
+        $password = Str::upper(Str::random(1)) . $password;
+
 
         $user = new User([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => '123456789',
+            'password' => Hash::make($password), // Lưu mật khẩu đã hash
         ]);
         $user->save();
 
@@ -69,8 +83,9 @@ class UserController extends Controller
             'introduce' => $request->input('introduce'),
         ]);
         $userProfile->save();
-
-        return redirect()->route('users.index')->with('successAdd', 'Thêm thành công !\nMật khẩu mặc định là: 123456789');
+        // Gửi email
+        Mail::to($user->email)->send(new UserCreated($password));
+        return redirect()->route('users.index')->with('successAdd', 'Thêm thành công !');
     }
 
 

@@ -102,6 +102,17 @@
         </script>
     @endif
 
+    {{-- -----------------------Thông báo lỗi ---- --}}
+    @if ($success = Session::get('error'))
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: '{{ $success }}',
+            })
+        </script>
+    @endif
+
 
     {{-- -------------Ajax xóa item =------------- --}}
     <script>

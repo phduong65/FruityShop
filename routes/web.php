@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\SettingController;
 use App\Models\Order;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishlistController;
+use Illuminate\Support\Facades\DB;
+
 
 use function Laravel\Prompts\search;
 
@@ -122,3 +126,20 @@ Route::resource('users', UserController::class);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);
 Route::get('/users/{user}/unDisable', [UserController::class, 'unDisable'])->name('users.unDisable');
 Route::get('/users/{user}/disable', [UserController::class, 'disable'])->name('users.disable');
+
+//Sản phẩm vừa xem
+Route::get('/recently-viewed', function () {
+    $recentlyViewedProductIds = session('recently_viewed_products', []);
+    $productIdsString = implode(',', $recentlyViewedProductIds);
+    $recentlyViewedProducts = DB::select("SELECT id, name, photo, price FROM products WHERE id IN ($productIdsString) ORDER BY FIELD(id, $productIdsString)");
+    return view('profile.recent', ['recentlyViewedProducts' => $recentlyViewedProducts]);
+});
+
+//sản phẩm đã thích
+Route::get('/wishlist/{id}', [WishlistController::class, 'toggle'])->name('wishlist');
+Route::get('/wishlists', [WishlistController::class, 'index'])->middleware('auth');
+Route::delete('/wishlists/{id}', [WishlistController::class, 'destroy']);
+
+//Setting
+Route::resource('setting',SettingController::class);
+

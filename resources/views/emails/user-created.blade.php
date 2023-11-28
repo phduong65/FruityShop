@@ -1,0 +1,1 @@
+<h2>Mật khẩu của bạn là: {{$password}}</h2>

@@ -107,7 +107,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="{{route('setting.index')}}">
                     <span class="icon">
                         <ion-icon name="settings-outline"></ion-icon>
                     </span>
@@ -151,6 +151,8 @@
         @yield('manager_category_product')
         {{-- Manager User --}}
         @yield('manager_user')
+         {{-- Manager Setting --}}
+         @yield('manager_setting')
     </div>
     @yield('kien-js')
     @yield('duong-js')

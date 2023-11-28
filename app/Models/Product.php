@@ -16,6 +16,10 @@ class Product extends Model
     {
         return $this->hasMany(CommentProduct::class)->latest();
     }
+    public function wishlists()
+    {
+        return $this->belongsToMany(User::class);
+    }
     protected $fillable = ['name', 'price', 'photo', 'description', 'status', 'quantity', 'outstand', 'thumnail', 'discount'];
 
 }

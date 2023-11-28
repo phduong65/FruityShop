@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use App\Models\CommentProduct;
 use App\Models\Product;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,18 +25,21 @@ class ProductController extends Controller
     public function geAllProduct()
     {
         $products = Product::all();
-        return view('products.index')->with('products',$products);
+        return view('products.index')->with('products', $products);
     }
-    public function getProductHome(){
+    public function getProductHome()
+    {
+        $setting = Setting::find(1);
         $all_post = Post::orderBy('created_at', 'desc')->take(4)->get();
         $products_sell = Product::where('discount', '>', 0)
-                                ->where('status','=','publish')
-                  ->take(8) // Replace 10 with the desired limit
-                  ->get();
-        return view('products.index')->with('products',$products_sell)
-                                        ->with('allPost',$all_post);
+            ->where('status', '=', 'publish')
+            ->take(8) // Replace 10 with the desired limit
+            ->get();
+        return view('products.index')->with('products', $products_sell)
+            ->with('allPost', $all_post)->with('setting',$setting);
     }
-    public function getNewProducts(Request $request){
+    public function getNewProducts(Request $request)
+    {
         $query = Product::query();
 
         $condition = $request->input('condition');
@@ -54,12 +58,11 @@ class ProductController extends Controller
         }
         $products_fill = $query->get();
         foreach ($products_fill as $item) {
-            $item->fm_price = number_format($item->price,0,'',',').'₫';
-            if ($item->discount>0) {
-                $item->dis_price = $item->price-($item->price*($item->discount/100));
-                $item->dis_price = number_format($item->dis_price,0,'',',').'₫';
-            }
-            else{
+            $item->fm_price = number_format($item->price, 0, '', ',') . '₫';
+            if ($item->discount > 0) {
+                $item->dis_price = $item->price - ($item->price * ($item->discount / 100));
+                $item->dis_price = number_format($item->dis_price, 0, '', ',') . '₫';
+            } else {
                 $item->dis_price = '';
             }
         }
@@ -166,7 +169,7 @@ class ProductController extends Controller
         $productId = (int)$urlDetail;
         // lấy sản phẩm chi tiết
         $product = Product::find($productId);
-        if(!$product){
+        if (!$product) {
             return abort(404);
         }
         // lấy sản phẩm tương tự
@@ -197,7 +200,7 @@ class ProductController extends Controller
     {
         //
         $product = Product::find($id);
-        if(!$product){
+        if (!$product) {
             return abort(404);
         }
         $categories = Category::all();
@@ -211,7 +214,7 @@ class ProductController extends Controller
     {
         //
         $product = Product::findOrFail($id);
-        if(!$product){
+        if (!$product) {
             return abort(404);
         }
         $request->validate([
@@ -280,7 +283,7 @@ class ProductController extends Controller
     {
         //
         $product = Product::find($id);
-        if(!$product){
+        if (!$product) {
             return abort(404);
         }
         // Lấy đường dẫn của hình lớn
@@ -307,21 +310,21 @@ class ProductController extends Controller
     public function sort(Request $request, $order)
     {
         if ($order === 'asc') {
-            $products = Product::where('status','publish')->orderBy('price', 'asc')->paginate(8);
+            $products = Product::where('status', 'publish')->orderBy('price', 'asc')->paginate(8);
             if ($request->ajax()) {
                 $view = view('data', compact('products'))->render();
                 return response()->json(['html' => $view]);
             }
             return view('allproduct', compact('products'));
         } else if ($order === 'desc') {
-            $products = Product::where('status','publish')->orderBy('price', 'desc')->paginate(8);
+            $products = Product::where('status', 'publish')->orderBy('price', 'desc')->paginate(8);
             if ($request->ajax()) {
                 $view = view('data', compact('products'))->render();
                 return response()->json(['html' => $view]);
             }
             return view('allproduct', compact('products'));
         } else if ($order === 'outsand') {
-            $products = Product::where('outstand', 'open')->where('status','publish')->paginate(8);
+            $products = Product::where('outstand', 'open')->where('status', 'publish')->paginate(8);
             if ($request->ajax()) {
                 $view = view('data', compact('products'))->render();
                 return response()->json(['html' => $view]);
@@ -330,32 +333,34 @@ class ProductController extends Controller
         } else {
             return;
         }
-        
     }
     public function getAllProduct(Request $request)
     {
-        $products = Product::where('status','publish')->orderBy('created_at', 'desc')->paginate(8);
+        $products = Product::where('status', 'publish')->orderBy('created_at', 'desc')->paginate(8);
         if ($request->ajax()) {
             $view = view('data', compact('products'))->render();
             return response()->json(['html' => $view]);
         }
         return view('allproduct', compact('products'));
     }
-    public static function asVND($value) {
-        return number_format($value, 0, ".") ."₫";;
-      }
-      public function search(Request $request)
-      {
-          $query = Product::query();
-          if ($request->ajax()){
-              $extras = $query
-              ->where('name', 'like', '%' . $request->keyword . '%')
-              ->get();
-              // var_dump($extras);
-              return response()->json(['list_search' => $extras]);
-          } else {
-              $extras = $query->get();
-              return view('home', ['list_search' => $extras]);
-          }
-      }
+    public static function asVND($value)
+    {
+        return number_format($value, 0, ".") . "₫";;
+    }
+    public function search(Request $request)
+    {
+        $query = Product::query();
+        if ($request->ajax()) {
+            $extras = $query
+                ->where('name', 'like', '%' . $request->keyword . '%')
+                ->get();
+            // var_dump($extras);
+            return response()->json(['list_search' => $extras]);
+        } else {
+            $extras = $query->get();
+            return view('home', ['list_search' => $extras]);
+        }
+    }
+
+   
 }

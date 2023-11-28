@@ -39,6 +39,9 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\UserActivityNow::class,
             \App\Http\Middleware\CheckDisabled::class,
+            \App\Http\Middleware\UpdateRecentlyViewedProducts::class,
+            \App\Http\Middleware\SetLocale::class,
+
         ],
 
         'api' => [

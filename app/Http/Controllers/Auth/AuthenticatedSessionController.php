@@ -12,7 +12,7 @@ use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Session; // Thêm dòng này
+use Illuminate\Support\Facades\Session; 
 use Illuminate\Support\Facades\Redirect;
 
 

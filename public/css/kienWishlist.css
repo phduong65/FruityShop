@@ -1,0 +1,15 @@
+.div-count p {
+    font-size: 10px;
+    position: absolute;
+    right: -3px;
+    top: 14px;
+    border-radius: 100%;
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    color: #fff;
+}
+.like-icon {
+    position: relative;
+}
