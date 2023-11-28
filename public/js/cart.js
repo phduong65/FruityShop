@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     var cartWrapper = $(".cart-wrapper");
     var cartOverlay = $(".cart-overlay");
@@ -59,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function (event) {
     var addToCartButtons = document.querySelectorAll(".btn_addquick");
     var cartContainer = document.getElementById("cartContainer");
-    var closeIcons = document.querySelectorAll('.close');
+    var closeIcons = document.querySelectorAll(".close");
 
     addToCartButtons.forEach(function (button) {
         button.addEventListener("click", function () {
@@ -86,48 +85,60 @@ document.addEventListener("DOMContentLoaded", function (event) {
                     var productHtml = `
                         <div class="cart-item row" id="cartItem_${cartItem.id}">
                             <div class="item-image col-md-3">
-                                <img src="{{ URL::asset('upload/photobig/') }}/${cartItem.product_image}" alt="">
+                                <img src="{{ URL::asset('upload/photobig/') }}/${
+                                    cartItem.product_image
+                                }" alt="">
                             </div>
                             <div class="item-name col-md-3">
                                 <h3>${cartItem.product_name}</h3>
                             </div>
                             <div class="item-details col-md-2">
-                                <p>{{ __('Giá:') }} ${cartItem.product_price}  đ</p>
+                                <p>{{ __('Giá:') }} ${
+                                    cartItem.product_price
+                                }  đ</p>
                             </div>
                             <div class="item-quantity col-md-2">
-                                <p>{{ __('Số Lượng:') }} ${cartItem.quantity}</p>
+                                <p>{{ __('Số Lượng:') }} ${
+                                    cartItem.quantity
+                                }</p>
                             </div>
                             <div class="item-total col-md-1">
-                                <p class="item-total-price">{{ __('Thành Tiền:') }} ${cartItem.product_price * cartItem.quantity} đ</p>
+                                <p class="item-total-price">{{ __('Thành Tiền:') }} ${
+                                    cartItem.product_price * cartItem.quantity
+                                } đ</p>
                             </div>
                             <div class="item-close col-md-1">
-                                <i class="fa-solid fa-xmark close" data-product-id="${cartItem.product_id}"></i>
+                                <i class="fa-solid fa-xmark close" data-product-id="${
+                                    cartItem.product_id
+                                }"></i>
                             </div>
                         </div>
                     `;
                     cartContainer.innerHTML = productHtml;
                     alert(data.message);
                     updateTotal();
-                })
-                // .catch((error) => {
-                //     console.error("Error:", error);
-                //     alert("Thêm Sản Phẩm Vào Giỏ Hàng Thành Công.");
-                // });
+                });
+            // .catch((error) => {
+            //     console.error("Error:", error);
+            //     alert("Thêm Sản Phẩm Vào Giỏ Hàng Thành Công.");
+            // });
         });
     });
 
     function updateTotal(newCartItems) {
-        console.log('Update Total is called.');
+        console.log("Update Total is called.");
         var total = 0;
-    
+
         var totalValueElement = document.getElementById("totalValue");
-    
-        cartContainer.innerHTML = '';
+
+        cartContainer.innerHTML = "";
         newCartItems.forEach(function (cartItem) {
             var productHtml = `
             <div class="cart-item row" id="cartItem_${cartItem.id}">
             <div class="item-image col-md-3">
-                <img src="{{ URL::asset('upload/photobig/') }}/${cartItem.image}" alt="">
+                <img src="{{ URL::asset('upload/photobig/') }}/${
+                    cartItem.image
+                }" alt="">
             </div>
             <div class="item-name col-md-3">
                 <h3>${cartItem.name}</h3>
@@ -139,36 +150,39 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 <p>{{ __('Số Lượng:') }} ${cartItem.quantity}</p>
             </div>
             <div class="item-total col-md-1">
-                <p class="item-total-price">{{ __('Thành Tiền:') }} ${cartItem.price * cartItem.quantity} đ</p>
+                <p class="item-total-price">{{ __('Thành Tiền:') }} ${
+                    cartItem.price * cartItem.quantity
+                } đ</p>
             </div>
             <div class="item-close col-md-1">
-                <i class="fa-solid fa-xmark close" data-product-id="${cartItem.product_id}"></i>
+                <i class="fa-solid fa-xmark close" data-product-id="${
+                    cartItem.product_id
+                }"></i>
             </div>
         </div>
             `;
             cartContainer.innerHTML += productHtml;
-    
+
             total += cartItem.price * cartItem.quantity;
         });
-        console.log('Total:', total);
+        console.log("Total:", total);
         totalValueElement.textContent = total;
     }
-    
 
     // // Gọi hàm để tính tổng khi trang web được tải
     // updateTotal(initialCartItems); // initialCartItems là biến chứa thông tin giỏ hàng khi trang web được tải
 
     closeIcons.forEach(function (closeIcon) {
-        closeIcon.addEventListener('click', function (e) {
+        closeIcon.addEventListener("click", function (e) {
             e.preventDefault();
-            var productIdToRemove = this.getAttribute('data-product-id');
+            var productIdToRemove = this.getAttribute("data-product-id");
             removeProductFromCart(productIdToRemove);
         });
     });
     // if (event.target.classList.contains("close")) {
-        event.preventDefault();
-        var productIdToRemove = event.target.getAttribute('data-product-id');
-        removeProductFromCart(productIdToRemove);
+    event.preventDefault();
+    var productIdToRemove = event.target.getAttribute("data-product-id");
+    removeProductFromCart(productIdToRemove);
     // }
     function removeProductFromCart(productId) {
         fetch("/fruityshop/public/remove-from-cart/" + productId, {
@@ -187,7 +201,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 return response.json();
             })
             .then((data) => {
-                var cartItemElement = document.getElementById("cartItem_" + productId);
+                var cartItemElement = document.getElementById(
+                    "cartItem_" + productId
+                );
                 cartItemElement.parentNode.removeChild(cartItemElement);
                 alert(data.message);
                 updateTotal(data.cart); // Truyền thông tin giỏ hàng mới
@@ -198,5 +214,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
             });
     }
 });
-
-

@@ -3,6 +3,11 @@
 @section('pageTitle', 'Bài Viết')
 @include('post/linkcss')
 @section('content')
+    @php
+        // tạo url detail
+        $encryptionone = '123123jnjnbj1v3g12c3g123vgmnsadsf98f9sd8f09sd8f09sd8f0s';
+        $encryptiontwo = '3i192u3j13bnj12b3b398191830183ksdmadmkfnajsnfas98f980a8';
+    @endphp
     <main class="main">
         <section class="detailnew">
             <div class="container">
@@ -31,7 +36,7 @@
                             </div>
                         </div>
                         <div class="comment">
-                            <h2 class="title">Đánh giá bài viết</h2>
+                            <h2 class="title">Đánh giá bài viết ({{ $post->comment_count }})</h2>
                             <p class="text">
                                 <i class="fa-solid fa-pen-to-square"></i>
                                 @if (Auth::user())
@@ -103,13 +108,16 @@
                             <h2 class="title">Tin Đọc Nhiều Nhất</h2>
                             <div class="list">
                                 @foreach ($mostViewedPosts as $item)
+                                    @php
+                                        $urlDetailOne = $encryptionone . $encryptiontwo . $item->id;
+                                    @endphp
                                     <div class="item">
                                         <div class="thumnail">
                                             <img src="{{ url::asset('uploads/post') }}/{{ $item->photo }}"
                                                 alt="" />
                                         </div>
                                         <div class="content">
-                                            <a href="{{ route('posts.show', $item->id) }}"
+                                            <a href="{{ route('posts.show', $urlDetailOne) }}"
                                                 class="name">{{ $item->title }}</a>
                                             <p class="day">
                                                 <i class="fa-solid fa-clock"></i><span>{{ $item->created_at }}</span>
@@ -123,9 +131,12 @@
                             <h2 class="title">Tin Tức Mới Nhất</h2>
                             <div class="list">
                                 @foreach ($postnew as $item)
+                                    @php
+                                        $urlDetailTwo = $encryptionone . $encryptiontwo . $item->id;
+                                    @endphp
                                     <div class="item">
                                         <div class="content">
-                                            <a href="{{ route('posts.show', $item->id) }}"
+                                            <a href="{{ route('posts.show', $urlDetailTwo) }}"
                                                 class="name">{{ $item->title }}</a>
                                             <p class="day">
                                                 <i class="fa-solid fa-clock"></i><span>{{ $item->created_at }}</span>
@@ -139,13 +150,16 @@
                             <h2 class="title">Tin Cùng Chuyên Mục</h2>
                             <div class="list">
                                 @foreach ($relatedPosts as $item)
+                                    @php
+                                        $urlDetailThree = $encryptionone . $encryptiontwo . $item->id;
+                                    @endphp
                                     <div class="item">
                                         <div class="thumnail">
                                             <img src="{{ url::asset('uploads/post') }}/{{ $item->photo }}"
                                                 alt="" />
                                         </div>
                                         <div class="content">
-                                            <a href="{{ route('posts.show', $item->id) }}"
+                                            <a href="{{ route('posts.show', $urlDetailThree) }}"
                                                 class="name">{{ $item->title }}</a>
                                             <p class="day">
                                                 <i class="fa-solid fa-clock"></i><span>{{ $item->created_at }}</span>

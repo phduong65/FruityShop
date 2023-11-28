@@ -34,28 +34,32 @@ use function Laravel\Prompts\search;
 // Trang thanh toán
 // Route::get('/checkout',[OrderController::class,'index'])->name('orders.index');
 // trang index
-Route::get('/',[ProductController::class,'getProductHome'])->name('home');
+Route::get('/', [ProductController::class, 'getProductHome'])->name('home');
 // filter-home
-Route::get('/fillter',[ProductController::class,'getNewProducts'])->name('fillter');
+Route::get('/fillter', [ProductController::class, 'getNewProducts'])->name('fillter');
 // search-home
 
-Route::get('/search',[ProductController::class,'search'])->name('search');
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 // best-seller
-Route::get('/products_new',[ProductController::class,'getNewProducts'])->name('products_new');
+Route::get('/products_new', [ProductController::class, 'getNewProducts'])->name('products_new');
 // Lưu đơn hàng
 Route::resource('orders', OrderController::class);
 Route::get('/success', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/manager_orders', [OrderController::class, 'managerOrders'])->name('managerOrders');
 //managerDonHang
-Route::post('orders/update', [OrderController::class,'changeStatus'])->name('orders.changeStatus');
-Route::delete('/manager_orders/{orderCode}', [OrderController::class,'deleteOrder'])->name('orders.delete');
+Route::post('orders/update', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
+Route::delete('/manager_orders/{orderCode}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
 // manage
+
+// trí
 Route::get('/post', [PostController::class, 'getallpublishpost'])->name('post');
+Route::get('/post/category/', [PostController::class, 'showcategorypost'])->name('post.showcategorypost');
+Route::get('/post/categorypost/{id}', [PostController::class, 'categorypostdata']);
 Route::get('/manager', function () {
     return view('manager.doashboard');
 });
 Route::resource('products', ProductController::class);
-Route::resource('posts', PostController::class);
+Route::resource('posts', PostController::class)->middleware('checkCategoryPost');
 Route::resource('comments', CommentProductController::class);
 Route::resource('commentpost', CommentPostController::class);
 
@@ -71,11 +75,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::group(['middleware' => ['web']], function () {
-    
-Route::get('/cart', [CartController::class, 'cart'])->name('cart');
-Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
-Route::post('/add-to-cart-detail', [CartController::class, 'addToCartDetail'])->name('cart.add.detail');
-Route::post('/remove-from-cart/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+    Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+    Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::post('/add-to-cart-detail', [CartController::class, 'addToCartDetail'])->name('cart.add.detail');
+    Route::post('/remove-from-cart/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 });
 
 
@@ -84,16 +88,16 @@ Route::get('/email/verify', function () {
 })->middleware('auth')->name('verification.notice');
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
- 
+
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
- 
+
     return redirect('/');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 // ... Các tuyến đường khác
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 Route::get('/manager', function () {
@@ -101,21 +105,21 @@ Route::get('/manager', function () {
 });
 //Dat
 
-Route::resource('categoriesProduct',CategoryController::class);
-Route::resource('categoriesPost',CategoryPostController::class);
+Route::resource('categoriesProduct', CategoryController::class);
+Route::resource('categoriesPost', CategoryPostController::class);
 
-Route::get('allproduct',[ProductController::class,'getAllProduct'])->name('allproducts.index');
-Route::get('/allproduct/sort/{order}', [ProductController::class,'sort'])->name('products.sort');
+Route::get('allproduct', [ProductController::class, 'getAllProduct'])->name('allproducts.index');
+Route::get('/allproduct/sort/{order}', [ProductController::class, 'sort'])->name('products.sort');
 
 //Dat CURD CategoryProduct
-route::post('/create',[CategoryController::class,'create']);
-route::delete('/delete/{id}',[CategoryController::class,'delete'])->name('categoryP.delete');
-route::put('/editcategory/{id}',[CategoryController::class,'update'])->name('category.update');
+route::post('/create', [CategoryController::class, 'create']);
+route::delete('/delete/{id}', [CategoryController::class, 'delete'])->name('categoryP.delete');
+route::put('/editcategory/{id}', [CategoryController::class, 'update'])->name('category.update');
 
 //Dat CURD CategoryPost
-route::post('/createPost',[CategoryPostController::class,'create']);
-route::delete('/deletePost/{id}',[CategoryPostController::class,'deletePost'])->name('categoryPost.delete');
-route::put('/editcategoryPost/{id}',[CategoryPostController::class,'update'])->name('categorypost.update');
+route::post('/createPost', [CategoryPostController::class, 'create']);
+route::delete('/deletePost/{id}', [CategoryPostController::class, 'deletePost'])->name('categoryPost.delete');
+route::put('/editcategoryPost/{id}', [CategoryPostController::class, 'update'])->name('categorypost.update');
 
 //Quản lý user Kien
 Route::resource('users', UserController::class);

@@ -12,7 +12,8 @@
                         <div class="form_product-name --same">
                             <label for="exampleFormControlInput1" class="form-label">Tiêu đề bài viết</label>
                             <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Tiêu đề bài viết" name="title" required />
+                                placeholder="Tiêu đề bài viết" name="title" required oninput="validateInput()" />
+                            <div class="invalid-feedback" id="error-message-title">Không được nhập quá 255 kí tự</div>
                         </div>
                         <div class="form_product-des --same">
                             <label for="content" class="form-label">Nội dung</label>
@@ -37,7 +38,7 @@
                                 <span class="text">Bản thảo</span>
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" id="btnproductsave" onclick="onclicksave()">
                             <i class="fa-solid fa-bookmark"></i>
                             <span>Lưu Thay Đổi</span>
                         </button>
@@ -57,7 +58,7 @@
                     <div class="form_product-outstand">
                         <h4 class="title">Bài viết nổi bật</h4>
                         <label>
-                            <input type="checkbox" name="post_outstand" class="form-check-input" value="open" />
+                            <input type="checkbox" name="post_outstand" class="form-check-input" />
                             <span class="name_outstand">Bật tính năng</span>
                         </label>
                         <p class="text">
@@ -67,7 +68,7 @@
                     <div class="form_product-cmtstatus">
                         <h4 class="title">Bình luận bài viết</h4>
                         <label>
-                            <input type="checkbox" name="comment_status" class="form-check-input" value="open" />
+                            <input type="checkbox" name="comment_status" class="form-check-input" />
                             <span class="name_outstand">Bật tính năng</span>
                         </label>
                         <p class="text">
@@ -78,4 +79,40 @@
             </div>
         </form>
     </div>
+    <script>
+        const onclicksave = () => {
+            const btn = document.querySelector("#btnproductsave");
+            btn.addEventListener('click', () => {
+                btn.disabled = true;
+            })
+        }
+
+        function validateInput() {
+            let count = 0;
+            // input
+            const inputTitlePost = document.querySelector(
+                'input[name="title"]'
+            );
+
+            const errorTitlePost = document.getElementById("error-message-title");
+            // input value
+            const inputTitleValue = inputTitlePost.value;
+            // btnsave
+            const btnproductsave = document.querySelector("#btnproductsave");
+            inputTitleValue.length > 255 ?
+                handleBlock(errorTitlePost, inputTitlePost) :
+                (handleNone(errorTitlePost, inputTitlePost), count++);
+            count == 1 ?
+                (btnproductsave.disabled = false) :
+                (btnproductsave.disabled = true);
+        }
+        const handleBlock = (err, inputName) => {
+            err.style.display = "block";
+            inputName.classList.add("is-invalid");
+        };
+        const handleNone = (err, inputName) => {
+            err.style.display = "none";
+            inputName.classList.remove("is-invalid");
+        };
+    </script>
 @endsection

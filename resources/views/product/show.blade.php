@@ -51,37 +51,37 @@
                                             echo $price . 'đ';
                                         }
                                     @endphp
-                       
 
-                            </span>
-                        </p>
-                        <p class="shortdesc">
-                            Mô tả đang được cập nhật
-                        </p>
-                        <p class="notes">
-                            <span>Lưu ý:</span> Số lượng của sản phẩm được tính bằng
-                            kg(kilogram)
-                        </p>
-                        <div class="quality">
-                            <span class="text">Số lượng:</span>
-                            <div class="wrap">
-                                <span class="mul">
-                                    <i class="fa-solid fa-minus"></i>
+
                                 </span>
-                                <input type="number" min="1" max="100" value="1" name="quality"
-                                    id="quality" />
-                                <span class="plus">
-                                    <i class="fa-solid fa-plus"></i>
-                                </span>
-                                {{-- {{ '-' . $product->discount . '%' }}; --}}
                             </p>
-                        </div>
+                            <p class="shortdesc">
+                                Mô tả đang được cập nhật
+                            </p>
+                            <p class="notes">
+                                <span>Lưu ý:</span> Số lượng của sản phẩm được tính bằng
+                                kg(kilogram)
+                            </p>
+                            <div class="quality">
+                                <span class="text">Số lượng:</span>
+                                <div class="wrap">
+                                    <span class="mul">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </span>
+                                    <input type="number" min="1" max="100" value="1" name="quality"
+                                        id="quality" />
+                                    <span class="plus">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </span>
+                                    {{-- {{ '-' . $product->discount . '%' }}; --}}
+                                    </p>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-add">
+                                Thêm vào giỏ hàng
+                            </button>
+                        </form>
                     </div>
-                    <button type="submit" class="btn-add">
-                        Thêm vào giỏ hàng
-                    </button>
-                </form>
-            </div>
         </section>
         <section class="description">
             <div class="container">
@@ -117,7 +117,8 @@
                                 @if (Auth::user())
                                     <div class="user_comment">
                                         <div class="avatar">
-                                            <img src="{{ asset('img') }}/{{ $infor->userProfile->avatar }}" alt="">
+                                            <img src="{{ asset('img') }}/{{ $infor->userProfile->avatar }}"
+                                                alt="">
                                         </div>
                                         <div class="infor">
                                             <p class="name">{{ $infor->name }}</p>
@@ -147,10 +148,12 @@
                             <div class="list_comment">
                                 @if ($product->comment_count > 0)
                                     @foreach ($product->comments as $comment)
-                                        <div class="item"
-                                            <div class="wrap" style="display: grid;grid-template-columns: 60px 1fr;gap:20px">
+                                        <div class="item">
+                                            <div class="wrap">
                                                 <div class="avatar">
-                                                    <img src="{{ asset('img') }}/{{ $comment->user->userProfile->avatar }}" alt="" style="border-radius: 50%;width: 60px;height: 60px;;">
+                                                    <img src="{{ asset('img') }}/{{ $comment->user->userProfile->avatar }}"
+                                                        alt=""
+                                                        style="border-radius: 50%;width: 60px;height: 60px;">
                                                 </div>
                                                 <div class="infor">
                                                     <p class="name">{{ $comment->user->name }}</p>
@@ -179,7 +182,7 @@
                 <div class="productsame_content">
                     <h2 class="productsame_content-heading">Sản Phẩm Tương Tự</h2>
                     <div class="productsame_content-box"data-flickity='{ "cellAlign": "left", "contain": true,"freeScroll": true,
-                    "wrapAround": true,"prevNextButtons": false,"pageDots": false, "autoPlay": 1500}'>
+                                        "wrapAround": true,"prevNextButtons": false,"pageDots": false, "autoPlay": 1500}'>
                         @foreach ($relatedPosts as $item)
                             @php
                                 // Tạo URL detail bằng cách kết hợp $encryption và $encodedProductId
