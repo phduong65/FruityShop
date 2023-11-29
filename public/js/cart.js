@@ -192,10 +192,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 alert(data.message);
                 updateTotal(data.cart); // Truyền thông tin giỏ hàng mới
             })
-            .catch((error) => {
-                console.error("Error:", error);
-                alert("Đã xóa sản phẩm khỏi giỏ hàng.");
-            });
+            // .catch((error) => {
+            //     console.error("Error:", error);
+            //     return  alert("Đã xóa sản phẩm khỏi giỏ hàng.");
+            // });
     }
 });
 
