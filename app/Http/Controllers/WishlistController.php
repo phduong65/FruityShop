@@ -80,7 +80,7 @@ class WishlistController extends Controller
                     'user_id' => auth()->user()->id,
                     'product_id' => $product_id,
                 ]);
-                return redirect()->back()->with('success', 'Added to Wishlist Successfully !');
+                return redirect()->back()->with('success', 'Đã thêm vào danh sách yêu thích !');
             }
         } else {
             return redirect()->back()->with('error', 'Vui lòng đăng nhập !');
