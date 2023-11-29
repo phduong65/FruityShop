@@ -142,13 +142,17 @@
                         <div class="phi_van_chuyen">
                             <span class="title_van_chuyen">Giảm
                             </span>
-                                
                             <span class="price">{{ App\Http\Controllers\ProductController::asVND((($total*session()->get('discount_percentage'))/100)) }}
                             </span>
                         </div>
                         @endif
-                        @if ($success = Session::get('message'))
+                        @if ($success = Session::get('success'))
                             <div class="alert alert-success" role="alert">
+                                {{ $success }}
+                            </div>
+                        @endif
+                        @if ($success = Session::get('error'))
+                            <div class="alert alert-danger" role="alert">
                                 {{ $success }}
                             </div>
                         @endif

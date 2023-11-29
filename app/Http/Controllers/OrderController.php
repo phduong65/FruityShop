@@ -51,29 +51,26 @@ class OrderController extends Controller
         $user = auth()->user()->id;
         $point = Point::where('user_id', $user)->first();
         if (!$voucher) {
-            $message = 'Mã giảm giá không hợp lệ';
+            return redirect()->route("orders.index")->with('error', 'Mã giảm giá không tồn tại!');
         }
         if ($voucher) {
             if ($point->points >= $voucher->discount_percentage) {
                 $point->points -= $voucher->discount_percentage;
-                $message = "Áp dụng mã giảm giá thành công !";
                 $request->session()->put('voucher_id', $voucher->id);
                 $request->session()->put('discount_percentage', $voucher->discount_percentage);
                 $request->session()->put('code', $voucher->code);
+                return redirect()->route("orders.index")->with('success', 'Áp dụng mã giảm giá thành công !');
             }
             else{
-                $message = "Bạn không đủ tiền để áp dụng mã giảm giá";
             $request->session()->forget(['voucher_id','discount_percentage','code']);
-
+            return redirect()->route("orders.index")->with('error', 'Bạn không đủ điểm để áp dụng mã giảm giá!');
             }
         }
         else
         {
             $request->session()->forget(['voucher_id','discount_percentage','code']);
-
-            $message = "Áp dụng mã giảm giá không thành công!";
+            return redirect()->route("orders.index")->with('error', 'Áp dụng mã giảm giá không thành công!');
         }
-        return redirect()->route("orders.index")->with(['message'=>$message]);
     }
     public function store(Request $request)
     {
