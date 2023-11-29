@@ -316,27 +316,28 @@ class ProductController extends Controller
 
     public function sort(Request $request, $order)
     {
+        $categoriesWithProducts = Category::with('products')->get();
         if ($order === 'asc') {
             $products = Product::where('status','publish')->orderBy('price', 'asc')->paginate(8);
             if ($request->ajax()) {
                 $view = view('data', compact('products'))->render();
                 return response()->json(['html' => $view]);
             }
-            return view('allproduct', compact('products'));
+            return view('allproduct', compact('products','categoriesWithProducts'));
         } else if ($order === 'desc') {
             $products = Product::where('status','publish')->orderBy('price', 'desc')->paginate(8);
             if ($request->ajax()) {
-                $view = view('data', compact('products'))->render();
+                $view = view('data', compact('products','categoriesWithProducts'))->render();
                 return response()->json(['html' => $view]);
             }
-            return view('allproduct', compact('products'));
+            return view('allproduct', compact('products','categoriesWithProducts'));
         } else if ($order === 'outsand') {
             $products = Product::where('outstand', 'open')->where('status','publish')->paginate(8);
             if ($request->ajax()) {
                 $view = view('data', compact('products'))->render();
                 return response()->json(['html' => $view]);
             }
-            return view('allproduct', compact('products'));
+            return view('allproduct', compact('products','categoriesWithProducts'));
         } else {
             return;
         }
