@@ -10,10 +10,17 @@ class CategoryPostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $categryPost = CategoryPost::all();
+        $search = $request->input('name');
+        if ($search) {
+            $categryPost = CategoryPost::where('name', 'like', '%' . $search . '%')->paginate(3);
+            $categryPost->appends(['name' => $search]);
+        } else {
+            $categryPost = CategoryPost::paginate(3);
+        }
+        
         return view('manager.category_post.index', compact('categryPost'));
     }
 

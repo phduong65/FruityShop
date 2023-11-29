@@ -114,14 +114,7 @@
                     <span class="title">Cài đặt</span>
                 </a>
             </li>
-            <li>
-                <a href="chat">
-                    <span class="icon">
-                        
-                    </span>
-                    <span class="title">Chat</span>
-                </a>
-            </li>
+           
             <li>
                 <a href="#">
                     <span class="icon">
@@ -158,7 +151,6 @@
         @yield('manager_category_product')
         {{-- Manager User --}}
         @yield('manager_user')
-        @yield('manager_chat')
     </div>
     @yield('kien-js')
     @yield('duong-js')

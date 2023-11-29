@@ -3,7 +3,19 @@
 @section('manager_category_product')
 
     <div class="manager_content">
+        
         <div class="manager_content-product">
+            <div class="search">
+                <form action="{{ route('categoriesPost.index') }}"method="GET">
+                    <label>
+                        <input type="text" placeholder="Search here" name="name" />
+                        <ion-icon name="search-outline"></ion-icon>
+                        <button type="submit" class="btnsearchproduct btn btn-success">Search</button>
+                    </label>
+                </form>
+            </div>
+            <br>
+            <br>
             <div class="textbox">
                 <h2>Manager Category Post</h2>
             </div>
@@ -89,9 +101,12 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="customnav">
+                {{ $categryPost->links() }}
+            </div>
         </div>
     </div>
-
+    
     <script>
         const questionDelete1 = (event) => {
             event.preventDefault(); // Prevent the default form submission behavior
