@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ URL::asset('css') }}/_reset.css">
     <link rel="stylesheet" href="{{ URL::asset('css') }}/cart.css">
     <link rel="stylesheet" href="{{ URL::asset('css') }}/home.css">
+    <link rel="stylesheet" href="{{ URL::asset('css') }}/kienWishlist.css">
+   
 
     @stack('style')
 </head>
@@ -91,14 +93,15 @@
                             </a>
                         </div>
                         <div class="like_ic">
-                            <a href="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            <a class="like-icon" href="{{url('/wishlists')}}">
+                                <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                                     <path
                                         d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                                 </svg>
                             </a>
                         </div>
+<<<<<<< HEAD
                         <div class="history_ic">
                             <a href="{{ route('viewed.products') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
@@ -106,6 +109,11 @@
                                     <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z"/>
                                     <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5"/>
                                   </svg>
+=======
+                        <div class="like_ic">
+                            <a href="{{ url('/recently-viewed') }}">
+                                <i class="fa-regular fa-eye"></i>
+>>>>>>> kien-cuoiky
                             </a>
                         </div>
                         <div class="cart-wrapper">

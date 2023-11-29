@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\CommentProduct;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Setting;
 use App\Models\User;
 use App\Models\ViewedProduct;
 use Illuminate\Http\Request;
@@ -31,13 +32,14 @@ class ProductController extends Controller
     }
     public function getProductHome()
     {
+        $setting = Setting::find(1);
         $all_post = Post::orderBy('created_at', 'desc')->take(4)->get();
         $products_sell = Product::where('discount', '>', 0)
             ->where('status', '=', 'publish')
             ->take(8) // Replace 10 with the desired limit
             ->get();
         return view('products.index')->with('products', $products_sell)
-            ->with('allPost', $all_post);
+            ->with('allPost', $all_post)->with('setting',$setting);
     }
     public function getNewProducts(Request $request)
     {
@@ -384,21 +386,24 @@ class ProductController extends Controller
         $categoriesWithProducts = Category::with('products')->get();
         return view('allproduct', compact('products','categoriesWithProducts'));
     }
-    public static function asVND($value) {
-        return number_format($value, 0, ".") ."₫";;
-      }
-      public function search(Request $request)
-      {
-          $query = Product::query();
-          if ($request->ajax()){
-              $extras = $query
-              ->where('name', 'like', '%' . $request->keyword . '%')
-              ->get();
-              // var_dump($extras);
-              return response()->json(['list_search' => $extras]);
-          } else {
-              $extras = $query->get();
-              return view('home', ['list_search' => $extras]);
-          }
-      }
+    public static function asVND($value)
+    {
+        return number_format($value, 0, ".") . "₫";;
+    }
+    public function search(Request $request)
+    {
+        $query = Product::query();
+        if ($request->ajax()) {
+            $extras = $query
+                ->where('name', 'like', '%' . $request->keyword . '%')
+                ->get();
+            // var_dump($extras);
+            return response()->json(['list_search' => $extras]);
+        } else {
+            $extras = $query->get();
+            return view('home', ['list_search' => $extras]);
+        }
+    }
+
+   
 }

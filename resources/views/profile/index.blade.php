@@ -101,7 +101,7 @@
         <div class="cate-content">
             <a href="">
                 <i class="fa-solid fa-star"></i>
-                Đánh giá và phản hồi
+                Sản phẩm yêu thích
             </a>
 
         </div>

@@ -21,13 +21,13 @@
         <div class="container">
             <div class="banner_1_content">
                 <h4 class="content_top">
-                    Dẫn đầu về chất lượng sản phẩm
+                    {{$setting->title1 ?? 'Dẫn đầu về chất lượng sản phẩm'}} 
                 </h4>
                 <h1 class="content_mid">
-                    fresh fruit
+                    {{$setting->title2 ?? 'FRESH FRUIT'}} 
                 </h1>
                 <h4 class="content_bottom">
-                    Trái cây là lựa chọn tốt cho mỗi người
+                    {{$setting->title3 ?? 'Trái cây là lựa chọn tốt cho mỗi người'}} 
                 </h4>
                 <div class="btn_link">
                     <a href="">Mua ngay</a>
@@ -152,12 +152,12 @@
                             Health & Nutrition
                         </div>
                         <div class="sub_heading">
-                            Thực hiện các thói quen lành mạnh khác: ngoài việc áp dụng chế độ ăn uống cân bằng, bạn có thể
+                            {{$setting->description ??  'Thực hiện các thói quen lành mạnh khác: ngoài việc áp dụng chế độ ăn uống cân bằng, bạn có thể
                             kết hợp với tập thể dục thường xuyên, hạn chế rượu bia và thuốc lá để cải thiện tình trạng một
                             cách hiệu quả. khỏe và giữ cho cơ thể dẻo dai, dẻo dai. Sống một lối sống cân bằng và tuân theo
                             chế độ dinh dưỡng phù hợp không phải là điều dễ dàng. Tuy nhiên, mỗi người nên bắt đầu rèn luyện
                             thói quen bảo vệ cơ thể bằng cách duy trì chế độ ăn uống khoa học, chú ý ăn đa dạng các loại
-                            thực phẩm; Bảo quản và chế biến thực phẩm đúng cách để không bị thất thoát chất dinh dưỡng
+                            thực phẩm; Bảo quản và chế biến thực phẩm đúng cách để không bị thất thoát chất dinh dưỡng' }}  
                         </div>
                         <div class="btn_shop_now">
                             <a href="">

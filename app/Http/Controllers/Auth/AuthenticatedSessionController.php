@@ -14,6 +14,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use App\Models\UserProfile;
 
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Session; 
+use Illuminate\Support\Facades\Redirect;
 
 
 
