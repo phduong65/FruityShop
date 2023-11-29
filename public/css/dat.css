@@ -153,3 +153,11 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
+
+
+.item-category{
+    padding: 20px;
+    background-color: #79d643;
+    border-radius: 30px;
+    text-align: center;
+}

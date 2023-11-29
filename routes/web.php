@@ -126,9 +126,12 @@ route::delete('/delete/{id}', [CategoryController::class, 'delete'])->name('cate
 route::put('/editcategory/{id}', [CategoryController::class, 'update'])->name('category.update');
 
 //Dat CURD CategoryPost
-route::post('/createPost', [CategoryPostController::class, 'create']);
-route::delete('/deletePost/{id}', [CategoryPostController::class, 'deletePost'])->name('categoryPost.delete');
-route::put('/editcategoryPost/{id}', [CategoryPostController::class, 'update'])->name('categorypost.update');
+route::post('/createPost',[CategoryPostController::class,'create']);
+route::delete('/deletePost/{id}',[CategoryPostController::class,'deletePost'])->name('categoryPost.delete');
+route::put('/editcategoryPost/{id}',[CategoryPostController::class,'update'])->name('categorypost.update');
+route::get('/manager',[ProductController::class,'managerproduct']);
+
+
 
 //Quản lý user Kien
 Route::resource('users', UserController::class);

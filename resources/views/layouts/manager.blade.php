@@ -51,7 +51,7 @@ use Illuminate\Support\Facades\Crypt;
             </li>
 
             <li>
-                <a href="#">
+                <a href="manager">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>
@@ -126,7 +126,7 @@ use Illuminate\Support\Facades\Crypt;
                     <span class="title">Cài đặt</span>
                 </a>
             </li>
-
+           
             <li>
                 <a href="#">
                     <span class="icon">
