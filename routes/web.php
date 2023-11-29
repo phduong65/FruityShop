@@ -116,6 +116,7 @@ route::put('/editcategory/{id}',[CategoryController::class,'update'])->name('cat
 route::post('/createPost',[CategoryPostController::class,'create']);
 route::delete('/deletePost/{id}',[CategoryPostController::class,'deletePost'])->name('categoryPost.delete');
 route::put('/editcategoryPost/{id}',[CategoryPostController::class,'update'])->name('categorypost.update');
+route::get('/manager',[ProductController::class,'managerproduct']);
 
 //Quản lý user Kien
 Route::resource('users', UserController::class);

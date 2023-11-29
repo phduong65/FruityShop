@@ -47,7 +47,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="manager">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Post;
 // use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use App\Models\CommentProduct;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -95,8 +97,15 @@ class ProductController extends Controller
 
     public function managerproduct()
     {
-        $products = Product::all();
-        return view('manager.products.index', compact('products'));
+        $sl_product = 0;
+        $sl_user = 0;
+        $sl_donhang = 0;
+        $sl_tintuc = 0;
+        $sl_product = Product::count();
+        $sl_user = User::count();
+        $sl_donhang = Order::count();
+        $sl_tintuc = Post::count();
+        return view('manager.doashboard', compact('sl_product','sl_user','sl_donhang','sl_tintuc'));
     }
     /**
      * Show the form for creating a new resource.
