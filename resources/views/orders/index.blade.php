@@ -155,10 +155,10 @@
                         <form action="{{ route('orders.applyVoucher') }}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="voucher_code" class="form-label">Voucher</label>
+                                <label for="voucher_code" class="form-label">Mã Giảm Giá:</label>
                                 <input type="text" class="form-control" id="voucher_code" name="voucher_code">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Áp dụng</button>
                         </form>
                     </div>
                     <div class="tong_cong">
@@ -174,8 +174,41 @@
 
                         </span>
                     </div>
+                    <div class="voucher_has row">
+                        <h2>Khuyến mãi dành cho bạn
+                        </h2>
+                        @foreach ($vouchers as $item)  
+                        <div class="voucher_item col-md-12">
+                            <div class="voucher_inner">
+                                <div class="voucher_inner_left">
+                                    <div class="vc_img">
+                                        <div class="vc_box">
+                                            <img src="{{ URL::asset('/images/fast-delivery.png') }}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="voucher_inner_right">
+                                    <div class="vc_top">
+                                        <h3>Miễn phí vận chuyển đơn hàng từ {{$item->min_order_value}}</h3>
+                                        <p>Đơn hàng từ {{$item->min_order_value}}</p>
+                                    </div>
+                                    <div class="vc_bottom">
+                                        <div class="vc_detail">
+                                            <p>Mã:<strong>Giảm {{$item->discount_percentage}}</strong></p>
+                                            <p>HSD:<strong>{{$item->expires_at}}</strong></p>
+                                        </div>
+                                        <div class="vc_btn">
+                                            <button class="copyButton" data-voucher-value="{{$item->code}}">Sao chép mã</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
+            
     </section>
 @endsection
 
@@ -247,5 +280,24 @@
                 btn.disable = true;
             })
         }
+    </script>
+    <script type="text/javascript">
+     $(document).ready(function() {
+        var lastValue="";
+            // Sự kiện click của button
+            $(".copyButton").click(function() {
+                // Lấy giá trị của input và lưu vào biến
+                 lastValue = $(this).data("voucher-value");
+                 $(this).prop("disabled", true);
+                 $(this).text('Đã sao chép');
+            });
+
+            // Sự kiện paste của input
+            $("#voucher_code").on('paste', function() {
+                // Lấy giá trị đã lưu từ thuộc tính data của button
+                // Dán giá trị vào input
+                $(this).val(lastValue);
+            });
+        });
     </script>
 @endpush

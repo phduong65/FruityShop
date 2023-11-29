@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PointController;
 use App\Models\Order;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoucherController;
@@ -56,6 +57,8 @@ Route::get('/post', [PostController::class, 'getallpublishpost'])->name('post');
 Route::get('/manager', function () {
     return view('manager.doashboard');
 });
+// points
+Route::get('/points', [PointController::class, 'showPoints'])->middleware('auth')->name('user.points');
 Route::resource('products', ProductController::class);
 Route::resource('vouchers', VoucherController::class);
 Route::resource('posts', PostController::class);

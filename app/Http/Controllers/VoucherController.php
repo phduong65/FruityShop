@@ -81,28 +81,4 @@ class VoucherController extends Controller
         }
         return redirect('vouchers')->with('erorr', 'Đơn hàng đã được không xóa thành công.');
     }
-    
-
-
-    public function applyVoucher(Request $request)
-{
-    $voucherCode = $request->input('voucher_code');
-    $voucher = Voucher::where('code', $voucherCode)->first();
-    if (!$voucher) {
-        return redirect()->back()->with('error', 'Voucher không hợp lệ.');
-    }
-    if ($voucher->expiry_date < now()) {
-        return redirect()->back()->with('error', 'Voucher đã hết hạn.');
-    }
-    $userHasUsedVoucher = $request->user()->orders()->where('voucher_id', $voucher->id)->exists();
-    if ($userHasUsedVoucher) {
-        return redirect()->back()->with('error', 'Bạn đã sử dụng voucher này rồi.');
-    }
-    $userVoucherUsageCount = $request->user()->orders()->where('voucher_id', $voucher->id)->count();
-
-    if ($userVoucherUsageCount >= $voucher->usage_limit_per_user) {
-        return redirect()->back()->with('error', 'Bạn đã sử dụng voucher này đến giới hạn.');
-    }
-    return redirect()->back()->with('success', 'Voucher đã được áp dụng thành công.');
-}
 }

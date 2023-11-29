@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Point;
 use App\Models\User_Voucher_Usages;
 use App\Models\Voucher;
 use App\Models\VoucherUsed;
@@ -24,10 +25,11 @@ class OrderController extends Controller
         $userId = auth()->user()->id ?? 1; // Nếu bạn đang sử dụng xác thực người dùng
         $cartItems = Cart::where('user_id', $userId)->get();
         $total = 0;
+        $vouchers = Voucher::all();
         foreach ($cartItems as $item) {
             $total += $item['product_price'] * $item['quantity'];
         }
-        return view('orders.index')->with('cartItems', $cartItems)
+        return view('orders.index')->with('cartItems', $cartItems)->with('vouchers', $vouchers)
             ->with('total', $total);
     }
 
@@ -46,19 +48,30 @@ class OrderController extends Controller
     {
         $voucherCode = $request->input('voucher_code');
         $voucher = Voucher::where('code', $voucherCode)->first();
+        $user = auth()->user()->id;
+        $point = Point::where('user_id', $user)->first();
+        if (!$voucher) {
+            $message = 'Mã giảm giá không hợp lệ';
+        }
         if ($voucher) {
-            $message = "Ap dung ma giam gia thanh cong!";
-            $request->session()->put('voucher_id', $voucher->id);
-            $request->session()->put('discount_percentage', $voucher->discount_percentage);
-            $request->session()->put('code', $voucher->code);
-            // Session::put('voucher_id', $voucher->code);
-            // Session::put('discount_percentage', $voucher->discount_percentage);
-            // Session::put('code' , $voucher->code);
+            if ($point->points >= $voucher->discount_percentage) {
+                $point->points -= $voucher->discount_percentage;
+                $message = "Áp dụng mã giảm giá thành công !";
+                $request->session()->put('voucher_id', $voucher->id);
+                $request->session()->put('discount_percentage', $voucher->discount_percentage);
+                $request->session()->put('code', $voucher->code);
+            }
+            else{
+                $message = "Bạn không đủ tiền để áp dụng mã giảm giá";
+            $request->session()->forget(['voucher_id','discount_percentage','code']);
+
+            }
         }
         else
         {
-            Session::forget(['voucher_id','discount_percentage','code']);
-            $message = "Ap dung ma giam gia khong thanh cong!";
+            $request->session()->forget(['voucher_id','discount_percentage','code']);
+
+            $message = "Áp dụng mã giảm giá không thành công!";
         }
         return redirect()->route("orders.index")->with(['message'=>$message]);
     }
@@ -79,7 +92,7 @@ class OrderController extends Controller
         $allID_product = [];
         foreach ($cartItems as $item) {
             $total += $item['product_price'] * $item['quantity'];
-            $allID_product += $item['product_id'];
+            array_push($allID_product, $item['product_id']);
         }
 
         if (auth()->check()) {
@@ -93,6 +106,14 @@ class OrderController extends Controller
             $orders->note_user = $request->input('note');
             $orders->save();
             Cart::where('user_id', auth()->user()->id)->delete();
+            $user = auth()->user()->id;
+            $point = Point::where('user_id', $user)->first();
+            if (!$point){
+                $point = new Point(['user_id' => $user]);
+            }
+            $value = $request->session()->get('discount_percentage');
+            $point->points += ($total-(($total*$value)/100))/10000;
+            $point->save();
             return redirect('/')->with('orders', $orders)->with('success', 'Đặt hàng thành công');
         } else {
             return redirect('login');
