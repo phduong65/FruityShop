@@ -12,7 +12,7 @@
                     <td style="width:100px">Remove</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="wishlist-container">
                 @forelse ($wishlists as $wishlist)
                     @php
                         // Tạo URL detail bằng cách kết hợp $encryption và $encodedProductId
@@ -20,7 +20,7 @@
                         $encryptiontwo = '94721074921748127486217101204231940921034921849280';
                         $urlDetail = $encryptionone . $encryptiontwo . $wishlist->product->id;
                     @endphp
-                    <tr id="listUser{{$wishlist->id}}">
+                    <tr id="listUser{{ $wishlist->id }}">
                         <td class="mw50 hm30">
                             <div class="user-image-td">
                                 <img src="{{ URL::asset('uploads/photobig') }}/{{ $wishlist->product->photo }}"
@@ -46,10 +46,11 @@
         </table>
 
     </div>
+    <div style="display: flex;justify-content: center">{{ $wishlists->links() }}</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- -------------Ajax xóa item =------------- --}}
     <script>
+        // {{-- -------------Ajax xóa item =------------- --}}
         function confirmDelete(id) {
             Swal.fire({
                 title: 'Bạn có chắc muốn xóa không ?',

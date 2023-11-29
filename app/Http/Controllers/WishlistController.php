@@ -16,8 +16,13 @@ class WishlistController extends Controller
     public function index()
     {
         //
-        $wishlist = Wishlist::where('user_id', Auth::id())->get();
-        return view('profile.wishlist',['wishlists' => $wishlist]);
+        $wishlist = Wishlist::where('user_id', Auth::id())->paginate(3);
+        return view('profile.wishlist', ['wishlists' => $wishlist]);
+    }
+    public function getWishlistData()
+    {
+        $wishlist = Wishlist::where('user_id', Auth::id())->paginate(3);
+        return response()->json(['wishlists' => $wishlist]);
     }
 
     /**
