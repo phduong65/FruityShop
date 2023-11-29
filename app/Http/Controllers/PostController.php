@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Crypt;
 
 class PostController extends Controller
 {
@@ -84,10 +85,14 @@ class PostController extends Controller
         $filePhotoPost = $request->file('photo');
         $fileNamePost = $filePhotoPost->getClientOriginalName();
         $filePhotoPost->move('uploads/post', $fileNamePost);
+
         // 
-        $post = new Post($request->all());
+        $post = new Post();
         $post->title = $request->input('title');
         $post->content = htmlentities($request->input('content'), ENT_QUOTES, 'UTF-8');
+        $post->post_status = $request->input('post_status');
+        $post->post_outstand = $request->has('post_outstand') ? 'open' : 'close';
+        $post->comment_status = $request->has('comment_status') ? 'open' : 'close';
         $post->photo = $fileNamePost;
         $post->save();
         $post->categories_post()->attach($request->input('categories'));
@@ -99,8 +104,20 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
+        if (strlen($id) < 40) {
+            return abort(404);
+        }
         // lấy post chi tiết
-        $post = Post::find($id);
+        $urlDetail = $id;
+        $encryptionone = '123123jnjnbj1v3g12c3g123vgmnsadsf98f9sd8f09sd8f09sd8f0s';
+        $encryptiontwo = '3i192u3j13bnj12b3b398191830183ksdmadmkfnajsnfas98f980a8';
+        $urlDetail = str_replace($encryptionone, '', $urlDetail);
+        $urlDetail = str_replace($encryptiontwo, '', $urlDetail);
+        $postId = (int)$urlDetail;
+        $post = Post::find($postId);
+        if (!$post) {
+            return abort(404);
+        }
         //  lượt xem
         if ($post) {
             $post->view += 1;
@@ -123,7 +140,7 @@ class PostController extends Controller
         // Lấy 6 bài viết có lượt xem nhiều nhất
         $mostViewedPosts = Post::orderBy('view', 'desc')->take(6)->get();
         // Lấy danh sách các bài viết đã xem từ session hoặc khởi tạo nếu chưa tồn tại
-        $productId = $id;
+        $productId = $postId;
         $viewedProducts = session('viewedProducts', []);
         // Kiểm tra xem sản phẩm này đã được xem chưa
         if (!in_array($productId, $viewedProducts)) {
@@ -153,8 +170,10 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
         $post = Post::find($id);
+        if (!$post) {
+            return abort(404);
+        }
         $categories = CategoryPost::all();
         return view('manager.posts.edit', compact('post', 'categories'));
     }
@@ -165,7 +184,9 @@ class PostController extends Controller
     public function update(Request $request, string $id)
     {
         $post = Post::findOrFail($id);
-        // dd($arr);
+        if (!$post) {
+            return abort(404);
+        }
         $request->validate([
             'title' => 'required',
             'content' => 'required',
@@ -200,6 +221,9 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         $post = Post::find($id);
+        if (!$post) {
+            return abort(404);
+        }
         $photoPath = public_path('uploads/post/' . $post->photo);
         if (file_exists($photoPath)) {
             unlink($photoPath); // Xóa hình lớn
@@ -207,5 +231,20 @@ class PostController extends Controller
         $post->categories_post()->detach();
         $post->delete();
         return redirect('/posts');
+    }
+    public function categorypostdata(string $id)
+    {
+        // $id = $request->catagoryID;
+        $category = CategoryPost::findOrFail($id);
+        if (!$category) {
+            return abort(404);
+        }
+        $posts = $category->posts()->where('post_status', 'publish')->paginate(8);
+        $catename = $category->name;
+        return response()->json(compact('posts', 'catename'))->header('Content-Type', 'application/json');
+    }
+    public function showcategorypost()
+    {
+        return view('post.category');
     }
 }

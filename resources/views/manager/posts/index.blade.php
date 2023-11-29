@@ -46,6 +46,12 @@
 
                 <tbody>
                     @foreach ($post as $item)
+                        @php
+                            // Tạo URL detail bằng cách kết hợp $encryption và $encodedProductId
+                            $encryptionone = '123123jnjnbj1v3g12c3g123vgmnsadsf98f9sd8f09sd8f09sd8f0s';
+                            $encryptiontwo = '3i192u3j13bnj12b3b398191830183ksdmadmkfnajsnfas98f980a8';
+                            $urlDetail = $encryptionone . $encryptiontwo . $item->id;
+                        @endphp
                         <tr>
                             <td class="mw50">{{ $item->id }}</td>
                             <td class="mw120 customimage">
@@ -54,7 +60,8 @@
                                         style="object-fit: cover;max-height:100px;">
                                 </div>
                             </td>
-                            <td style="text-align: left;">{{ $item->title }}</td>
+                            <td style="text-align: left;"><a
+                                    href="{{ route('posts.show', $urlDetail) }}">{{ $item->title }}</a></td>
                             <td class="mw400"><?php echo html_entity_decode($item->content); ?></td>
                             <td class="mw120 status">
                                 <p class="{{ $item->post_status }}"><span
