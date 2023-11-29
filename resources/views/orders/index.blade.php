@@ -1,6 +1,7 @@
 @extends('components.layout')
 @push('style')
     <link rel="stylesheet" href="{{ URL::asset('css') }}/checkout.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 @endpush
 @section('content')
     <section class="checkout_page">
@@ -147,14 +148,16 @@
                         </div>
                         @endif
                         @if ($success = Session::get('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ $success }}
-                            </div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{$success}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
                         @endif
                         @if ($success = Session::get('error'))
-                            <div class="alert alert-danger" role="alert">
-                                {{ $success }}
-                            </div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>{{$success}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
                         @endif
                         <form action="{{ route('orders.applyVoucher') }}" method="POST">
                             @csrf

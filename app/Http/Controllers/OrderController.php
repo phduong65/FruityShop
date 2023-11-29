@@ -55,7 +55,8 @@ class OrderController extends Controller
         }
         if ($voucher) {
             if ($point->points >= $voucher->discount_percentage) {
-                $point->points -= $voucher->discount_percentage;
+                $point->points = $point->points - $voucher->discount_percentage;
+                $point->save();
                 $request->session()->put('voucher_id', $voucher->id);
                 $request->session()->put('discount_percentage', $voucher->discount_percentage);
                 $request->session()->put('code', $voucher->code);
