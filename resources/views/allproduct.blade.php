@@ -1,6 +1,8 @@
 @extends('components.layout')
 @push('style')
     <link rel="stylesheet" href="{{ URL::asset('css') }}/dat.css">
+    <link rel="stylesheet" href="{{ URL::asset('css') }}/tri.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 @endpush
 @section('content')
     <div class="wrapper-before">
@@ -50,8 +52,44 @@
             </div>
         </div>
     </div>
+    @foreach ($categoriesWithProducts as $category)
+        <section class="productsame">
+            <div class="container">
+                <div class="productsame_content">
+                    <h2 class="productsame_content-heading">Sản Phẩm {{ $category->name }}</h2>
+                    <div class="productsame_content-box"data-flickity='{ "cellAlign": "left", "contain": true,"freeScroll": true,
+                                "wrapAround": true,"prevNextButtons": false,"pageDots": false, "autoPlay": 1500}'>
+                        @forelse ($category->products as $product)
+                            @php
+                                // Tạo URL detail bằng cách kết hợp $encryption và $encodedProductId
+                                $encryptionone = '493275427158023849218444922492048902';
+                                $encryptiontwo = '94721074921748127486217101204231940921034921849280';
+                                $urlDetail = $encryptionone . $encryptiontwo . $product->id;
+                            @endphp
+                            <div class="item">
+                                <div class="thumnail">
+                                    <img src="{{ asset('uploads/photobig/') }}/{{ $product->photo }}" alt=""
+                                        class="photo" />
+                                </div>
+                                <div class="content">
+                                    <a href="{{ route('products.show', $urlDetail) }}"
+                                        class="name">{{ $product->name }}</a>
+                                    <p class="price">{{ number_format($product->price) }}đ</p>
+                                </div>
+                            </div>
+                        @empty
+                            <li>No products available</li>
+                        @endforelse
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endforeach
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 @endsection
 @push('js')
+
     <script src="{{ URL::asset('js') }}/dat.js"></script>
+    <script src="{{ URL::asset('js') }}/tri.js"></script>
 @endpush

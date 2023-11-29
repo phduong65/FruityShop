@@ -86,6 +86,7 @@ class ProductController extends Controller
         $products = Product::where('status', 'publish')->get();
         return view('', compact('products'));
     }
+    
     /**
      * Lấy tất cả sản phẩm nổi bật
      */
@@ -341,15 +342,17 @@ class ProductController extends Controller
         }
         
     }
-    public function getAllProduct(Request $request)
+    public function getAllProduct(Request $request, Category $category)
     {
         $products = Product::where('status','publish')->orderBy('created_at', 'desc')->paginate(8);
         if ($request->ajax()) {
             $view = view('data', compact('products'))->render();
             return response()->json(['html' => $view]);
         }
-        return view('allproduct', compact('products'));
+        $categoriesWithProducts = Category::with('products')->get();
+        return view('allproduct', compact('products','categoriesWithProducts'));
     }
+
     public static function asVND($value) {
         return number_format($value, 0, ".") ."₫";;
       }

@@ -1,13 +1,15 @@
 @extends('layouts.manager')
 @section('title', 'Manage Post')
 @section('manager_doashboard')
-<div style="text-align: center;" class="textbox">
-    <h1 style="font-size: 200%"><p style="color: green">Trang Dashboard
-        </p></h1>
-</div>
-<br>
-<br>
-<br>
+    <div style="text-align: center;" class="textbox">
+        <h1 style="font-size: 200%">
+            <p style="color: green">Trang Dashboard
+            </p>
+        </h1>
+    </div>
+    <br>
+    <br>
+    <br>
     <div class="container">
         <div class="row">
 
@@ -48,7 +50,8 @@
                         </div>
                     </div>
                 </div>
-            </div><div class="mt-6 col-xl-3 col-lg-6 col-md-12 col-12">
+            </div>
+            <div class="mt-6 col-xl-3 col-lg-6 col-md-12 col-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -66,7 +69,8 @@
                         </div>
                     </div>
                 </div>
-            </div><div class="mt-6 col-xl-3 col-lg-6 col-md-12 col-12">
+            </div>
+            <div class="mt-6 col-xl-3 col-lg-6 col-md-12 col-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -87,5 +91,7 @@
             </div>
         </div>
     </div>
+
+<br>
 
 @endsection

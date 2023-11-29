@@ -105,6 +105,7 @@ Route::resource('categoriesProduct',CategoryController::class);
 Route::resource('categoriesPost',CategoryPostController::class);
 
 Route::get('allproduct',[ProductController::class,'getAllProduct'])->name('allproducts.index');
+
 Route::get('/allproduct/sort/{order}', [ProductController::class,'sort'])->name('products.sort');
 
 //Dat CURD CategoryProduct
@@ -117,6 +118,8 @@ route::post('/createPost',[CategoryPostController::class,'create']);
 route::delete('/deletePost/{id}',[CategoryPostController::class,'deletePost'])->name('categoryPost.delete');
 route::put('/editcategoryPost/{id}',[CategoryPostController::class,'update'])->name('categorypost.update');
 route::get('/manager',[ProductController::class,'managerproduct']);
+
+
 
 //Quản lý user Kien
 Route::resource('users', UserController::class);
