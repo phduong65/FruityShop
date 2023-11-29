@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Session; // Thêm dòng này
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
+use App\Models\UserProfile;
+
 
 
 
@@ -27,38 +27,56 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
-    public function redirectToProvider($provider)
+    // ...
+
+    /**
+     * Redirect the user to the Google authentication page.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function redirectToProvider()
     {
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver('google')->redirect();
     }
+    public function handleProviderCallback(Request $request)
+{
+        $user = Socialite::driver('google')->user();
 
-    public function handleProviderCallback($provider)
-    {
-        $user = Socialite::driver($provider)->user();
+    $existingUser = User::where('email', $user->getEmail())->first();
 
-        $authUser = User::where('email', $user->getEmail())->first();
+    if ($existingUser) {
+        // Nếu người dùng đã tồn tại, đăng nhập người dùng
+        Auth::login($existingUser);
 
-        if ($authUser) {
-            // Đăng nhập người dùng
-            auth()->login($authUser);
+        // Chuyển hướng người dùng đến trang chủ
+        return redirect('/');
+    } else {
+        // Tạo người dùng mới
+        $newUser = User::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'email_verified_at' => null,
+            'password' => bcrypt('1234567890Aa@'),
+        ]);
+        $userProfile = UserProfile::create([
+            'user_id' => $newUser->id,
+            'name' => $user->name,
+            'avatar' => null,
+            'cover' => null,
+            'address' => null,
+            'birth' => null,
+            'phone' => null,
+            'introduce' => null,
+        ]);
+        
+        // Đăng nhập người dùng mới
+        auth()->login($newUser);
 
-            // Chuyển hướng người dùng đến trang chủ
-            return redirect('/');
-        } else {
-            // Tạo người dùng mới
-            $user = User::create([
-                'name' => $user->name,
-                'email' => $user->email,
-                'password' => '',
-            ]);
-
-            // Đăng nhập người dùng mới
-            auth()->login($user);
-
-            // Chuyển hướng người dùng đến trang chủ
-            return redirect('/');
-        }
+        // Chuyển hướng người dùng đến trang chủ
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
+}
+
     
 
     /**

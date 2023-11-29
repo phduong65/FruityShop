@@ -10,7 +10,7 @@
                 {{ session('success') }}
             </div>
         @elseif (session('error'))
-            <div class="alert alert-danger" >
+            <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
         @endif
@@ -49,22 +49,18 @@
                 {{ __('ĐĂNG NHẬP') }}
             </x-primary-button>
         </div>
-        <div class="mb-3 btn-logins"><x-primary-button class="mb-3 btn-google" style="text-align: center;">
-                    <a href="" class="btn btn-gg">
-                        <i class="icon-gg fa-brands fa-google-plus-g"></i>{{ __('Đăng nhập bằng Google') }}
-                    </a>
-                </x-primary-button>
-                <x-primary-button class=" btn-facebook">
-                    <a href="" class="btn btn-fb">
-                        <i class="icon-fb fa-brands fa-facebook-f"></i>{{ __(' Đăng nhập bằng Facebook') }}
-                    </a>
-                </x-primary-button>
+        <div class="mb-3 btn-logins">
+            <x-primary-button class="mb-3 btn-google" style="text-align: center;">
+                <a href="{{ url('/auth/google') }}" class="btn btn-gg">
+                    <i class="icon-gg fa-brands fa-google-plus-g"></i>{{ __('Đăng nhập bằng Google') }}
+                </a>
+            </x-primary-button>
         </div>
         <div class="mb-3 title-login">
             <p>{{ __('Bạn chưa có tài khoản?') }}<a href="{{ route('register') }}"> {{ __('Đăng ký') }}</a></p>
         </div>
         <!-- Remember Me -->
-<div class="mb-3 btn-remember">
+        <div class="mb-3 btn-remember">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox"
                     class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">

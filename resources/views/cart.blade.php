@@ -63,7 +63,7 @@
                                 <p>{{ App\Http\Controllers\ProductController::asVND($cartItem->product_price * $cartItem->quantity) }}
                                 </p>
                             </div>
-                            <div class="item-close col-md-1">
+                            <div class="item-close col-md-1" >
                                 <i class="fa-solid fa-trash close" data-product-id="{{ $cartItem->product_id }}"></i>
                             </div>
                         </div>

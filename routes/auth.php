@@ -20,7 +20,7 @@ Route::middleware('guest')->group(function () {
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
-        
+
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
@@ -38,11 +38,12 @@ Route::middleware('guest')->group(function () {
         ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
-    
-    Route::get('/auth/{provider}', [AuthenticatedSessionController::class, 'handleProviderCallback'])->name('login.google');
-    Route::get('/auth/{provider}/callback', [AuthenticatedSessionController::class, 'store']);
-    Route::get('/auth/{provider}', [AuthenticatedSessionController::class, 'redirectToProvider'])->name('login.facebook');
-    Route::get('/auth/{provider}/callback', [AuthenticatedSessionController::class, 'handleProviderCallback']);
+
+    // Route để chuyển hướng đến Google để đăng nhập
+    Route::get('/auth/google', [AuthenticatedSessionController::class, 'redirectToProvider']);
+
+    // Route để xử lý callback từ Google sau khi đăng nhập
+    Route::get('/auth/google/callback', [AuthenticatedSessionController::class, 'handleProviderCallback']);
 });
 
 Route::middleware('auth')->group(function () {
