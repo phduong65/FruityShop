@@ -43,9 +43,10 @@
                 <a href="{{ route('wishlist', $products->id) }}" class="addToWishlist" style="border: none"
                     data-product-id="{{ $products->id }}">
                     ❤️
+                    
                 </a>
+                
             </div>
-
         </div>
     </div>
 @endforeach
