@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Point;
+use App\Models\Product;
 use App\Models\User_Voucher_Usages;
 use App\Models\Voucher;
 use App\Models\VoucherUsed;
@@ -91,6 +92,9 @@ class OrderController extends Controller
         $allID_product = [];
         foreach ($cartItems as $item) {
             $total += $item['product_price'] * $item['quantity'];
+            $product = Product::where('id', $item['product_id'])->first();
+            $product->buy_count = $product->buy_count + $item['quantity'];
+            $product->save();
             array_push($allID_product, $item['product_id']);
             OrderItem::create(
                 [

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->char('outstand', 10)->default('close');
             $table->integer('comment_count')->default(0);
             $table->integer('view')->default(0);
+            $table->integer('buy_count')->default(0);
             $table->timestamps();
         });
     }
