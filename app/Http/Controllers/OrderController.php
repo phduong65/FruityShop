@@ -48,15 +48,23 @@ class OrderController extends Controller
      */
     public function applyVoucher(Request $request)
     {
+        $total = 0;
         $voucherCode = $request->input('voucher_code');
         $voucher = Voucher::where('code', $voucherCode)->first();
+        $userId = auth()->user()->id ?? 1; // Nếu bạn đang sử dụng xác thực người dùng
+        $cartItems = Cart::where('user_id', $userId)->get();
+        foreach ($cartItems as $item) {
+            $total += $item['product_price'] * $item['quantity'];
+        }
         $user = auth()->user()->id;
         $point = Point::where('user_id', $user)->first();
         if (!$voucher) {
+            $request->session()->forget(['voucher_id','discount_percentage','code']);
+
             return redirect()->route("orders.index")->with('error', 'Mã giảm giá không tồn tại!');
         }
         if ($voucher) {
-            if ($point->points >= $voucher->discount_percentage) {
+            if ($point->points >= $voucher->discount_percentage && $total >=  $voucher->min_order_value) {
                 $point->points = $point->points - $voucher->discount_percentage;
                 $point->save();
                 $request->session()->put('voucher_id', $voucher->id);
@@ -68,6 +76,7 @@ class OrderController extends Controller
             $request->session()->forget(['voucher_id','discount_percentage','code']);
             return redirect()->route("orders.index")->with('error', 'Bạn không đủ điểm để áp dụng mã giảm giá!');
             }
+            
         }
         else
         {
