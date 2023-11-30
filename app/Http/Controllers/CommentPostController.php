@@ -40,10 +40,10 @@ class CommentPostController extends Controller
         $post = Post::find($request->input('post_id'));
         $post->comment_count += 1;
         $post->save();
-        // $encryptionone = '493275427158023849218444922492048902';
-        // $encryptiontwo = '94721074921748127486217101204231940921034921849280';
-        // $urlDetail = $encryptionone . $encryptiontwo . $request->input('product_id');
-        return redirect()->route('posts.show', $request->input('post_id'));
+        $encryptionone = '123123jnjnbj1v3g12c3g123vgmnsadsf98f9sd8f09sd8f09sd8f0s';
+        $encryptiontwo = '3i192u3j13bnj12b3b398191830183ksdmadmkfnajsnfas98f980a8';
+        $urlDetail = $encryptionone . $encryptiontwo . $request->input('post_id');
+        return redirect()->route('posts.show', $urlDetail);
     }
 
     /**
