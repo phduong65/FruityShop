@@ -165,7 +165,7 @@
                                 <label for="voucher_code" class="form-label">Mã Giảm Giá:</label>
                                 <input type="text" class="form-control" id="voucher_code" name="voucher_code">
                             </div>
-                            <button type="submit" class="btn btn-primary">Áp dụng</button>
+                            <button type="submit" class="btn btn-primary btn_appvoucher">Áp dụng</button>
                         </form>
                     </div>
                     <div class="tong_cong">
@@ -296,6 +296,7 @@
                 // Lấy giá trị của input và lưu vào biến
                  lastValue = $(this).data("voucher-value");
                  $(this).prop("disabled", true);
+                 $(".appvoucher").prop("disabled", true);
                  $(this).text('Đã sao chép');
             });
 

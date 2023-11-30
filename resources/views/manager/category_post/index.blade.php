@@ -6,7 +6,7 @@
         
         <div class="manager_content-product">
             <div class="search">
-                <form action="{{ route('categoriesPost.index') }}"method="GET">
+                <form action="{{ route('categoriesProduct.index') }}"method="GET">
                     <label>
                         <input type="text" placeholder="Search here" name="name" />
                         <ion-icon name="search-outline"></ion-icon>

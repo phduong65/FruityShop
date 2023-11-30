@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        $data = Category::all();
+        $search = $request->input('name');
+        if ($search) {
+            $data = Category::where('name', 'like', '%' . $search . '%')->paginate(3);
+            $data->appends(['name' => $search]);
+        } else {
+            $data = Category::paginate(3);
+        }
+        
+        
 
         return view('manager.category_product.index', compact('data'));
     }
