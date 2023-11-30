@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Point;
 use App\Models\User_Voucher_Usages;
 use App\Models\Voucher;
@@ -40,7 +41,7 @@ class OrderController extends Controller
     {
         //
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -91,6 +92,13 @@ class OrderController extends Controller
         foreach ($cartItems as $item) {
             $total += $item['product_price'] * $item['quantity'];
             array_push($allID_product, $item['product_id']);
+            OrderItem::create(
+                [
+                    'product_id' => $item['product_id'],
+                    'order_id' => $orders->id_orders,
+                    'quantity' => $item['quantity']
+                ]
+                );
         }
 
         if (auth()->check()) {
@@ -123,7 +131,7 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -150,6 +158,12 @@ class OrderController extends Controller
         //
 
     }
+    public function view(Request $request){
+        $id_orders = $request->input('id_orders');
+        $order_item = OrderItem::where('order_id', $id_orders)->get();
+        return view('orders.index')->with('orders', $order_item);
+    }
+
     public function deleteOrder($orderCode)
     {
         $order = Order::where('id', $orderCode)->first();

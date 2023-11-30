@@ -16,12 +16,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\SettingController;
 use App\Models\Order;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ViewedProductController;
 use App\Http\Controllers\WishlistController;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\DB;
 
 
@@ -50,6 +53,7 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/products_new', [ProductController::class, 'getNewProducts'])->name('products_new');
 // Lưu đơn hàng
 Route::resource('orders', OrderController::class);
+Route::resource('ordersitems', OrderItemController::class);
 Route::get('/success', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/manager_orders', [OrderController::class, 'managerOrders'])->name('managerOrders');
 //managerDonHang
@@ -59,7 +63,8 @@ Route::delete('/manager_orders/{orderCode}', [OrderController::class,'deleteOrde
 Route::post('orders/update', [OrderController::class, 'changeStatus'])->name('orders.changeStatus');
 Route::delete('/manager_orders/{orderCode}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
 // manage
-
+Route::post('/viewed-products/{id}', [ViewedProductController::class, 'destroy'])->name('viewedproducts.destroy');
+Route::post('orders/view', [OrderItemController::class, 'view'])->name('orders.view');
 // trí
 Route::get('/post', [PostController::class, 'getallpublishpost'])->name('post');
 Route::get('/post/category/', [PostController::class, 'showcategorypost'])->name('post.showcategorypost');

@@ -195,6 +195,7 @@ class ProductController extends Controller
                 'user_id' => auth()->id(),
                 'product_id' => $product->id,
             ]);
+            $product->increment('view');
         } else {
             return redirect('login');
         }
@@ -231,7 +232,6 @@ class ProductController extends Controller
             ->latest()
             ->take(8)
             ->get();
-
         return view('products.recently', ['viewedProducts' => $viewedProducts]);
     }
     /**

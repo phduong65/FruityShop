@@ -163,13 +163,10 @@ use Illuminate\Support\Facades\Crypt;
         @yield('manager_category_product')
         {{-- Manager User --}}
         @yield('manager_user')
-<<<<<<< HEAD
         {{-- Manager voucher --}}
         @yield('manager_voucher')
-=======
          {{-- Manager Setting --}}
          @yield('manager_setting')
->>>>>>> kien-cuoiky
     </div>
     @yield('kien-js')
     @yield('duong-js')

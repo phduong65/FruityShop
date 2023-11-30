@@ -23,6 +23,7 @@ return new class extends Migration
             $table->char('status', 10);
             $table->char('outstand', 10)->default('close');
             $table->integer('comment_count')->default(0);
+            $table->integer('view')->default(0);
             $table->timestamps();
         });
     }

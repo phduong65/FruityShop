@@ -58,6 +58,12 @@
                                 <span>Chọn mua</span>
                             </button>
                         </form>
+                        <form action="{{route('viewedproducts.destroy',$viewedProduct->product->id)}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn_destroy btn btn-outline-danger btn-sm my-2">
+                                <span>Xóa khỏi lịch sử</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             @endforeach
