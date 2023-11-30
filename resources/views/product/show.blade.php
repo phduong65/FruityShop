@@ -6,6 +6,10 @@
         href="http://fonts.googleapis.com/css?family=Open+Sans:300,700,800|Open+Sans+Condensed:300,700|Prata&subset=vietnamese"
         rel="stylesheet" type="text/css" />
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- Thêm đoạn mã JavaScript sau vào cuối body để tạo nút chia sẻ -->
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=YOUR_APP_ID&autoLogAppEvents=1"
+        nonce="YOUR_NONCE"></script>
 @endpush
 @section('content')
     <main class="main">
@@ -81,6 +85,9 @@
                                 Thêm vào giỏ hàng
                             </button>
                         </form>
+                    </div>
+                    <div class="fb-share-button" data-href="http://127.0.0.1:8000/products/{{ $product->id }}"
+                        data-layout="button_count">
                     </div>
         </section>
         <section class="description">
@@ -181,8 +188,9 @@
             <div class="container">
                 <div class="productsame_content">
                     <h2 class="productsame_content-heading">Sản Phẩm Tương Tự</h2>
-                    <div class="productsame_content-box"data-flickity='{ "cellAlign": "left", "contain": true,"freeScroll": true,
-                                        "wrapAround": true,"prevNextButtons": false,"pageDots": false, "autoPlay": 1500}'>
+                    <div
+                        class="productsame_content-box"data-flickity='{ "cellAlign": "left", "contain": true,"freeScroll": true,
+                                                "wrapAround": true,"prevNextButtons": false,"pageDots": false, "autoPlay": 1500}'>
                         @foreach ($relatedPosts as $item)
                             @php
                                 // Tạo URL detail bằng cách kết hợp $encryption và $encodedProductId

@@ -1524,6 +1524,7 @@ ul {
     left: 0;
 }
 .navigation.active {
+    overflow-y: auto;
     width: 300px;
 }
 .navigation ul {
