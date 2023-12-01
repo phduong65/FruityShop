@@ -98,7 +98,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/manager', function () {
     return view('manager.doashboard');
-});
+})->middleware('manager');
 //Dat
 
 Route::resource('categoriesProduct',CategoryController::class);
